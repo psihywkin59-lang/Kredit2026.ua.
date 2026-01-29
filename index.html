@@ -4,151 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кредит онлайн на карту в Україні — ТОП позик 2026</title>
-    <meta name="description" content="Порівняння найкращих МФО України 2026. Гроші під 0.01% за 5 хвилин. Працюємо по всій Україні, крім ТОТ.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+        body { font-family: 'Geologica', sans-serif; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
         .lang-ru, .lang-uk { display: none; }
         .offer-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .offer-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+        .offer-card:hover { transform: translateY(-5px); box-shadow: 0 25px 30px -15px rgba(0, 0, 0, 0.1); }
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
-        input[type=range]::-webkit-slider-runnable-track { background: rgba(255,255,255,0.2); height: 8px; border-radius: 4px; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; background: #fbbf24; border-radius: 50%; cursor: pointer; margin-top: -8px; border: 3px solid white; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        input[type=range]::-webkit-slider-runnable-track { background: rgba(255,255,255,0.2); height: 8px; border-radius: 10px; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 26px; width: 26px; background: #fbbf24; border-radius: 50%; cursor: pointer; margin-top: -9px; border: 4px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="font-black text-2xl text-blue-600 tracking-tighter italic uppercase">FIN<span class="text-yellow-500">HUB</span></div>
-            <div class="bg-slate-100 p-1 rounded-xl flex space-x-1 border border-slate-200">
-                <button onclick="changeLang('uk')" id="btn-uk" class="px-5 py-1.5 rounded-lg text-xs font-black transition uppercase tracking-widest">UA</button>
-                <button onclick="changeLang('ru')" id="btn-ru" class="px-5 py-1.5 rounded-lg text-xs font-black transition uppercase tracking-widest">RU</button>
+    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="font-black text-2xl text-blue-600 tracking-tighter uppercase italic">FIN<span class="text-yellow-500">HUB</span></div>
+            <div class="bg-slate-100 p-1 rounded-xl flex space-x-1">
+                <button onclick="changeLang('uk')" id="btn-uk" class="px-5 py-1.5 rounded-lg text-xs font-bold transition uppercase">UA</button>
+                <button onclick="changeLang('ru')" id="btn-ru" class="px-5 py-1.5 rounded-lg text-xs font-bold transition uppercase">RU</button>
             </div>
         </div>
     </nav>
 
-    <header class="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 py-16 px-4 text-white text-center">
+    <header class="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-16 px-4 text-white text-center">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-6xl font-900 mb-8 uppercase tracking-tighter leading-none">
-                <span class="lang-uk">Кредит онлайн <br>на карту 24/7</span>
-                <span class="lang-ru">Кредит онлайн <br>на карту 24/7</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-8 uppercase tracking-tight leading-none">
+                <span class="lang-uk">Кредит онлайн <br>на карту 2026</span>
+                <span class="lang-ru">Кредит онлайн <br>на карту 2026</span>
             </h1>
-            <div class="bg-white/10 backdrop-blur-xl p-8 md:p-12 rounded-[40px] border border-white/20 shadow-2xl inline-block w-full max-w-2xl">
-                <p class="text-lg font-bold mb-6 opacity-90">
-                    <span class="lang-uk">Яка сума вам потрібна?</span>
-                    <span class="lang-ru">Какая сумма вам нужна?</span>
-                </p>
-                <div class="flex items-center justify-between mb-6 px-2">
-                    <span class="text-xs opacity-60 font-bold uppercase tracking-widest">500 ₴</span>
-                    <span id="amount-val" class="text-5xl md:text-7xl font-900 text-yellow-400 drop-shadow-2xl">15 000 ₴</span>
-                    <span class="text-xs opacity-60 font-bold uppercase tracking-widest">30 000 ₴</span>
+            <div class="bg-white/10 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-white/20 shadow-2xl inline-block w-full max-w-2xl">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="text-xs opacity-60 font-bold uppercase">500 ₴</span>
+                    <span id="amount-val" class="text-6xl md:text-7xl font-black text-yellow-400">15 000 ₴</span>
+                    <span class="text-xs opacity-60 font-bold uppercase">30 000 ₴</span>
                 </div>
                 <input type="range" min="500" max="30000" step="500" value="15000" oninput="updateAmount(this.value)" class="mb-8 cursor-pointer">
-                <div class="flex flex-wrap gap-3 justify-center text-[10px] font-900 uppercase tracking-widest">
-                    <span class="bg-white/20 px-4 py-2 rounded-full border border-white/10">🚀 Без відмови</span>
-                    <span class="bg-white/20 px-4 py-2 rounded-full border border-white/10">🌙 Цілодобово</span>
-                    <span class="bg-blue-500/40 px-4 py-2 rounded-full border border-blue-400/30">💳 По всій Україні*</span>
+                <div class="flex flex-wrap gap-3 justify-center text-[10px] font-bold uppercase tracking-widest opacity-80">
+                    <span class="bg-white/10 px-4 py-2 rounded-full border border-white/10">🚀 Без відмови</span>
+                    <span class="bg-white/10 px-4 py-2 rounded-full border border-white/10">🌙 24/7</span>
+                    <span class="bg-white/10 px-4 py-2 rounded-full border border-white/10">💳 Весь світ*</span>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <main class="lg:col-span-8 space-y-6">
+        <!-- ЛЕВАЯ КОЛОНКА (ВСЕ ОФФЕРЫ) -->
+        <main class="lg:col-span-8 space-y-4">
+            
             <!-- 1. Moneyveo -->
-            <div class="offer-card bg-white rounded-[32px] shadow-sm border border-slate-200 p-6 md:p-8 flex flex-col md:flex-row items-center border-l-[12px] border-l-rose-500">
+            <div class="offer-card bg-white rounded-3xl shadow-sm border border-slate-200 p-6 flex flex-col md:flex-row items-center border-l-8 border-l-rose-500">
                 <div class="flex-1 w-full text-center md:text-left">
-                    <h2 class="text-3xl font-900 text-rose-600 italic tracking-tighter">money<span class="text-slate-800">veo</span></h2>
-                    <div class="grid grid-cols-3 gap-3 mt-6 text-center text-[12px]">
-                        <div class="bg-slate-50 p-3 rounded-2xl"> <p class="text-slate-400 font-bold uppercase mb-1">Сума</p> <p class="font-900 text-slate-800 text-lg">30 000 ₴</p> </div>
-                        <div class="bg-slate-50 p-3 rounded-2xl"> <p class="text-slate-400 font-bold uppercase mb-1">Ставка</p> <p class="font-900 text-green-600 text-lg">0.01%</p> </div>
-                        <div class="bg-slate-50 p-3 rounded-2xl"> <p class="text-slate-400 font-bold uppercase mb-1">Рішення</p> <p class="font-900 text-slate-800 text-lg">2 хв.</p> </div>
+                    <h2 class="text-3xl font-black text-rose-600 italic tracking-tighter">moneyveo</h2>
+                    <div class="grid grid-cols-3 gap-2 mt-4 text-[11px] font-bold uppercase text-slate-400">
+                        <div class="bg-slate-50 p-3 rounded-2xl"> <p>Сума</p> <p class="text-slate-900 text-lg">30к</p> </div>
+                        <div class="bg-slate-50 p-3 rounded-2xl"> <p>Ставка</p> <p class="text-green-600 text-lg">0.01%</p> </div>
+                        <div class="bg-slate-50 p-3 rounded-2xl"> <p>Час</p> <p class="text-slate-900 text-lg">2хв</p> </div>
                     </div>
                 </div>
-                <div class="mt-8 md:mt-0 md:ml-10 w-full md:w-auto">
-                    <a href="#" class="block bg-rose-600 text-white font-900 py-5 px-14 rounded-2xl shadow-xl hover:bg-rose-700 transition uppercase text-sm tracking-widest text-center">
-                        <span class="lang-uk">Отримати</span><span class="lang-ru">Получить</span>
-                    </a>
+                <div class="mt-6 md:mt-0 md:ml-8 w-full md:w-auto">
+                    <a href="#" class="block bg-rose-600 text-white font-black py-4 px-12 rounded-2xl shadow-lg hover:bg-rose-700 transition uppercase text-sm text-center">Отримати</a>
                 </div>
             </div>
 
-            <!-- ... Офферы 2-16 аналогично ... -->
+            <!-- ... ПОВТОРЯЕШЬ ВСЕ ОФФЕРЫ ОТ 2 ДО 16 ... -->
 
             <!-- 17. ТОП1 -->
-            <div class="offer-card relative bg-white rounded-[32px] shadow-sm border border-slate-200 p-6 md:p-8 flex flex-col md:flex-row items-center border-l-[12px] border-l-yellow-400 overflow-hidden">
-                <div class="absolute top-0 right-0 bg-yellow-400 text-slate-900 text-[10px] font-900 px-6 py-1.5 rounded-bl-3xl uppercase tracking-[0.2em]">Новий оффер 2026</div>
-                <div class="flex-1 w-full text-center md:text-left pt-4 md:pt-0">
-                    <h2 class="text-4xl font-900 text-slate-800 uppercase tracking-tighter italic">ТОП<span class="text-yellow-500">1</span></h2>
-                    <div class="grid grid-cols-3 gap-3 mt-6 text-center text-[12px]">
-                        <div class="bg-yellow-50/50 p-3 rounded-2xl"> <p class="text-slate-400 font-bold uppercase mb-1">Сума</p> <p class="font-900 text-slate-800 text-lg">25 000 ₴</p> </div>
-                        <div class="bg-yellow-50/50 p-3 rounded-2xl"> <p class="text-slate-400 font-bold uppercase mb-1">Ставка</p> <p class="font-900 text-green-600 text-lg">0.01%</p> </div>
-                        <div class="bg-yellow-50/50 p-3 rounded-2xl"> <p class="text-slate-400 font-bold uppercase mb-1">Шанс</p> <p class="font-900 text-blue-600 text-lg">98%</p> </div>
+            <div class="offer-card relative bg-white rounded-3xl shadow-sm border border-yellow-400 p-6 flex flex-col md:flex-row items-center border-l-8 border-l-yellow-400">
+                <div class="absolute top-0 right-0 bg-yellow-400 text-slate-900 text-[9px] font-black px-4 py-1.5 rounded-bl-2xl uppercase tracking-tighter">Ексклюзив 2026</div>
+                <div class="flex-1 w-full text-center md:text-left">
+                    <h2 class="text-3xl font-black text-slate-800 italic uppercase">ТОП<span class="text-yellow-500">1</span></h2>
+                    <div class="grid grid-cols-3 gap-2 mt-4 text-[11px] font-bold uppercase text-slate-400">
+                        <div class="bg-yellow-50 p-3 rounded-2xl"> <p>Сума</p> <p class="text-slate-900 text-lg">25к</p> </div>
+                        <div class="bg-yellow-50 p-3 rounded-2xl"> <p>Ставка</p> <p class="text-green-600 text-lg">0.01%</p> </div>
+                        <div class="bg-yellow-50 p-3 rounded-2xl"> <p>Шанс</p> <p class="text-blue-600 text-lg">98%</p> </div>
                     </div>
                 </div>
-                <div class="mt-8 md:mt-0 md:ml-10 w-full md:w-auto">
-                    <a href="#" class="block bg-yellow-400 text-slate-900 font-900 py-5 px-14 rounded-2xl shadow-xl hover:bg-yellow-500 transition uppercase text-sm tracking-widest text-center">
-                        <span class="lang-uk">Отримати</span><span class="lang-ru">Получить</span>
-                    </a>
+                <div class="mt-6 md:mt-0 md:ml-8 w-full md:w-auto">
+                    <a href="#" class="block bg-yellow-400 text-slate-900 font-black py-4 px-12 rounded-2xl shadow-lg hover:bg-yellow-500 transition uppercase text-sm text-center">Отримати</a>
                 </div>
             </div>
 
-            <!-- ... Офферы 18-32 аналогично ... -->
+            <!-- ... ПОВТОРЯЕШЬ ВСЕ ОФФЕРЫ ОТ 18 ДО 32 ... -->
 
-            <article class="bg-white rounded-[40px] p-8 md:p-12 border border-slate-200 mt-16 text-slate-700 shadow-sm leading-relaxed">
-                <div class="lang-uk">
-                    <h2 class="text-3xl font-900 mb-6 text-slate-900 uppercase tracking-tighter">Кредитування в Україні 2026</h2>
-                    <p class="mb-6 text-lg">Послуги надаються на всій території України, за винятком тимчасово окупованих територій (ТОТ). Ми працюємо 24/7, щоб ви могли вирішити фінансові питання миттєво.</p>
-                    <div class="bg-rose-50 border-l-4 border-rose-500 p-6 rounded-r-3xl italic text-sm">
-                        <strong>Попередження:</strong> Несвоєчасна виплата може призвести до штрафів та погіршення вашої кредитної історії. Використовуйте кошти відповідально.
-                    </div>
+            <!-- ИНФО-БЛОК ПОСЛЕДСТВИЯ -->
+            <section class="bg-rose-50 rounded-3xl p-8 border border-rose-100 mt-12">
+                <h2 class="text-xl font-black text-rose-700 uppercase mb-4 tracking-tight">
+                    <span class="lang-uk">Наслідки невиконання зобов'язань</span>
+                    <span class="lang-ru">Последствия невыполнения обязательств</span>
+                </h2>
+                <div class="text-sm text-rose-900 leading-relaxed opacity-80">
+                    <span class="lang-uk">У разі прострочення платежу: 1. Нараховується пеня згідно з договором. 2. Інформація передається до Бюро кредитних історій. 3. Компанія має право почати процес примусового стягнення (колектори, суд).</span>
+                    <span class="lang-ru">В случае просрочки платежа: 1. Начисляется пеня согласно договору. 2. Информация передается в Бюро кредитных историй. 3. Компания имеет право начать процесс принудительного взыскания (коллекторы, суд).</span>
                 </div>
-                <div class="lang-ru">
-                    <h2 class="text-3xl font-900 mb-6 text-slate-900 uppercase tracking-tighter">Кредитование в Украине 2026</h2>
-                    <p class="mb-6 text-lg">Услуги предоставляются по всей территории Украины, за исключением временно оккупированных территорий (ВОТ). Мы работаем 24/7, чтобы вы могли решить финансовые вопросы мгновенно.</p>
-                    <div class="bg-rose-50 border-l-4 border-rose-500 p-6 rounded-r-3xl italic text-sm">
-                        <strong>Предупреждение:</strong> Несвоевременная выплата может привести к штрафам и ухудшению вашей кредитной истории. Используйте средства ответственно.
-                    </div>
-                </div>
-            </article>
+            </section>
         </main>
 
-        <aside class="lg:col-span-4 sticky lg:top-28 space-y-8">
-            <section class="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
-                <h2 class="text-xl font-900 mb-8 uppercase tracking-widest border-b pb-4 text-blue-600">FAQ 2026</h2>
+        <!-- ПРАВАЯ КОЛОНКА (FAQ И ГЕО) -->
+        <aside class="lg:col-span-4 sticky lg:top-24 space-y-6">
+            <section class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-black mb-6 uppercase border-b pb-4 text-blue-600">FAQ & ГЕО</h2>
                 <div class="space-y-4">
-                    <details class="group border-b border-slate-100 pb-4">
-                        <summary class="flex justify-between items-center cursor-pointer font-bold text-[13px] list-none hover:text-blue-600 transition">
-                            <span class="lang-uk">Де працює сервіс?</span><span class="lang-ru">Где работает сервис?</span>
-                            <span class="text-[10px] group-open:rotate-180 transition text-slate-400">▼</span>
+                    <details class="group border-b border-slate-50 pb-3">
+                        <summary class="flex justify-between items-center cursor-pointer font-bold text-sm list-none hover:text-blue-600 transition">
+                            <span class="lang-uk">Де можна взяти кредит?</span><span class="lang-ru">Где можно взять кредит?</span>
+                            <span class="text-[10px] group-open:rotate-180 transition">▼</span>
                         </summary>
-                        <div class="pt-4 text-[12px] text-slate-500 leading-relaxed font-medium bg-slate-50 p-4 rounded-2xl mt-2">
-                            <span class="lang-uk">По всій Україні, крім АР Крим та тимчасово окупованих територій Донецької, Луганської, Херсонської та Запорізької областей.</span>
-                            <span class="lang-ru">По всей Украине, кроме АР Крым и временно оккупированных территорий Донецкой, Луганской, Херсонской и Запорожской областей.</span>
+                        <div class="pt-3 text-xs text-slate-500 leading-relaxed font-medium bg-slate-50 p-4 rounded-2xl mt-2">
+                            <span class="lang-uk">По всій Україні, крім АР Крим та тимчасово окупованих територій Донецької, Луганської, Запорізької та Херсонської областей.</span>
+                            <span class="lang-ru">По всей Украине, кроме АР Крым и временно оккупированных территорий Донецкой, Луганской, Запорожской и Херсонской областей.</span>
                         </div>
                     </details>
+                    <!-- ЕЩЕ ВОПРОСЫ... -->
                 </div>
             </section>
 
-            <div class="bg-slate-900 rounded-[32px] p-8 text-white shadow-2xl relative overflow-hidden">
-                <div class="absolute -right-4 -top-4 w-24 h-24 bg-yellow-400/10 rounded-full blur-3xl"></div>
-                <h3 class="font-900 uppercase text-xs mb-6 text-yellow-400 tracking-[0.2em]">⚡️ Чек-лист 2026:</h3>
-                <ul class="text-[11px] space-y-4 font-bold opacity-90 uppercase">
-                    <li class="flex items-center">✅ <span class="ml-3 lang-uk">Вік 18-70 років</span><span class="ml-3 lang-ru">Возраст 18-70 лет</span></li>
-                    <li class="flex items-center">✅ <span class="ml-3 lang-uk">Паспорт та ІПН</span><span class="ml-3 lang-ru">Паспорт и ИНН</span></li>
-                    <li class="flex items-center">✅ <span class="ml-3 lang-uk">Картка банку України</span><span class="ml-3 lang-ru">Карта банка Украины</span></li>
+            <div class="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl">
+                <h3 class="font-black uppercase text-[10px] mb-4 text-yellow-400 tracking-[0.2em]">⚡️ Чек-лист:</h3>
+                <ul class="text-[11px] space-y-3 font-bold opacity-80 uppercase italic">
+                    <li>✅ Паспорт / ID</li>
+                    <li>✅ Картка банку</li>
+                    <li>✅ 18-70 років</li>
                 </ul>
             </div>
         </aside>
     </div>
 
-    <footer class="bg-white border-t py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center text-[10px] font-bold text-slate-400 leading-relaxed tracking-widest uppercase">
-            <p class="mb-4">© 2026 FINHUB — Всі права захищені.</p>
-            <p class="opacity-60 lang-uk">Послуги недоступні на ТОТ України. APR: 3.65% — 912%. Ліцензії НБУ.</p>
-            <p class="opacity-60 lang-ru">Услуги недоступны на ВОТ Украины. APR: 3.65% — 912%. Лицензии НБУ.</p>
+    <footer class="bg-white border-t border-slate-200 py-12 px-4 text-center">
+        <div class="max-w-4xl mx-auto text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-relaxed">
+            <p>© 2026 FINHUB — Всі компанії мають ліцензії НБУ. APR: 3.65% — 912%.</p>
         </div>
     </footer>
 
@@ -161,7 +148,6 @@
             [bUk, bRu].forEach(b => b.classList.remove('bg-white', 'shadow-sm', 'text-blue-600', 'text-slate-900'));
             if (lang === 'uk') { bUk.classList.add('bg-white', 'shadow-sm', 'text-blue-600'); bRu.classList.add('text-slate-400'); }
             else { bRu.classList.add('bg-white', 'shadow-sm', 'text-blue-600'); bUk.classList.add('text-slate-400'); }
-            document.documentElement.lang = lang;
         }
         window.onload = () => changeLang('uk');
     </script>
