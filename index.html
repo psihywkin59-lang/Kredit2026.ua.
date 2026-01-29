@@ -3,96 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit — Таблиця офферів 2026</title>
+    <title>SmartCredit 2026 — Агрегатор мікропозик</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
         body { font-family: 'Geologica', sans-serif; background-color: #f3f4f6; }
-        .table-row:hover { background-color: #f8fafc; }
+        .offer-row { border-bottom: 1px solid #e2e8f0; transition: background 0.2s; }
+        .offer-row:hover { background-color: #f8fafc; }
+        .btn-action { transition: transform 0.1s; }
+        .btn-action:active { transform: scale(0.95); }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-2 md:p-8 text-slate-800 leading-tight">
 
-    <div class="max-w-6xl mx-auto bg-white rounded-[32px] shadow-2xl overflow-hidden border border-slate-200">
-        <!-- HEADER ТАБЛИЦЫ -->
-        <div class="bg-slate-900 text-white p-6 flex justify-between items-center">
-            <h2 class="text-xl font-black italic tracking-tighter">SMART<span class="text-blue-400">TABLE</span> 2026</h2>
-            <div id="counter" class="text-xs font-bold bg-blue-600 px-3 py-1 rounded-full text-white uppercase tracking-widest">32 оффери активно</div>
+    <div class="max-w-6xl mx-auto bg-white rounded-[40px] shadow-2xl overflow-hidden border border-slate-200">
+        <!-- HEADER -->
+        <div class="bg-slate-900 text-white p-6 md:p-8 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-black italic tracking-tighter uppercase text-blue-400">SmartCredit</h1>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Моніторинг фінансового ринку 2026</p>
+            </div>
+            <div class="text-right">
+                <span class="bg-blue-600 text-white text-[10px] font-black px-4 py-2 rounded-full uppercase">32 Оффери оновлено</span>
+            </div>
         </div>
 
+        <!-- TABLE -->
         <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
-                <thead>
-                    <tr class="bg-slate-50 border-b border-slate-200 text-[10px] uppercase font-black text-slate-400 tracking-widest">
+                <thead class="bg-slate-50 text-[10px] uppercase font-black text-slate-400 tracking-widest border-b border-slate-200">
+                    <tr>
                         <th class="px-6 py-4">Компанія</th>
                         <th class="px-6 py-4 text-center">Ставка</th>
-                        <th class="px-6 py-4 text-center">Макс. Сума</th>
-                        <th class="px-6 py-4">Особливість</th>
-                        <th class="px-6 py-4 text-right">Дія</th>
+                        <th class="px-6 py-4 text-center">Сума до</th>
+                        <th class="px-6 py-4">Перевага</th>
+                        <th class="px-6 py-4 text-right">Статус</th>
                     </tr>
                 </thead>
-                <tbody id="table-body">
-                    <!-- JS INSERTION HERE -->
+                <tbody class="text-sm font-semibold">
+                    <!-- 1-5 -->
+                    <tr class="offer-row"><td class="px-6 py-5 font-black text-slate-900">Moneyveo</td><td class="px-6 py-5 text-center text-green-600 font-black">0.01%</td><td class="px-6 py-5 text-center font-black">30 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-pink-500 font-black italic">Лідер ринку</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-pink-500 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">CreditPlus</td><td class="px-6 py-5 text-center text-green-600 font-black">0.01%</td><td class="px-6 py-5 text-center">25 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Високе схвалення</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">SelfieCredit</td><td class="px-6 py-5 text-center text-green-600 font-black">0.01%</td><td class="px-6 py-5 text-center">20 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Авто-процесинг</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Credit7</td><td class="px-6 py-5 text-center text-green-600 font-black">0.01%</td><td class="px-6 py-5 text-center">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Минутна видача</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">MyCredit</td><td class="px-6 py-5 text-center text-green-600 font-black">0.01%</td><td class="px-6 py-5 text-center">18 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Надійний бренд</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    
+                    <!-- 6-10 -->
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">StarFin</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">20 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Швидке рішення</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Miloan</td><td class="px-6 py-5 text-center text-green-600">0%</td><td class="px-6 py-5 text-center">20 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-orange-500 font-black">0% на перший заєм</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">E-Groshi</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">30 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Смарт-рішення</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">CreditKasa</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">20 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Без дзвінків</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Tengo.ua</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">25 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-green-500 font-black">Зелений коридор</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+
+                    <!-- 11-15 -->
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">AlexCredit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">12 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Високий шанс</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">SlonCredit</td><td class="px-6 py-5 text-center text-blue-600 font-black italic">VIP</td><td class="px-6 py-5 text-center">30 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Великі суми</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Швидко Гроші</td><td class="px-6 py-5 text-center text-green-600 font-black">0.01%</td><td class="px-6 py-5 text-center">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Класика ринку</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">SOS Credit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Лояльність</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black text-blue-800">Pango</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">10 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Нове покоління</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+
+                    <!-- 16-20 -->
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">ClickCredit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">12 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Мінімалізм</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row bg-yellow-50/50"><td class="px-6 py-5 font-black text-yellow-600 uppercase italic">TOP1 ⭐</td><td class="px-6 py-5 text-center text-green-600 font-black italic">0%</td><td class="px-6 py-5 text-center font-black italic">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-yellow-700 font-black bg-yellow-200 px-2 rounded inline-block mt-3">Новий оффер 2026</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-yellow-500 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black italic uppercase">Твоя Позика</td><td class="px-6 py-5 text-center font-black italic">1.2%</td><td class="px-6 py-5 text-center font-black">150 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-blue-800 font-black">Довгострок</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-slate-800 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Каштан Кредит</td><td class="px-6 py-5 text-center">0.5%</td><td class="px-6 py-5 text-center font-black">200 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-amber-800 font-black">Під заставу</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-slate-800 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Легко Кредит</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center font-black italic">10 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black">Простота</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+
+                    <!-- 21-25 -->
+                    <tr class="offer-row"><td class="px-6 py-5 font-black uppercase">Треба Кредит</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">10 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black tracking-tighter italic">Без зайвих слів</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Лови Лаве</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center font-black uppercase tracking-tighter italic">Drive!</td><td class="px-6 py-5 text-[10px] uppercase text-purple-600 font-black italic">Драйвовий фінтех</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Monto</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">10 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black italic">Преміум стиль</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Limon Credit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-yellow-600 font-black italic">Свіже рішення</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black italic">Sun Credit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center font-black">12 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-orange-400 font-black italic">Сонячні умови</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+
+                    <!-- 26-32 -->
+                    <tr class="offer-row"><td class="px-6 py-5 font-black italic">Avira Credit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-blue-500 font-black italic tracking-widest uppercase">Швидкість</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black uppercase">Mister Money</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">12 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black italic tracking-widest uppercase">Робота 24/7</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black uppercase">Cly</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center">10 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-blue-400 font-black tracking-widest uppercase">Автоматика</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black">Credit1</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center font-black">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-slate-400 font-black italic uppercase tracking-widest uppercase">Надійність</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black text-yellow-600 italic uppercase">Banana Credit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center font-black italic uppercase">12 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-yellow-600 font-black italic uppercase tracking-widest uppercase">Easy Money</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row"><td class="px-6 py-5 font-black text-orange-600 italic uppercase">BeeCredit</td><td class="px-6 py-5 text-center">0.01%</td><td class="px-6 py-5 text-center font-black italic uppercase italic uppercase">10 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-orange-600 font-black italic uppercase tracking-widest uppercase">Bee Fast</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest">Отримати</a></td></tr>
+                    <tr class="offer-row border-none"><td class="px-6 py-5 font-black text-blue-900 italic uppercase italic uppercase uppercase">Credos</td><td class="px-6 py-5 text-center text-blue-900 font-black italic uppercase italic uppercase font-black italic uppercase font-black uppercase">0.01%</td><td class="px-6 py-5 text-center font-black italic uppercase italic uppercase italic uppercase font-black uppercase">15 000 ₴</td><td class="px-6 py-5 text-[10px] uppercase text-blue-900 font-black italic uppercase italic uppercase font-black uppercase italic uppercase tracking-widest uppercase italic">Синій стиль</td><td class="px-6 py-5 text-right"><a href="#" class="btn-action inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-black text-[11px] uppercase tracking-widest uppercase font-black text-[11px] uppercase tracking-widest uppercase italic uppercase italic uppercase">Отримати</a></td></tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <script>
-        const offers = [
-            { name: "Moneyveo", rate: "0.01%", sum: "30 000", tag: "Лідер ринку", color: "bg-pink-500" },
-            { name: "CreditPlus", rate: "0.01%", sum: "25 000", tag: "Високе схвалення", color: "bg-blue-500" },
-            { name: "SelfieCredit", rate: "0.01%", sum: "20 000", tag: "Авто-процесинг", color: "bg-indigo-500" },
-            { name: "Credit7", rate: "0.01%", sum: "15 000", tag: "Хвилинна видача", color: "bg-red-500" },
-            { name: "MyCredit", rate: "0.01%", sum: "18 000", tag: "Надійний бренд", color: "bg-pink-600" },
-            { name: "StarFin", rate: "0.01%", sum: "20 000", tag: "Швидке рішення", color: "bg-yellow-600" },
-            { name: "Miloan", rate: "0%", sum: "20 000", tag: "0% на заєм", color: "bg-orange-500" },
-            { name: "E-Groshi", rate: "0.01%", sum: "30 000", tag: "Смарт-рішення", color: "bg-cyan-500" },
-            { name: "CreditKasa", rate: "0.01%", sum: "20 000", tag: "Без дзвінків", color: "bg-green-600" },
-            { name: "Tengo.ua", rate: "0.01%", sum: "25 000", tag: "Зелений коридор", color: "bg-lime-500" },
-            { name: "AlexCredit", rate: "0.01%", sum: "12 000", tag: "Високий шанс", color: "bg-blue-700" },
-            { name: "SlonCredit", rate: "0.01%", sum: "30 000", tag: "Великі суми", color: "bg-blue-900" },
-            { name: "Швидко Гроші", rate: "0.01%", sum: "15 000", tag: "Класика ринку", color: "bg-yellow-500" },
-            { name: "SOS Credit", rate: "0.01%", sum: "15 000", tag: "Лояльність", color: "bg-red-600" },
-            { name: "Pango", rate: "0.01%", sum: "10 000", tag: "Нове покоління", color: "bg-purple-500" },
-            { name: "ClickCredit", rate: "0.01%", sum: "12 000", tag: "Мінімалізм", color: "bg-blue-400" },
-            { name: "TOP1", rate: "0%", sum: "15 000", tag: "Новий оффер", color: "bg-yellow-400" },
-            { name: "Твоя Позика", rate: "1.2%", sum: "150 000", tag: "Довгострок", color: "bg-blue-800" },
-            { name: "Каштан Кредит", rate: "0.5%", sum: "200 000", tag: "Під заставу", color: "bg-amber-800" },
-            { name: "Легко Кредит", rate: "0.01%", sum: "10 000", tag: "Простота", color: "bg-emerald-400" },
-            { name: "Треба Кредит", rate: "0.01%", sum: "10 000", tag: "Без слів", color: "bg-red-400" },
-            { name: "Лови Лаве", rate: "0.01%", sum: "12 000", tag: "Драйвовий фінтех", color: "bg-violet-600" },
-            { name: "Monto", rate: "0.01%", sum: "10 000", tag: "Преміум", color: "bg-slate-700" },
-            { name: "Limon Credit", rate: "0.01%", sum: "15 000", tag: "Свіже", color: "bg-yellow-300" },
-            { name: "Sun Credit", rate: "0.01%", sum: "12 000", tag: "Сонячні умови", color: "bg-orange-400" },
-            { name: "Avira Credit", rate: "0.01%", sum: "15 000", tag: "Швидкість", color: "bg-sky-500" },
-            { name: "Mister Money", rate: "0.01%", sum: "12 000", tag: "24/7", color: "bg-zinc-700" },
-            { name: "Cly", rate: "0.01%", sum: "10 000", tag: "Автоматика", color: "bg-blue-600" },
-            { name: "Credit1", rate: "0.01%", sum: "15 000", tag: "Надійність", color: "bg-indigo-800" },
-            { name: "Banana Credit", rate: "0.01%", sum: "12 000", tag: "Easy Money", color: "bg-yellow-500" },
-            { name: "BeeCredit", rate: "0.01%", sum: "10 000", tag: "Bee Fast", color: "bg-amber-500" },
-            { name: "Credos", rate: "0.01%", sum: "15 000", tag: "Синій стиль", color: "bg-blue-800" }
-        ];
+    <!-- LEGAL INFO & FOOTER -->
+    <div class="max-w-6xl mx-auto mt-12 px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-[11px] text-slate-500 uppercase font-bold tracking-tight">
+            <div>
+                <h3 class="text-slate-900 mb-2">Наслідки порушення зобов'язань:</h3>
+                <p class="leading-relaxed">У разі невиконання умов договору, кредитор має право нарахувати штрафні санкції. Дані про прострочення передаються до бюро кредитних історій, що негативно впливає на подальше кредитування.</p>
+            </div>
+            <div>
+                <h3 class="text-slate-900 mb-2">Географія та ліцензії:</h3>
+                <p class="leading-relaxed">Сервіс працює по всій Україні, крім тимчасово окупованих територій. Всі фінансові установи мають ліцензії НБУ від 2026 року. Не є фінансовою установою.</p>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-slate-200 text-center text-[10px] text-slate-400 font-black uppercase italic tracking-[0.2em]">
+            © 2026 SmartCredit Financial Aggregator System
+        </div>
+    </div>
 
-        const tbody = document.getElementById('table-body');
-        tbody.innerHTML = offers.map((o, index) => `
-            <tr class="table-row border-b border-slate-100 transition-colors">
-                <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 ${o.color} rounded flex items-center justify-center text-white font-black text-xs">${o.name.charAt(0)}</div>
-                        <span class="font-bold text-slate-800">${o.name}</span>
-                    </div>
-                </td>
-                <td class="px-6 py-4 text-center font-bold text-green-600">${o.rate}</td>
-                <td class="px-6 py-4 text-center font-bold text-slate-700">${o.sum} ₴</td>
-                <td class="px-6 py-4">
-                    <span class="text-[9px] font-bold px-2 py-1 bg-slate-100 text-slate-500 rounded uppercase">${o.tag}</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <a href="#" class="inline-block px-5 py-2 ${o.name === 'Moneyveo' ? 'bg-pink-500' : 'bg-blue-600'} text-white rounded-lg font-black text-[10px] uppercase tracking-widest hover:shadow-lg transition-all">Отримати</a>
-                </td>
-            </tr>
-        `).join('');
-    </script>
 </body>
 </html>
