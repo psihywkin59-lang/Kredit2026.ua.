@@ -3,77 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit 2026 — Агрегатор мікропозик</title>
+    <title>SmartCredit — Таблиця офферів 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        body { font-family: 'Geologica', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
-        .offer-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .offer-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-        input[type="range"]::-webkit-slider-thumb { appearance: none; width: 24px; height: 24px; background: #2563eb; border-radius: 50%; cursor: pointer; border: 4px solid white; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        body { font-family: 'Geologica', sans-serif; background-color: #f3f4f6; }
+        .table-row:hover { background-color: #f8fafc; }
     </style>
 </head>
-<body class="text-slate-900 leading-tight">
+<body class="p-4 md:p-8">
 
-    <header class="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-black tracking-tighter text-blue-600 italic">SMART<span class="text-slate-400">CREDIT</span></div>
-            <div class="flex items-center gap-3 bg-slate-100 p-1 rounded-xl">
-                <button onclick="toggleLang('ua')" id="btn-ua" class="px-3 py-1 rounded-lg font-bold transition-all bg-white shadow-sm text-blue-600">UA</button>
-                <button onclick="toggleLang('ru')" id="btn-ru" class="px-3 py-1 rounded-lg font-bold transition-all text-slate-500">RU</button>
-            </div>
+    <div class="max-w-6xl mx-auto bg-white rounded-[32px] shadow-2xl overflow-hidden border border-slate-200">
+        <!-- HEADER ТАБЛИЦЫ -->
+        <div class="bg-slate-900 text-white p-6 flex justify-between items-center">
+            <h2 class="text-xl font-black italic tracking-tighter">SMART<span class="text-blue-400">TABLE</span> 2026</h2>
+            <div id="counter" class="text-xs font-bold bg-blue-600 px-3 py-1 rounded-full text-white uppercase tracking-widest">32 оффери активно</div>
         </div>
-    </header>
 
-    <section class="bg-white border-b py-12 md:py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-black mb-8 tracking-tight" data-key="hero-title">Гроші на картку за 5 хвилин</h1>
-            <div class="max-w-xl mx-auto bg-slate-50 p-6 md:p-10 rounded-[40px] border border-slate-100">
-                <div class="flex justify-between items-end mb-6">
-                    <div class="text-left"><p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1" data-key="calc-sum">Сума кредиту</p><p class="text-4xl font-black text-blue-600" id="calc-val">15 000 ₴</p></div>
-                </div>
-                <input type="range" id="loan-range" min="500" max="30000" step="500" value="15000" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
-            </div>
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-slate-50 border-b border-slate-200 text-[10px] uppercase font-black text-slate-400 tracking-widest">
+                        <th class="px-6 py-4">Компанія</th>
+                        <th class="px-6 py-4 text-center">Ставка</th>
+                        <th class="px-6 py-4 text-center">Макс. Сума</th>
+                        <th class="px-6 py-4">Особливість</th>
+                        <th class="px-6 py-4 text-right">Дія</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- JS INSERTION HERE -->
+                </tbody>
+            </table>
         </div>
-    </section>
-
-    <main class="container mx-auto px-4 py-12 lg:flex gap-12">
-        <div class="lg:w-2/3 space-y-4" id="offers-container"></div>
-        <aside class="lg:w-1/3 mt-12 lg:mt-0">
-            <div class="sticky top-28 space-y-6">
-                <div class="bg-blue-600 rounded-[32px] p-8 text-white shadow-2xl shadow-blue-200">
-                    <h3 class="text-xl font-black mb-4" data-key="side-title">Чек-лист схвалення</h3>
-                    <ul class="space-y-4 text-sm font-medium opacity-90">
-                        <li class="flex gap-3"><span>⚡</span> <span data-key="l1">Авторизація через BankID</span></li>
-                        <li class="flex gap-3"><span>⚡</span> <span data-key="l2">Від 2-х заявок одночасно</span></li>
-                        <li class="flex gap-3"><span>⚡</span> <span data-key="l3">Тільки актуальні дані</span></li>
-                    </ul>
-                </div>
-                <div class="bg-white border border-slate-100 rounded-[32px] p-8">
-                    <h3 class="font-black text-lg mb-4 italic">FAQ</h3>
-                    <div class="space-y-4 text-sm">
-                        <details class="group cursor-pointer"><summary class="font-bold list-none flex justify-between group-open:text-blue-600 transition-colors"><span data-key="q1">Без відсотків?</span><span>↓</span></summary><p class="pt-2 text-slate-500" data-key="a1">Так, нові клієнти отримують перший заєм під 0.01%.</p></details>
-                        <details class="group cursor-pointer"><summary class="font-bold list-none flex justify-between group-open:text-blue-600 transition-colors"><span data-key="q2">Який вік?</span><span>↓</span></summary><p class="pt-2 text-slate-500" data-key="a2">Послуги доступні громадянам України віком від 18 до 70 років.</p></details>
-                    </div>
-                </div>
-            </div>
-        </aside>
-    </main>
-
-    <footer class="bg-slate-900 text-slate-500 py-16 text-[10px] leading-relaxed tracking-wide">
-        <div class="container mx-auto px-4 uppercase font-medium">
-            <p class="mb-8 border-l-2 border-red-600 pl-4 max-w-4xl" data-key="footer-warning">Увага! Кредит — це відповідальність. Порушення зобов'язань тягне за собою штрафні санкції та псування кредитної історії. Працюємо згідно ліцензій НБУ 2026.</p>
-            <p>© 2026 SmartCredit. Всі права захищені.</p>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        const translations = {
-            ua: { "hero-title": "Гроші на картку за 5 хвилин", "calc-sum": "Сума кредиту", "btn-get": "Отримати", "side-title": "Чек-лист схвалення", "l1": "Авторизація через BankID", "l2": "Від 2-х заявок одночасно", "l3": "Тільки актуальні дані", "q1": "Без відсотків?", "a1": "Так, нові клієнти під 0.01%.", "q2": "Який вік?", "a2": "Від 18 до 70 років.", "footer-warning": "Увага! Кредит — це відповідальність. Працюємо згідно ліцензій НБУ 2026." },
-            ru: { "hero-title": "Деньги на карту за 5 минут", "calc-sum": "Сумма кредита", "btn-get": "Получить", "side-title": "Чек-лист одобрения", "l1": "Авторизация через BankID", "l2": "От 2-х заявок сразу", "l3": "Только актуальные данные", "q1": "Без процентов?", "a1": "Да, новые клиенты под 0.01%.", "q2": "Какой возраст?", "a2": "От 18 до 70 лет.", "footer-warning": "Внимание! Кредит — это ответственность. Работаем согласно лицензий НБУ 2026." }
-        };
-
         const offers = [
             { name: "Moneyveo", rate: "0.01%", sum: "30 000", tag: "Лідер ринку", color: "bg-pink-500" },
             { name: "CreditPlus", rate: "0.01%", sum: "25 000", tag: "Високе схвалення", color: "bg-blue-500" },
@@ -81,7 +46,7 @@
             { name: "Credit7", rate: "0.01%", sum: "15 000", tag: "Хвилинна видача", color: "bg-red-500" },
             { name: "MyCredit", rate: "0.01%", sum: "18 000", tag: "Надійний бренд", color: "bg-pink-600" },
             { name: "StarFin", rate: "0.01%", sum: "20 000", tag: "Швидке рішення", color: "bg-yellow-600" },
-            { name: "Miloan", rate: "0%", sum: "20 000", tag: "0% на перший заєм", color: "bg-orange-500" },
+            { name: "Miloan", rate: "0%", sum: "20 000", tag: "0% на заєм", color: "bg-orange-500" },
             { name: "E-Groshi", rate: "0.01%", sum: "30 000", tag: "Смарт-рішення", color: "bg-cyan-500" },
             { name: "CreditKasa", rate: "0.01%", sum: "20 000", tag: "Без дзвінків", color: "bg-green-600" },
             { name: "Tengo.ua", rate: "0.01%", sum: "25 000", tag: "Зелений коридор", color: "bg-lime-500" },
@@ -91,17 +56,17 @@
             { name: "SOS Credit", rate: "0.01%", sum: "15 000", tag: "Лояльність", color: "bg-red-600" },
             { name: "Pango", rate: "0.01%", sum: "10 000", tag: "Нове покоління", color: "bg-purple-500" },
             { name: "ClickCredit", rate: "0.01%", sum: "12 000", tag: "Мінімалізм", color: "bg-blue-400" },
-            { name: "TOP1", rate: "0%", sum: "15 000", tag: "Новий оффер 2026", color: "bg-yellow-400", premium: true },
+            { name: "TOP1", rate: "0%", sum: "15 000", tag: "Новий оффер", color: "bg-yellow-400" },
             { name: "Твоя Позика", rate: "1.2%", sum: "150 000", tag: "Довгострок", color: "bg-blue-800" },
             { name: "Каштан Кредит", rate: "0.5%", sum: "200 000", tag: "Під заставу", color: "bg-amber-800" },
             { name: "Легко Кредит", rate: "0.01%", sum: "10 000", tag: "Простота", color: "bg-emerald-400" },
-            { name: "Треба Кредит", rate: "0.01%", sum: "10 000", tag: "Без зайвих слів", color: "bg-red-400" },
+            { name: "Треба Кредит", rate: "0.01%", sum: "10 000", tag: "Без слів", color: "bg-red-400" },
             { name: "Лови Лаве", rate: "0.01%", sum: "12 000", tag: "Драйвовий фінтех", color: "bg-violet-600" },
-            { name: "Monto", rate: "0.01%", sum: "10 000", tag: "Преміум стиль", color: "bg-slate-700" },
-            { name: "Limon Credit", rate: "0.01%", sum: "15 000", tag: "Свіжа пропозиція", color: "bg-yellow-300" },
+            { name: "Monto", rate: "0.01%", sum: "10 000", tag: "Преміум", color: "bg-slate-700" },
+            { name: "Limon Credit", rate: "0.01%", sum: "15 000", tag: "Свіже", color: "bg-yellow-300" },
             { name: "Sun Credit", rate: "0.01%", sum: "12 000", tag: "Сонячні умови", color: "bg-orange-400" },
             { name: "Avira Credit", rate: "0.01%", sum: "15 000", tag: "Швидкість", color: "bg-sky-500" },
-            { name: "Mister Money", rate: "0.01%", sum: "12 000", tag: "Робота 24/7", color: "bg-zinc-700" },
+            { name: "Mister Money", rate: "0.01%", sum: "12 000", tag: "24/7", color: "bg-zinc-700" },
             { name: "Cly", rate: "0.01%", sum: "10 000", tag: "Автоматика", color: "bg-blue-600" },
             { name: "Credit1", rate: "0.01%", sum: "15 000", tag: "Надійність", color: "bg-indigo-800" },
             { name: "Banana Credit", rate: "0.01%", sum: "12 000", tag: "Easy Money", color: "bg-yellow-500" },
@@ -109,41 +74,25 @@
             { name: "Credos", rate: "0.01%", sum: "15 000", tag: "Синій стиль", color: "bg-blue-800" }
         ];
 
-        let currentLang = 'ua';
-
-        function render() {
-            const container = document.getElementById('offers-container');
-            container.innerHTML = offers.map(o => `
-                <div class="offer-card bg-white p-6 rounded-[32px] border ${o.premium ? 'border-yellow-400 shadow-xl' : 'border-slate-100'} flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="flex items-center gap-5 w-full md:w-auto">
-                        <div class="w-16 h-16 ${o.color} rounded-2xl flex items-center justify-center font-black text-2xl text-white shadow-inner uppercase tracking-tighter">${o.name.charAt(0)}</div>
-                        <div>
-                            <h4 class="font-black text-xl tracking-tight">${o.name}${o.premium ? ' <span class="text-yellow-400 text-sm italic">TOP</span>' : ''}</h4>
-                            <span class="text-[9px] font-black px-2 py-0.5 bg-slate-100 rounded-md text-slate-500 uppercase tracking-[0.1em]">${o.tag}</span>
-                        </div>
+        const tbody = document.getElementById('table-body');
+        tbody.innerHTML = offers.map((o, index) => `
+            <tr class="table-row border-b border-slate-100 transition-colors">
+                <td class="px-6 py-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 ${o.color} rounded flex items-center justify-center text-white font-black text-xs">${o.name.charAt(0)}</div>
+                        <span class="font-bold text-slate-800">${o.name}</span>
                     </div>
-                    <div class="flex gap-10 text-center font-bold">
-                        <div><p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Ставка</p><p class="text-lg">${o.rate}</p></div>
-                        <div><p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Сума</p><p class="text-lg">${o.sum} ₴</p></div>
-                    </div>
-                    <a href="#" class="w-full md:w-auto px-10 py-4 ${o.name === 'Moneyveo' ? 'bg-pink-500' : 'bg-blue-600'} text-white rounded-2xl font-black text-sm tracking-widest uppercase hover:scale-105 active:scale-95 transition-all text-center" data-key="btn-get">${translations[currentLang]['btn-get']}</a>
-                </div>
-            `).join('');
-        }
-
-        function toggleLang(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-key]').forEach(el => el.innerText = translations[lang][el.getAttribute('data-key')]);
-            document.getElementById('btn-ua').className = lang === 'ua' ? 'px-3 py-1 rounded-lg font-bold bg-white shadow-sm text-blue-600' : 'px-3 py-1 rounded-lg font-bold text-slate-400';
-            document.getElementById('btn-ru').className = lang === 'ru' ? 'px-3 py-1 rounded-lg font-bold bg-white shadow-sm text-blue-600' : 'px-3 py-1 rounded-lg font-bold text-slate-400';
-            render();
-        }
-
-        document.getElementById('loan-range').addEventListener('input', (e) => {
-            document.getElementById('calc-val').innerText = Number(e.target.value).toLocaleString() + ' ₴';
-        });
-
-        render();
+                </td>
+                <td class="px-6 py-4 text-center font-bold text-green-600">${o.rate}</td>
+                <td class="px-6 py-4 text-center font-bold text-slate-700">${o.sum} ₴</td>
+                <td class="px-6 py-4">
+                    <span class="text-[9px] font-bold px-2 py-1 bg-slate-100 text-slate-500 rounded uppercase">${o.tag}</span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="#" class="inline-block px-5 py-2 ${o.name === 'Moneyveo' ? 'bg-pink-500' : 'bg-blue-600'} text-white rounded-lg font-black text-[10px] uppercase tracking-widest hover:shadow-lg transition-all">Отримати</a>
+                </td>
+            </tr>
+        `).join('');
     </script>
 </body>
 </html>
