@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit Dashboard</title>
+    <title>SmartCredit 2026 — Моніторинг кредитів онлайн</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
@@ -11,6 +11,11 @@
         .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); }
         .btn-gradient { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.3s ease; }
         .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        
+        /* Стили для FAQ */
+        #faq-box { display: none; }
+        .faq-active #faq-box { display: block; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="p-4 md:p-10">
@@ -27,10 +32,34 @@
             </div>
         </div>
 
+        <!-- Кредитний Калькулятор (SEO + Юзабіліті) -->
+        <div class="mb-10 bg-white p-8 rounded-[40px] card-shadow border border-slate-100">
+            <h2 class="text-xl font-black uppercase tracking-tight mb-6 text-slate-800 flex items-center gap-2">
+                <span class="w-2 h-6 bg-blue-600 rounded-full"></span> Підберіть вигідні умови
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Сума: <span id="sumVal" class="text-blue-600 text-lg ml-2">5 000</span> грн</label>
+                    <input type="range" id="sumRange" min="500" max="30000" step="100" value="5000" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 mb-8" oninput="calc()">
+                    
+                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Термін: <span id="daysVal" class="text-blue-600 text-lg ml-2">10</span> днів</label>
+                    <input type="range" id="daysRange" min="1" max="30" step="1" value="10" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="calc()">
+                </div>
+                <div class="bg-slate-900 rounded-3xl p-6 text-white flex flex-col justify-center relative overflow-hidden">
+                    <div class="relative z-10">
+                        <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">Разом до повернення:</p>
+                        <p class="text-4xl font-black"><span id="total">5005.00</span> <span class="text-lg font-medium text-slate-400">грн</span></p>
+                        <p class="text-[9px] text-slate-500 mt-4 leading-relaxed border-t border-slate-800 pt-3 italic uppercase font-bold">
+                            РРПС: від 3.65% до 660 520% річних. Дані розраховані за ставкою 0.01%/день.
+                        </p>
+                    </div>
+                    <div class="absolute -right-4 -bottom-4 text-white/5 font-black text-6xl italic uppercase">Calculator</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Grid Container -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- Generate 28 Cards using JavaScript -->
             <script>
                 const offers = [
                     { name: "Moneyveo", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "2 хв", color: "pink-500" },
@@ -65,25 +94,25 @@
 
                 offers.forEach((offer, index) => {
                     document.write(`
-                        <div class="bg-white rounded-[32px] p-6 border border-slate-100 card-shadow group transition-all hover:scale-[1.02]">
+                        <div class="bg-white rounded-[32px] p-6 border border-slate-100 card-shadow group transition-all hover:scale-[1.02] flex flex-col">
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-blue-600 text-xl border border-slate-100">
                                     ${offer.name.charAt(0)}
                                 </div>
                                 <div>
-                                    <h3 class="font-black text-slate-800 leading-tight">${index + 1}. ${offer.name}</h3>
+                                    <h3 class="font-black text-slate-800 leading-tight">${offer.name}</h3>
                                     <span class="text-[9px] text-slate-400 font-black uppercase tracking-widest">ID: 00${index + 100}</span>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="grid grid-cols-2 gap-4 mb-6 grow">
                                 <div class="bg-slate-50/50 p-3 rounded-2xl">
                                     <p class="text-[8px] text-slate-400 font-bold uppercase mb-1">Сума до</p>
                                     <p class="text-base font-black text-slate-900">${offer.sum} ₴</p>
                                 </div>
-                                <div class="bg-slate-50/50 p-3 rounded-2xl">
+                                <div class="bg-slate-50/50 p-3 rounded-2xl text-emerald-500">
                                     <p class="text-[8px] text-slate-400 font-bold uppercase mb-1">Ставка</p>
-                                    <p class="text-base font-black text-emerald-500">${offer.rate}</p>
+                                    <p class="text-base font-black">${offer.rate}</p>
                                 </div>
                                 <div>
                                     <p class="text-[8px] text-slate-400 font-bold uppercase mb-1 px-3">Термін</p>
@@ -95,7 +124,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex items-center justify-between pt-5 border-t border-slate-100">
+                            <div class="flex items-center justify-between pt-5 border-t border-slate-100 mt-auto">
                                 <div class="flex items-center gap-1.5 text-slate-400">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                     <span class="text-[10px] font-black uppercase">${offer.time}</span>
@@ -108,10 +137,80 @@
             </script>
         </div>
 
+        <!-- SEO-статьи и важная информация -->
+        <div class="mt-20 space-y-10">
+            <div class="bg-slate-900 rounded-[40px] p-10 text-white">
+                <h2 class="text-2xl font-black uppercase italic mb-8 tracking-tighter">Наслідки неплати за кредитом</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-400 text-sm leading-relaxed">
+                    <p>Несвоєчасне погашення мікрокредиту призводить до негативних фінансових наслідків. По-перше, згідно зі ст. 625 ЦК України, нараховується пеня та штрафи, які можуть збільшити суму боргу у декілька разів. По-друге, ваша кредитна історія (УБКІ) буде зіпсована, що унеможливить отримання позик у майбутньому.</p>
+                    <p>Кредитори мають право передати борг колекторським компаніям або звернутися до суду для примусового стягнення коштів через виконавчу службу, що може призвести до арешту рахунків.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-8 rounded-[32px] border border-slate-100 card-shadow">
+                    <h3 class="font-black text-slate-800 uppercase text-xs mb-3 tracking-widest">Про реальну ставку (РРПС)</h3>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">Реальна річна процентна ставка враховує всі витрати за кредитом. Для мікрозаймів в Україні у 2026 році вона може становити від 3,65% (для пільгових періодів) до 660 520% річних.</p>
+                </div>
+                <div class="bg-white p-8 rounded-[32px] border border-slate-100 card-shadow">
+                    <h3 class="font-black text-slate-800 uppercase text-xs mb-3 tracking-widest">Як обрати кредит?</h3>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">Звертайте увагу на термін акційної ставки. Більшість МФО пропонують 0.01% лише на перший кредит до 10-30 днів. Після цього терміну ставка стає стандартною (близько 1-2% на день).</p>
+                </div>
+                <div class="bg-white p-8 rounded-[32px] border border-slate-100 card-shadow">
+                    <h3 class="font-black text-slate-800 uppercase text-xs mb-3 tracking-widest">Вимоги до позичальника</h3>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">Для оформлення достатньо мати паспорт України, ІПН, мобільний телефон та активну банківську картку. Вік позичальника зазвичай має бути від 18 до 70 років.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Footer -->
         <div class="mt-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] pb-10">
-            © 2025 SmartCredit System • Всі права захищено • Дані оновлюються в реальному часі
+            © 2025-2026 SmartCredit System • Всі права захищено • Дані оновлюються в реальному часі
         </div>
     </div>
+
+    <!-- Плавающее FAQ -->
+    <div id="faq-root" class="fixed bottom-6 right-6 z-[100]">
+        <div id="faq-box" class="bg-white card-shadow rounded-[32px] p-6 w-80 mb-4 border border-slate-100 text-slate-900 shadow-2xl">
+            <h4 class="font-black uppercase text-[10px] text-blue-600 mb-4 tracking-widest border-b pb-3">Швидка допомога</h4>
+            <div class="space-y-4">
+                <div>
+                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1 leading-tight">Чи можна отримати кредит без відсотків?</p>
+                    <p class="text-[11px] font-medium text-slate-600">Так, для нових клієнтів діє ставка 0.01%. Це майже безкоштовно.</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1 leading-tight">Що робити при простроченні?</p>
+                    <p class="text-[11px] font-medium text-slate-600 text-red-500 font-bold underline cursor-pointer">Обов'язково оформіть пролонгацію, щоб уникнути штрафів!</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1 leading-tight">Яка реальна ставка?</p>
+                    <p class="text-[11px] font-medium text-slate-600">РРПС залежить від МФО, дивіться паспорт кредиту перед підписанням СМС-кодом.</p>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleFaq()" class="bg-slate-900 text-white w-16 h-16 rounded-full card-shadow flex items-center justify-center font-black hover:scale-110 transition-all text-xl border-4 border-white shadow-xl">
+            ?
+        </button>
+    </div>
+
+    <script>
+        function calc() {
+            const sum = document.getElementById('sumRange').value;
+            const days = document.getElementById('daysRange').value;
+            document.getElementById('sumVal').innerText = Number(sum).toLocaleString();
+            document.getElementById('daysVal').innerText = days;
+            
+            // Розрахунок під 0.01% на день
+            const total = parseFloat(sum) + (sum * 0.0001 * days);
+            document.getElementById('total').innerText = total.toLocaleString(undefined, {minimumFractionDigits: 2});
+        }
+
+        function toggleFaq() {
+            document.getElementById('faq-root').classList.toggle('faq-active');
+        }
+
+        // Ініціалізація
+        window.onload = calc;
+    </script>
 </body>
 </html>
