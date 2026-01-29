@@ -188,8 +188,24 @@
         // Initialize with default language on load, e.g., 'uk'
         document.addEventListener('DOMContentLoaded', () => {
             changeLang('uk');
+            
+            // --- DEBUGGING CODE START ---
+            // Find all links and log their full href attribute
+            const allLinks = document.querySelectorAll('a');
+            console.log('--- ОТЛАДКА ССЫЛОК ---');
+            allLinks.forEach((link, index) => {
+                console.log(`Ссылка ${index + 1} HREF: ${link.href}`);
+            });
+
+            // Find all elements containing the text "ОК" (case-insensitive)
+            const bodyText = document.body.innerText;
+            if (bodyText.includes('ОК') || bodyText.includes('ок')) {
+                console.log('--- ОТЛАДКА "ОК" ---');
+                // Note: finding the *exact* element is complex, but this confirms the text exists.
+                console.log('Текст "ОК" найден где-то на странице.');
+            }
+            // --- DEBUGGING CODE END ---
         });
     </script>
 </body>
-            </html>
-    
+</html>
