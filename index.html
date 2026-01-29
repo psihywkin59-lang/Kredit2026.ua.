@@ -30,54 +30,49 @@
         <!-- Grid Container -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <!-- Generate 28 Cards -->
+            <!-- Generate 28 Cards using JavaScript -->
             <script>
                 const offers = [
-                    { name: "Moneyveo", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "2 хв", badge: "Лідер", color: "pink-500" },
-                    { name: "CreditPlus", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", badge: "Топ Шанс", color: "blue-600" },
-                    { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", badge: "Авто-селфі", color: "blue-600" },
-                    { name: "Credit7", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "7 хв", badge: "Миттєво", color: "blue-600" },
-                    { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "Надійно", color: "blue-600" },
-                    { name: "StarFin", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", badge: "Новий", color: "blue-600" },
-                    { name: "Miloan", sum: "20 000", rate: "0%", term: "15 днів", age: "18-65", time: "5 хв", badge: "Акція 0%", color: "orange-500" },
-                    { name: "E-Groshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "5 хв", badge: "Smart", color: "blue-600" },
-                    { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дней", age: "18-75", time: "8 хв", badge: "Без дзвінків", color: "blue-600" },
-                    { name: "Tengo", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "Швидко", color: "green-600" },
-                    { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", badge: "Лояльно", color: "blue-600" },
-                    { name: "SlonCredit", sum: "30 000", rate: "VIP", term: "12 міс", age: "18-65", time: "15 хв", badge: "Довгострок", color: "blue-600" },
-                    { name: "Швидко Гроші", sum: "15 000", rate: "0.01%", term: "14 днів", age: "18-70", time: "10 хв", badge: "Класика", color: "blue-600" },
-                    { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "24/7", color: "blue-600" },
-                    { name: "Pango", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", badge: "Fast Cash", color: "blue-600" },
-                    { name: "ClickCredit", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", badge: "В 1 клік", color: "blue-600" },
-                    { name: "ZeCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", badge: "Easy", color: "blue-600" },
-                    { name: "BananaCredit", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-60", time: "5 хв", badge: "Hot", color: "yellow-500" },
-                    { name: "AviraCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "15 хв", badge: "New", color: "blue-600" },
-                    { name: "Money4YOU", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "Simple", color: "blue-600" },
-                    { name: "EasyCash", sum: "8 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", badge: "Micro", color: "blue-600" },
-                    { name: "CreditBox", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", badge: "Box", color: "blue-600" },
-                    { name: "Credos", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", badge: "Quick", color: "blue-600" },
-                    { name: "KF.UA", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-70", time: "15 хв", badge: "Offline", color: "blue-600" },
-                    { name: "Microcash", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "3 хв", badge: "Auto", color: "blue-600" },
-                    { name: "FinBar", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", badge: "Bar", color: "blue-600" },
-                    { name: "AnyDayCash", sum: "10 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", badge: "24/7", color: "blue-600" },
-                    { name: "CreditMarket", sum: "100 000", rate: "Фікс", term: "36 міс", age: "21-70", time: "30 хв", badge: "Максимум", color: "slate-900" }
+                    { name: "Moneyveo", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "2 хв", color: "pink-500" },
+                    { name: "CreditPlus", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "blue-600" },
+                    { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-600" },
+                    { name: "Credit7", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "7 хв", color: "blue-600" },
+                    { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-600" },
+                    { name: "StarFin", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", color: "blue-600" },
+                    { name: "Miloan", sum: "20 000", rate: "0%", term: "15 днів", age: "18-65", time: "5 хв", color: "orange-500" },
+                    { name: "E-Groshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "5 хв", color: "blue-600" },
+                    { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дней", age: "18-75", time: "8 хв", color: "blue-600" },
+                    { name: "Tengo", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "green-600" },
+                    { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "blue-600" },
+                    { name: "SlonCredit", sum: "30 000", rate: "VIP", term: "12 міс", age: "18-65", time: "15 хв", color: "blue-600" },
+                    { name: "Швидко Гроші", sum: "15 000", rate: "0.01%", term: "14 днів", age: "18-70", time: "10 хв", color: "blue-600" },
+                    { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-600" },
+                    { name: "Pango", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "blue-600" },
+                    { name: "ClickCredit", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-600" },
+                    { name: "ZeCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "blue-600" },
+                    { name: "BananaCredit", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-60", time: "5 хв", color: "yellow-500" },
+                    { name: "AviraCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "15 хв", color: "blue-600" },
+                    { name: "Money4YOU", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-600" },
+                    { name: "EasyCash", sum: "8 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", color: "blue-600" },
+                    { name: "CreditBox", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "blue-600" },
+                    { name: "Credos", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "blue-600" },
+                    { name: "KF.UA", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-70", time: "15 хв", color: "blue-600" },
+                    { name: "Microcash", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "3 хв", color: "blue-600" },
+                    { name: "FinBar", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", color: "blue-600" },
+                    { name: "AnyDayCash", sum: "10 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", color: "blue-600" },
+                    { name: "CreditMarket", sum: "100 000", rate: "Фікс", term: "36 міс", age: "21-70", time: "30 хв", color: "slate-900" }
                 ];
 
                 offers.forEach((offer, index) => {
                     document.write(`
                         <div class="bg-white rounded-[32px] p-6 border border-slate-100 card-shadow group transition-all hover:scale-[1.02]">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-blue-600 text-xl border border-slate-100">
-                                        ${offer.name.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <h3 class="font-black text-slate-800 leading-tight">${index + 1}. ${offer.name}</h3>
-                                        <span class="text-[9px] text-${offer.color} font-black uppercase tracking-widest">${offer.badge}</span>
-                                    </div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-blue-600 text-xl border border-slate-100">
+                                    ${offer.name.charAt(0)}
                                 </div>
-                                <div class="bg-slate-100 text-slate-500 text-[10px] px-2 py-1 rounded-lg font-bold">
-                                    ID: 00${index + 100}
+                                <div>
+                                    <h3 class="font-black text-slate-800 leading-tight">${index + 1}. ${offer.name}</h3>
+                                    <span class="text-[9px] text-slate-400 font-black uppercase tracking-widest">ID: 00${index + 100}</span>
                                 </div>
                             </div>
 
