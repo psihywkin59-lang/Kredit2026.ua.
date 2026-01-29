@@ -3,100 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit — Актуальні оффери</title>
+    <title>SmartCredit Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        body { font-family: 'Geologica', sans-serif; background: #f1f5f9; }
-        .row-hover:hover { background: #f8fafc; }
-        
-        .btn { 
-            padding: 10px 20px; 
-            border-radius: 8px; 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            font-size: 10px; 
-            color: white; 
-            display: inline-block; 
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-        }
-        
-        .btn:hover, .company-link:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:active, .company-link:active {
-            transform: translateY(0);
-        }
-
-        .company-logo {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        .company-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-        }
+        body { font-family: 'Geologica', sans-serif; background: #f8fafc; }
+        .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); }
+        .btn-gradient { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.3s ease; }
+        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
     </style>
 </head>
-<body class="p-4">
-    <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-[32px] overflow-hidden border border-slate-200">
-        <div class="bg-slate-900 p-6 text-white flex justify-between items-center">
-            <h1 class="font-black italic text-xl uppercase tracking-tighter">Smart<span class="text-blue-400">Credit</span></h1>
-            <span class="text-[10px] font-bold bg-blue-600 px-3 py-1 rounded-lg">28 ОФЕРІВ АКТИВНО</span>
+<body class="p-4 md:p-10">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4 bg-slate-900 p-8 rounded-[40px] text-white">
+            <div>
+                <h1 class="text-3xl font-black italic uppercase tracking-tighter">Smart<span class="text-blue-400">Credit</span></h1>
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Панель фінансового моніторингу</p>
+            </div>
+            <div class="flex gap-3">
+                <span class="bg-blue-500/20 text-blue-300 text-[10px] font-black px-4 py-2 rounded-full border border-blue-500/30 uppercase">28 Офферів</span>
+                <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black px-4 py-2 rounded-full border border-emerald-500/30 uppercase">Оновлено: Сьогодні</span>
+            </div>
         </div>
-        <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-                <thead class="bg-slate-50 border-b border-slate-200">
-                    <tr class="text-[10px] font-black uppercase text-slate-400">
-                        <th class="px-6 py-4">Компанія</th>
-                        <th class="px-6 py-4 text-center">Ставка</th>
-                        <th class="px-6 py-4 text-center">Сума до</th>
-                        <th class="px-6 py-4">Особливість</th>
-                        <th class="px-6 py-4 text-right">Дія</th>
-                    </tr>
-                </thead>
-                <tbody class="text-sm font-bold text-slate-700">
-                    <!-- Список 1-28 -->
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://moneyveo.ua" class="company-logo" alt=""> <span class="font-black italic">1. Moneyveo</span></a></td><td class="px-6 py-4 text-center text-green-600">0.01%</td><td class="px-6 py-4 text-center">30 000 ₴</td><td class="px-6 py-4 text-[9px] text-pink-500 italic uppercase">Лідер ринку</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-pink-500">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://creditplus.ua" class="company-logo" alt=""> 2. CreditPlus</a></td><td class="px-6 py-4 text-center text-green-600">0.01%</td><td class="px-6 py-4 text-center">25 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Схвалення 98%</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://selfiecredit.ua" class="company-logo" alt=""> 3. SelfieCredit</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">20 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Авто-селфі</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://credit7.ua" class="company-logo" alt=""> 4. Credit7</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">15 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Миттєво</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://mycredit.ua" class="company-logo" alt=""> 5. MyCredit</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">18 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Надійно</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://starfin.ua" class="company-logo" alt=""> 6. StarFin</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">20 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Швидка перевірка</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://miloan.ua" class="company-logo" alt=""> 7. Miloan</a></td><td class="px-6 py-4 text-center text-green-600 font-black">0%</td><td class="px-6 py-4 text-center">20 000 ₴</td><td class="px-6 py-4 text-[9px] text-orange-500 italic uppercase">Акція 0%</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://e-groshi.com" class="company-logo" alt=""> 8. E-Groshi</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">30 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Smart рішення</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://creditkasa.ua" class="company-logo" alt=""> 9. CreditKasa</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">20 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Без дзвінків</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://tengo.ua" class="company-logo" alt=""> 10. Tengo.ua</a></td><td class="px-6 py-4 text-center text-green-600 italic">0.01%</td><td class="px-6 py-4 text-center">25 000 ₴</td><td class="px-6 py-4 text-[9px] text-green-500 italic uppercase">Green Line</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://alexcredit.ua" class="company-logo" alt=""> 11. AlexCredit</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">12 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Високий шанс</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://sloncredit.com.ua" class="company-logo" alt=""> <span class="font-black">12. SlonCredit</span></a></td><td class="px-6 py-4 text-center italic">VIP</td><td class="px-6 py-4 text-center">30 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Великі суми</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://sgroshi.com.ua" class="company-logo" alt=""> 13. Швидко Гроші</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">15 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Класика ринку</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://soscredit.ua" class="company-logo" alt=""> 14. SOS Credit</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">15 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Лояльність</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://pango.com.ua" class="company-logo" alt=""> 15. Pango</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">10 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Next Gen</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://clickcredit.ua" class="company-logo" alt=""> 16. ClickCredit</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">12 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Мінімалізм</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100 bg-slate-50"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://tvoiapozyka.com.ua" class="company-logo" alt=""> <span class="italic font-black">17. Твоя Позика</span></a></td><td class="px-6 py-4 text-center italic">1.2%</td><td class="px-6 py-4 text-center font-black">150 000 ₴</td><td class="px-6 py-4 text-[9px] text-blue-600 italic uppercase">Довгострок</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-slate-800">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100 bg-slate-50"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://kashtancredit.com.ua" class="company-logo" alt=""> <span class="italic font-black">18. Каштан Кредит</span></a></td><td class="px-6 py-4 text-center italic">0.5%</td><td class="px-6 py-4 text-center font-black">200 000 ₴</td><td class="px-6 py-4 text-[9px] text-blue-600 italic uppercase">Під заставу</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-slate-800">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://legkocredit.com.ua" class="company-logo" alt=""> 19. Легко Кредит</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">10 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Простота</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://trebacredit.com.ua" class="company-logo" alt=""> 20. Треба Кредит</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">10 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">Без слів</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://lovylave.com.ua" class="company-logo" alt=""> <span class="font-black">21. Лови Лаве</span></a></td><td class="px-6 py-4 text-center uppercase italic">Fast</td><td class="px-6 py-4 text-center">12 000 ₴</td><td class="px-6 py-4 text-[9px] text-purple-500 italic uppercase font-black">Фінтех</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://monto.com.ua" class="company-logo" alt=""> 22. Monto</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">10 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 italic uppercase font-black">Преміум стиль</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://limon-credit.com.ua" class="company-logo" alt=""> <span class="font-black text-yellow-500 italic">23. Limon Credit</span></a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">15 000 ₴</td><td class="px-6 py-4 text-[9px] text-yellow-500 italic uppercase">Свіже</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://suncredit.com.ua" class="company-logo" alt=""> 24. Sun Credit</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">12 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase font-black italic">Сонячно</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://aviracredit.com.ua" class="company-logo" alt=""> <span class="italic font-black text-blue-500 italic">25. Avira Credit</span></a></td><td class="px-6 py-4 text-center italic">0.01%</td><td class="px-6 py-4 text-center">15 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 italic uppercase">Speed</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://mistermoney.ua" class="company-logo" alt=""> 26. Mister Money</a></td><td class="px-6 py-4 text-center">0.01%</td><td class="px-6 py-4 text-center">12 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase">24/7</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-b border-slate-100"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://cly.com.ua" class="company-logo" alt=""> <span class="font-black">27. Cly</span></a></td><td class="px-6 py-4 text-center uppercase font-black tracking-widest">Auto</td><td class="px-6 py-4 text-center">10 000 ₴</td><td class="px-6 py-4 text-[9px] text-slate-400 uppercase tracking-tighter italic">Робот</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-600">Отримати</a></td></tr>
-                    <tr class="row-hover border-none font-black text-blue-900 italic"><td class="px-6 py-4"><a href="#" class="company-link"><img src="https://credos.com.ua" class="company-logo" alt=""> 28. Credos</a></td><td class="px-6 py-4 text-center italic font-black">0.01%</td><td class="px-6 py-4 text-center">15 000 ₴</td><td class="px-6 py-4 text-[9px] text-blue-900 italic uppercase">Синій стиль</td><td class="px-6 py-4 text-right"><a href="#" class="btn bg-blue-900">Отримати</a></td></tr>
-                </tbody>
-            </table>
+
+        <!-- Grid Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Generate 28 Cards -->
+            <script>
+                const offers = [
+                    { name: "Moneyveo", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "2 хв", badge: "Лідер", color: "pink-500" },
+                    { name: "CreditPlus", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", badge: "Топ Шанс", color: "blue-600" },
+                    { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", badge: "Авто-селфі", color: "blue-600" },
+                    { name: "Credit7", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "7 хв", badge: "Миттєво", color: "blue-600" },
+                    { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "Надійно", color: "blue-600" },
+                    { name: "StarFin", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", badge: "Новий", color: "blue-600" },
+                    { name: "Miloan", sum: "20 000", rate: "0%", term: "15 днів", age: "18-65", time: "5 хв", badge: "Акція 0%", color: "orange-500" },
+                    { name: "E-Groshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "5 хв", badge: "Smart", color: "blue-600" },
+                    { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дней", age: "18-75", time: "8 хв", badge: "Без дзвінків", color: "blue-600" },
+                    { name: "Tengo", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "Швидко", color: "green-600" },
+                    { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", badge: "Лояльно", color: "blue-600" },
+                    { name: "SlonCredit", sum: "30 000", rate: "VIP", term: "12 міс", age: "18-65", time: "15 хв", badge: "Довгострок", color: "blue-600" },
+                    { name: "Швидко Гроші", sum: "15 000", rate: "0.01%", term: "14 днів", age: "18-70", time: "10 хв", badge: "Класика", color: "blue-600" },
+                    { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "24/7", color: "blue-600" },
+                    { name: "Pango", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", badge: "Fast Cash", color: "blue-600" },
+                    { name: "ClickCredit", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", badge: "В 1 клік", color: "blue-600" },
+                    { name: "ZeCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", badge: "Easy", color: "blue-600" },
+                    { name: "BananaCredit", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-60", time: "5 хв", badge: "Hot", color: "yellow-500" },
+                    { name: "AviraCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "15 хв", badge: "New", color: "blue-600" },
+                    { name: "Money4YOU", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", badge: "Simple", color: "blue-600" },
+                    { name: "EasyCash", sum: "8 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", badge: "Micro", color: "blue-600" },
+                    { name: "CreditBox", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", badge: "Box", color: "blue-600" },
+                    { name: "Credos", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", badge: "Quick", color: "blue-600" },
+                    { name: "KF.UA", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-70", time: "15 хв", badge: "Offline", color: "blue-600" },
+                    { name: "Microcash", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "3 хв", badge: "Auto", color: "blue-600" },
+                    { name: "FinBar", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", badge: "Bar", color: "blue-600" },
+                    { name: "AnyDayCash", sum: "10 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", badge: "24/7", color: "blue-600" },
+                    { name: "CreditMarket", sum: "100 000", rate: "Фікс", term: "36 міс", age: "21-70", time: "30 хв", badge: "Максимум", color: "slate-900" }
+                ];
+
+                offers.forEach((offer, index) => {
+                    document.write(`
+                        <div class="bg-white rounded-[32px] p-6 border border-slate-100 card-shadow group transition-all hover:scale-[1.02]">
+                            <div class="flex justify-between items-start mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-blue-600 text-xl border border-slate-100">
+                                        ${offer.name.charAt(0)}
+                                    </div>
+                                    <div>
+                                        <h3 class="font-black text-slate-800 leading-tight">${index + 1}. ${offer.name}</h3>
+                                        <span class="text-[9px] text-${offer.color} font-black uppercase tracking-widest">${offer.badge}</span>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-100 text-slate-500 text-[10px] px-2 py-1 rounded-lg font-bold">
+                                    ID: 00${index + 100}
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-slate-50/50 p-3 rounded-2xl">
+                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1">Сума до</p>
+                                    <p class="text-base font-black text-slate-900">${offer.sum} ₴</p>
+                                </div>
+                                <div class="bg-slate-50/50 p-3 rounded-2xl">
+                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1">Ставка</p>
+                                    <p class="text-base font-black text-emerald-500">${offer.rate}</p>
+                                </div>
+                                <div>
+                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1 px-3">Термін</p>
+                                    <p class="text-xs font-bold text-slate-700 px-3">${offer.term}</p>
+                                </div>
+                                <div>
+                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1 px-3">Вік</p>
+                                    <p class="text-xs font-bold text-slate-700 px-3">${offer.age} р.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between pt-5 border-t border-slate-100">
+                                <div class="flex items-center gap-1.5 text-slate-400">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-[10px] font-black uppercase">${offer.time}</span>
+                                </div>
+                                <a href="#" class="btn-gradient text-white text-[10px] font-black uppercase px-6 py-3 rounded-xl tracking-wider">Отримати</a>
+                            </div>
+                        </div>
+                    `);
+                });
+            </script>
         </div>
-        <div class="p-6 bg-slate-50 text-[10px] text-slate-400 uppercase font-black border-t tracking-widest text-center">
-            * Працюємо по всій Україні (крім ТОТ). Ліцензії НБУ 2026.
+
+        <!-- Footer -->
+        <div class="mt-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] pb-10">
+            © 2025 SmartCredit System • Всі права захищено • Дані оновлюються в реальному часі
         </div>
     </div>
 </body>
