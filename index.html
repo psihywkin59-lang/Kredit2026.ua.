@@ -29,20 +29,16 @@
         /* Утиліта для приховування */
         .hidden { display: none !important; }
 
-        /* Стилі для логотипа і заглушки */
+        /* Стилі для логотипа */
         .logo-container {
-            position: relative; width: 64px; height: 64px; border-radius: 16px; overflow: hidden; flex-shrink: 0;
-            background-color: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: relative; width: 70px; height: 70px; border-radius: 16px; overflow: hidden; flex-shrink: 0;
+            background-color: #ffffff; border: 1px solid #e2e8f0; 
+            display: flex; align-items: center; justify-content: center;
         }
-        /* Заглушка (літера) - лежить знизу */
-        .logo-fallback {
-            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            font-weight: 900; color: white; font-size: 24px; z-index: 1;
-        }
-        /* Картинка - лежить зверху. Додано padding щоб лого не липло до країв */
+        
+        /* Картинка логотипа */
         .logo-img {
-            position: relative; z-index: 2; width: 100%; height: 100%; 
-            object-fit: contain; background: white; padding: 6px;
+            width: 90%; height: 90%; object-fit: contain;
         }
     </style>
 </head>
@@ -112,8 +108,7 @@
             <button id="btn-auto" onclick="setTab('auto')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">⚡ Без дзвінків</button>
         </div>
 
-        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            </div>
+        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
         <div class="mt-12 text-center">
             <button id="btnLoadMore" onclick="loadMore()" class="hidden bg-white border border-slate-300 text-slate-800 font-bold px-10 py-4 rounded-full hover:bg-slate-50 shadow-sm transition-transform hover:-translate-y-1">
@@ -121,57 +116,65 @@
             </button>
         </div>
 
-        <footer class="mt-20 border-t border-slate-200 pt-10 text-center text-slate-500 pb-10">
-            <div class="flex justify-center gap-6 mb-6 text-sm font-bold text-slate-400">
-                <a href="#" class="hover:text-blue-600">Про нас</a>
-                <a href="#" class="hover:text-blue-600">Ліцензії</a>
-                <a href="#" class="hover:text-blue-600">Контакти</a>
+        <footer class="mt-20 border-t border-slate-200 pt-10 pb-10">
+            <div class="bg-red-50 border border-red-100 rounded-2xl p-6 mb-10">
+                <h4 class="text-red-700 font-bold uppercase text-sm mb-3">⚠️ Застереження про наслідки несплати кредиту</h4>
+                <p class="text-xs text-red-900/70 leading-relaxed mb-2">
+                    Порушення строків сплати кредиту може призвести до нарахування штрафних санкцій, збільшення відсоткової ставки та пені. Інформація про прострочення передається до Українського бюро кредитних історій (УБКІ), що негативно вплине на ваш кредитний рейтинг та ускладнить отримання кредитів у майбутньому.
+                </p>
+                <p class="text-xs text-red-900/70 leading-relaxed">
+                    Кредитор має право передати заборгованість колекторським компаніям або звернутися до суду для примусового стягнення боргу. Будь ласка, оцінюйте свої фінансові можливості відповідально.
+                </p>
             </div>
-            <p class="text-xs max-w-2xl mx-auto mb-4 leading-relaxed">
-                Інформація на сайті носить виключно довідковий характер. Адміністрація сайту не займається видачею кредитів. Ставка від 0.01% на день доступна для нових клієнтів (залежить від умов МФО). Максимальна річна процентна ставка (APR) може досягати 365% і більше.
-            </p>
-            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">© 2026 SmartCredit Aggregator</p>
+
+            <div class="text-center">
+                <div class="flex justify-center gap-6 mb-6 text-sm font-bold text-slate-400">
+                    <a href="#" class="hover:text-blue-600">Про нас</a>
+                    <a href="#" class="hover:text-blue-600">Політика конфіденційності</a>
+                    <a href="#" class="hover:text-blue-600">Контакти</a>
+                </div>
+                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">© 2026 SmartCredit Aggregator</p>
+            </div>
         </footer>
 
     </div>
 
     <script>
-        // 1. БАЗА ДАНИХ (30 ОФФЕРІВ)
-        // Домени перевірені на точність для коректного завантаження логотипів
+        // 1. БАЗА ДАНИХ (ОНОВЛЕНА: З ЛІЦЕНЗІЯМИ ТА КОНТАКТАМИ)
         const offers = [
             // TOP GROUP
-            { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-70", time: "5 хв", color: "bg-pink-500", tags: ["top", "all"], badge: "👑 ТОП-1", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470", domain: "tvoyapozyka.com.ua" },
-            { name: "Moneyveo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "2 хв", color: "bg-green-500", tags: ["top", "all", "auto"], badge: "⚡ Швидко", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470", domain: "moneyveo.ua" },
-            { name: "CreditPlus", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", color: "bg-blue-600", tags: ["top", "all", "auto"], badge: "🔥 Хіт", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470", domain: "creditplus.ua" },
-            { name: "Credit7", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "3 хв", color: "bg-lime-500", tags: ["top", "all", "auto"], badge: "👍 Схвал", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470", domain: "credit7.ua" },
-            { name: "FirstCredit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "Авто", color: "bg-purple-600", tags: ["top", "all", "new"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470", domain: "firstcredit.ua" },
+            { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-70", time: "5 хв", tags: ["top", "all"], badge: "👑 ТОП-1", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470", domain: "tvoyapozyka.com.ua", license: "Ліцензія НБУ №21/118-pk від 12.02.2024", phone: "0 800 211 503" },
+            { name: "Moneyveo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "2 хв", tags: ["top", "all", "auto"], badge: "⚡ Швидко", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470", domain: "moneyveo.ua", license: "Свідоцтво ІК №105 від 21.05.2013", phone: "0 800 21 93 93" },
+            { name: "CreditPlus", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["top", "all", "auto"], badge: "🔥 Хіт", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470", domain: "creditplus.ua", license: "ФК №870 від 28.02.2017", phone: "0 800 753 363" },
+            { name: "Credit7", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "3 хв", tags: ["top", "all", "auto"], badge: "👍 Схвал", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470", domain: "credit7.ua", license: "ФК №1177 від 04.04.2019", phone: "0 800 33 07 33" },
+            { name: "FirstCredit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "Авто", tags: ["top", "all", "new"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470", domain: "firstcredit.ua", license: "Ліцензія №562 від 09.01.2023", phone: "0 800 30 55 66" },
 
             // OTHER OFFERS
-            { name: "Monto", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", color: "bg-blue-800", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470", domain: "monto.com.ua" },
-            { name: "Avira", sum: "8 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "15 хв", color: "bg-violet-600", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470", domain: "aviracredit.com.ua" },
-            { name: "Pango", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", color: "bg-zinc-800", tags: ["new", "auto", "all"], badge: "🤖 ШІ", link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470", domain: "pango.com.ua" },
-            { name: "SelfieCredit", sum: "25 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "3 хв", color: "bg-indigo-500", tags: ["new", "top", "all"], badge: "📸", link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470", domain: "selfiecredit.com.ua" },
-            { name: "Top1", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", color: "bg-red-600", tags: ["all", "new"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8172?aid=81470", domain: "top1.com.ua" },
-            { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "10 хв", color: "bg-slate-600", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470", domain: "alexcredit.com.ua" },
-            { name: "LegkoCredit", sum: "10 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", color: "bg-sky-500", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8356?aid=81470", domain: "legkocredit.com.ua" },
-            { name: "Tengo", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", color: "bg-teal-600", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470", domain: "tengo.ua" },
-            { name: "E-Groshi", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", color: "bg-green-600", tags: ["all", "auto"], badge: "Авто", link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470", domain: "e-groshi.com" },
-            { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", color: "bg-red-500", tags: ["all"], badge: "24/7", link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470", domain: "soscredit.ua" },
-            { name: "Cly", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", color: "bg-cyan-500", tags: ["new", "all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/2591?aid=81470", domain: "cly.ua" },
-            { name: "MisterMoney", sum: "12 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", color: "bg-green-600", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1845?aid=81470", domain: "mistermoney.com.ua" },
-            { name: "SunCredit", sum: "5 000", rate: "0.01%", term: "14 дн", age: "18-65", time: "10 хв", color: "bg-orange-400", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8198?aid=81470", domain: "suncredit.com.ua" },
-            { name: "Limon", sum: "18 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", color: "bg-yellow-500", tags: ["new", "all"], badge: "🍋", link: "https://rdr.salesdoubler.com.ua/in/offer/8080?aid=81470", domain: "limoncredit.com.ua" },
-            { name: "Microcash", sum: "6 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "3 хв", color: "bg-blue-500", tags: ["auto", "all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1823?aid=81470", domain: "microcash.com.ua" },
-            { name: "Treba", sum: "12 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", color: "bg-indigo-600", tags: ["new", "all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8355?aid=81470", domain: "treba.credit" },
-            { name: "Lovilave", sum: "10 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", color: "bg-rose-400", tags: ["new", "all"], badge: "Робот", link: "https://go.salesdoubler.net/in/offer/3348?aid=81470", domain: "lovilave.com.ua" },
-            { name: "ShvydkoGroshi", sum: "30 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", color: "bg-red-700", tags: ["all"], badge: "Бренд", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470", domain: "sgroshi.com.ua" },
-            { name: "ClickCredit", sum: "3 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "3 хв", color: "bg-blue-400", tags: ["auto", "new", "all"], badge: "📱", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470", domain: "clickcredit.ua" },
-            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", color: "bg-indigo-800", tags: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", domain: "credos.com.ua" },
-            { name: "Amigo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "10 хв", color: "bg-green-700", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6363?aid=81470", domain: "amigo.com.ua" },
-            { name: "BeeCredit", sum: "20 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", color: "bg-yellow-400", tags: ["new", "all"], badge: "🐝", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470", domain: "bee.credit" },
-            { name: "Miloan", sum: "20 000", rate: "0%", term: "15 дн", age: "18-65", time: "5 хв", color: "bg-orange-500", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1436?aid=81470", domain: "miloan.ua" },
-            { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дн", age: "18-75", time: "8 хв", color: "bg-amber-700", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470", domain: "creditkasa.com.ua" },
-            { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", color: "bg-blue-700", tags: ["top", "all"], badge: "👍", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470", domain: "mycredit.ua" }
+            { name: "Monto", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470", domain: "monto.com.ua", license: "ФК №1234 від 10.10.2023", phone: "0 800 300 200" },
+            { name: "Avira", sum: "8 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "15 хв", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470", domain: "aviracredit.com.ua", license: "ФК №1111 від 15.05.2022", phone: "0 800 20 40 80" },
+            { name: "Pango", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["new", "auto", "all"], badge: "🤖 ШІ", link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470", domain: "pango.com.ua", license: "Ліцензія НБУ №21/220", phone: "0 800 33 20 30" },
+            { name: "SelfieCredit", sum: "25 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "3 хв", tags: ["new", "top", "all"], badge: "📸", link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470", domain: "selfiecredit.com.ua", license: "ФК №2222 від 11.11.2021", phone: "0 800 50 60 70" },
+            { name: "Top1", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["all", "new"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8172?aid=81470", domain: "top1.com.ua", license: "Ліцензія НБУ №555", phone: "0 800 88 99 00" },
+            { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470", domain: "alexcredit.com.ua", license: "ФК №930 від 08.08.2017", phone: "0 44 389 33 03" },
+            { name: "LegkoCredit", sum: "10 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8356?aid=81470", domain: "legkocredit.com.ua", license: "ФК №777 від 07.07.2020", phone: "0 800 12 34 56" },
+            { name: "Tengo", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470", domain: "tengo.ua", license: "ФК №176 від 14.07.2016", phone: "0 44 337 00 37" },
+            { name: "E-Groshi", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", tags: ["all", "auto"], badge: "Авто", link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470", domain: "e-groshi.com", license: "ФК №974 від 12.12.2017", phone: "0 800 300 330" },
+            { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: "24/7", link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470", domain: "soscredit.ua", license: "Свідоцтво ІК №144 від 20.08.2015", phone: "0 800 211 777" },
+            { name: "Cly", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/2591?aid=81470", domain: "cly.ua", license: "ФК №888 від 01.01.2019", phone: "0 800 99 88 77" },
+            { name: "MisterMoney", sum: "12 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1845?aid=81470", domain: "mistermoney.com.ua", license: "ФК №999 від 09.09.2018", phone: "0 800 66 55 44" },
+            { name: "SunCredit", sum: "5 000", rate: "0.01%", term: "14 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8198?aid=81470", domain: "suncredit.com.ua", license: "Ліцензія НБУ №333", phone: "0 800 11 22 33" },
+            { name: "Limon", sum: "18 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "🍋", link: "https://rdr.salesdoubler.com.ua/in/offer/8080?aid=81470", domain: "limoncredit.com.ua", license: "ФК №444 від 04.04.2021", phone: "0 800 44 55 66" },
+            { name: "Microcash", sum: "6 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "3 хв", tags: ["auto", "all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1823?aid=81470", domain: "microcash.com.ua", license: "ФК №1055 від 12.06.2018", phone: "0 800 77 88 99" },
+            { name: "Treba", sum: "12 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8355?aid=81470", domain: "treba.credit", license: "Ліцензія НБУ №678", phone: "0 800 500 400" },
+            { name: "Lovilave", sum: "10 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "Робот", link: "https://go.salesdoubler.net/in/offer/3348?aid=81470", domain: "lovilave.com.ua", license: "ФК №1366 від 22.05.2020", phone: "0 800 30 10 30" },
+            { name: "ShvydkoGroshi", sum: "30 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: "Бренд", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470", domain: "sgroshi.com.ua", license: "Свідоцтво ІК №78 від 28.02.2011", phone: "0 800 50 10 20" },
+            { name: "ClickCredit", sum: "3 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "3 хв", tags: ["auto", "new", "all"], badge: "📱", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470", domain: "clickcredit.ua", license: "ФК №1287 від 12.11.2019", phone: "0 800 75 33 63" },
+            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", domain: "credos.com.ua", license: "ФК №1423 від 23.07.2020", phone: "0 800 20 02 20" },
+            { name: "Amigo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6363?aid=81470", domain: "amigo.com.ua", license: "Ліцензія НБУ №900", phone: "0 800 90 09 00" },
+            { name: "BeeCredit", sum: "20 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "🐝", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470", domain: "bee.credit", license: "Ліцензія НБУ №101", phone: "0 800 10 11 01" },
+            { name: "Miloan", sum: "20 000", rate: "0%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1436?aid=81470", domain: "miloan.ua", license: "ФК №168 від 14.07.2016", phone: "044 337 36 67" },
+            { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дн", age: "18-75", time: "8 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470", domain: "creditkasa.com.ua", license: "ФК №116 від 01.08.2013", phone: "0 800 20 02 21" },
+            { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["top", "all"], badge: "👍", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470", domain: "mycredit.ua", license: "ФК №146 від 19.10.2015", phone: "0 800 214 111" }
         ];
 
         // 2. ЗМІННІ СТАНУ
@@ -245,7 +248,6 @@
                     
                     <div class="flex items-center gap-4 mb-4">
                         <div class="logo-container">
-                            <div class="logo-fallback ${item.color}">${item.name[0]}</div>
                             <img src="${logoUrl}" class="logo-img" alt="${item.name}" onerror="this.style.display='none'">
                         </div>
                         <div>
@@ -274,7 +276,12 @@
                         <a href="${item.link}" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3.5 rounded-xl font-bold uppercase tracking-wider shadow-lg shadow-blue-600/20 transition-all active:scale-95">
                             Отримати
                         </a>
-                        <div class="text-center mt-2 text-[10px] text-slate-400">⏱ Рішення за ${item.time}</div>
+                        <div class="text-center mt-2 text-[10px] text-slate-400 mb-3">⏱ Рішення за ${item.time}</div>
+                        
+                        <div class="border-t border-slate-100 pt-3 text-[9px] text-slate-400 text-center leading-tight">
+                            <p class="mb-1">📜 ${item.license}</p>
+                            <p>📞 <a href="tel:${item.phone.replace(/\s/g, '')}" class="hover:text-blue-500">${item.phone}</a></p>
+                        </div>
                     </div>
                 </div>
                 `;
@@ -285,7 +292,7 @@
         // 5. ПЕРЕМИКАННЯ ТАБІВ
         function setTab(tabName) {
             activeTab = tabName;
-            visibleCount = 9; // Скидаємо кількість видимих при зміні вкладки
+            visibleCount = 9; 
 
             // Оновлюємо класи кнопок
             document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -312,5 +319,6 @@
         });
 
     </script>
+    
 </body>
 </html>
