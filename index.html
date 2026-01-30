@@ -38,6 +38,9 @@
         #faq-box { display: none; }
         .faq-visible #faq-box { display: block; animation: fadeUp 0.3s ease-out; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Приховати кнопку Load More якщо немає чого вантажити */
+        .hidden-btn { display: none !important; }
     </style>
 </head>
 <body class="antialiased pb-20">
@@ -192,8 +195,7 @@
     </div>
 
     <script>
-        // --- БАЗА ДАНИХ (30 ОФФЕРІВ З ПОПЕРЕДНЬОГО КОДУ) ---
-        // Використовую Google Favicon API для логотипів, як в минулому варіанті
+        // --- 1. БАЗА ДАНИХ (30 ОФФЕРІВ) ---
         const allOffers = [
             // TOP (Перша 5-ка)
             { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", term: "20 днів", age: "18-70", time: "5 хв", color: "pink-500", cat: ["top", "all"], badge: "👑 ТОП-1", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470", domain: "tvoyapozyka.com.ua" },
@@ -225,5 +227,4 @@
             { name: "Lovilave", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "rose-400", cat: ["new", "all"], badge: "Робот", link: "https://go.salesdoubler.net/in/offer/3348?aid=81470", domain: "lovilave.com.ua" },
             { name: "ShvydkoGroshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "red-700", cat: ["all"], badge: "Бренд", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470", domain: "sgroshi.com.ua" },
             { name: "ClickCredit", sum: "3 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-400", cat: ["auto", "new", "all"], badge: "📱 App", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470", domain: "clickcredit.ua" },
-            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "indigo-800", cat: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", domain: "credos.com.ua" },
-   
+            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "indigo-800", cat: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", do
