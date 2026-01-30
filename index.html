@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartCredit 2026 — Кредити онлайн</title>
-    <meta name="description" content="Кредит онлайн на картку без відмов. Рейтинг МФО 2026.">
+    <meta name="description" content="Всі МФО України 2026. Кредит онлайн на картку цілодобово. Рейтинг, відгуки, ліцензії.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
@@ -12,33 +12,16 @@
         .card-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         .hover-card { transition: transform 0.2s; }
         .hover-card:hover { transform: translateY(-4px); }
-        
-        /* Рамки */
         .top-border { border: 2px solid #fbbf24; }
-        
-        /* Кнопки */
         .btn-cta { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); }
         .btn-cta:hover { opacity: 0.9; }
-        
-        /* Таби */
         .tab-btn { transition: all 0.2s; cursor: pointer; }
         .tab-btn.active { background-color: #0f172a; color: white; border-color: #0f172a; }
-
-        /* Повзунки */
         input[type=range] { -webkit-appearance: none; background: transparent; cursor: pointer; }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
-            background: #2563eb; margin-top: -8px;
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%; height: 4px; background: #e2e8f0;
-        }
-
-        /* FAQ */
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #2563eb; margin-top: -8px; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; background: #e2e8f0; }
         #faq-box { display: none; }
         .faq-visible #faq-box { display: block; }
-        
-        /* Спойлер для ліцензій */
         details > summary { list-style: none; cursor: pointer; outline: none; }
         details > summary::-webkit-details-marker { display: none; }
     </style>
@@ -56,7 +39,7 @@
                 </div>
             </div>
             <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-100">
-                <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1"></span> 30 МФО
+                <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1"></span> 32 МФО
             </span>
         </header>
 
@@ -88,8 +71,8 @@
         </section>
 
         <div class="flex flex-wrap gap-2 mb-8 sticky top-2 z-30 bg-slate-50/90 backdrop-blur p-2 rounded-xl shadow-sm">
-            <button onclick="setTab('new')" id="tab-new" class="tab-btn active px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600">🆕 Нові</button>
-            <button onclick="setTab('top')" id="tab-top" class="tab-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600">🔥 ТОП</button>
+            <button onclick="setTab('top')" id="tab-top" class="tab-btn active px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600">🔥 ТОП</button>
+            <button onclick="setTab('new')" id="tab-new" class="tab-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600">🆕 Нові</button>
             <button onclick="setTab('auto')" id="tab-auto" class="tab-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600">⚡ Автомат</button>
             <button onclick="setTab('all')" id="tab-all" class="tab-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-600">Всі</button>
         </div>
@@ -133,51 +116,75 @@
     <div id="faq" class="fixed bottom-6 right-6 z-50 hidden">
         <div class="bg-white p-4 rounded-xl shadow-2xl w-64 mb-2 border border-slate-100">
             <h4 class="font-bold text-xs text-blue-600 mb-2">Де видають?</h4>
-            <p class="text-[10px] text-slate-600">Вся Україна, крім тимчасово окупованих територій (Донецьк, Луганськ, Крим).</p>
+            <p class="text-[10px] text-slate-600">Вся Україна, крім тимчасово окупованих територій (Донецька, Луганська, АР Крим та зон бойових дій).</p>
         </div>
         <button onclick="document.getElementById('faq').classList.toggle('hidden')" class="bg-slate-900 text-white w-12 h-12 rounded-full shadow-lg font-bold float-right">?</button>
     </div>
     <button onclick="document.getElementById('faq').classList.remove('hidden')" class="fixed bottom-6 right-6 z-40 bg-slate-900 text-white w-12 h-12 rounded-full shadow-lg font-bold">?</button>
 
     <script>
-        // Логотип CreditPlus (SVG)
-        const svgCP = `<svg viewBox="0 0 140 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="140" height="40" rx="8" fill="#1e3a8a"/><text x="10" y="28" font-family="Arial" font-weight="900" font-size="24" fill="white">Credit</text><text x="82" y="28" font-family="Arial" font-weight="900" font-size="24" fill="#f97316">Plus</text></svg>`;
+        // Векторні логотипи (Кодування виправлено!)
+        const svgCP = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 40'%3E%3Crect width='140' height='40' rx='8' fill='%231e3a8a'/%3E%3Ctext x='10' y='28' font-family='Arial' font-weight='900' font-size='24' fill='white'%3ECredit%3C/text%3E%3Ctext x='82' y='28' font-family='Arial' font-weight='900' font-size='24' fill='%23f97316'%3EPlus%3C/text%3E%3C/svg%3E";
+        
+        const svgC7 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 40'%3E%3Crect width='140' height='40' rx='8' fill='%23f0fdf4'/%3E%3Ctext x='15' y='28' font-family='Arial' font-weight='900' font-size='26' fill='%236d28d9'%3ECredit%3C/text%3E%3Ctext x='100' y='28' font-family='Arial' font-weight='900' font-size='28' fill='%2322c55e'%3E7%3C/text%3E%3C/svg%3E";
 
-        // Дані
+        // Логотипи з мережі (Clearbit)
+        const logos = {
+            "Moneyveo": "https://logo.clearbit.com/moneyveo.ua",
+            "MyCredit": "https://logo.clearbit.com/mycredit.ua",
+            "Miloan": "https://logo.clearbit.com/miloan.ua",
+            "CreditKasa": "https://logo.clearbit.com/creditkasa.com.ua",
+            "SelfieCredit": "https://logo.clearbit.com/selfiecredit.com.ua",
+            "StarFin": "https://logo.clearbit.com/starfin.com.ua",
+            "E-Groshi": "https://logo.clearbit.com/e-groshi.com",
+            "Tengo": "https://logo.clearbit.com/tengo.ua",
+            "AlexCredit": "https://logo.clearbit.com/alexcredit.com.ua",
+            "SlonCredit": "https://logo.clearbit.com/sloncredit.ua",
+            "SOS Credit": "https://logo.clearbit.com/soscredit.ua",
+            "Pango": "https://logo.clearbit.com/pango.com.ua",
+            "ClickCredit": "https://logo.clearbit.com/clickcredit.ua",
+            "ZeCredit": "https://logo.clearbit.com/zecredit.ua",
+            "Money4YOU": "https://logo.clearbit.com/money4you.ua",
+            "AviraCredit": "https://logo.clearbit.com/aviracredit.com.ua",
+            "BananaCredit": "https://logo.clearbit.com/bananacredit.com.ua",
+            "CreditBox": "https://logo.clearbit.com/creditbox.in.ua",
+            "FinBar": "https://logo.clearbit.com/finbar.com.ua",
+            "CreditMarket": "https://logo.clearbit.com/creditmarket.ua"
+        };
+
         const db = [
+            // ТОП-5
+            { n: "CreditPlus", s: "25 000", r: "0.01%", t: "5 хв", c: "blue-600", cat: "top auto all", b: "🔥 #1", l: svgCP, link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
+            { n: "Credit7", s: "15 000", r: "0.01%", t: "7 хв", c: "lime-500", cat: "top auto all", b: "⚡ ТОП", l: svgC7, link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
+            { n: "SelfieCredit", s: "20 000", r: "0.01%", t: "3 хв", c: "indigo-500", cat: "top new all", b: "📸", l: logos["SelfieCredit"] },
+            { n: "MyCredit", s: "18 000", r: "0.01%", t: "5 хв", c: "blue-700", cat: "top all", b: "👍", l: logos["MyCredit"] },
+            { n: "Moneyveo", s: "30 000", r: "0.01%", t: "2 хв", c: "green-600", cat: "top all", b: "24/7", l: logos["Moneyveo"] },
+
             // НОВІ
             { n: "Monto", s: "15 000", r: "0.01%", t: "5 хв", c: "blue-800", cat: "new all", b: "🆕", l: "" },
-            { n: "Pango", s: "12 000", r: "0.01%", t: "5 хв", c: "zinc-800", cat: "new auto all", b: "🤖 AI", l: "" },
+            { n: "Pango", s: "12 000", r: "0.01%", t: "5 хв", c: "zinc-800", cat: "new auto all", b: "🤖 AI", l: logos["Pango"] },
             { n: "Cly", s: "15 000", r: "0.01%", t: "5 хв", c: "cyan-500", cat: "new all", b: "🆕", l: "" },
             { n: "BeeCredit", s: "10 000", r: "0.01%", t: "5 хв", c: "yellow-500", cat: "new all", b: "🐝", l: "" },
-            { n: "StarFin", s: "20 000", r: "0.01%", t: "10 хв", c: "blue-500", cat: "new all", b: "Top", l: "" },
-            { n: "FirstCredit", s: "20 000", r: "0.01%", t: "5 хв", c: "purple-600", cat: "new auto all", b: "", l: "" },
-
-            // ТОП (CreditPlus тут!)
-            { n: "CreditPlus", s: "25 000", r: "0.01%", t: "5 хв", c: "blue-600", cat: "top auto all", b: "🔥 #1", l: svgCP, link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
-            { n: "Credit7", s: "15 000", r: "0.01%", t: "7 хв", c: "lime-500", cat: "top auto all", b: "⚡", l: "" },
-            { n: "SelfieCredit", s: "20 000", r: "0.01%", t: "3 хв", c: "indigo-500", cat: "top new all", b: "📸", l: "" },
-            { n: "MyCredit", s: "18 000", r: "0.01%", t: "5 хв", c: "blue-700", cat: "top all", b: "👍", l: "" },
-            { n: "Moneyveo", s: "30 000", r: "0.01%", t: "2 хв", c: "green-600", cat: "top all", b: "T", l: "" },
+            { n: "StarFin", s: "20 000", r: "0.01%", t: "10 хв", c: "blue-500", cat: "new all", b: "New", l: logos["StarFin"] },
+            { n: "FirstCredit", s: "20 000", r: "0.01%", t: "5 хв", c: "purple-600", cat: "new auto all", b: "Без фото", l: "" },
 
             // ІНШІ
-            { n: "CreditKasa", s: "20 000", r: "0.01%", t: "8 хв", c: "amber-700", cat: "all", b: "", l: "" },
-            { n: "Miloan", s: "20 000", r: "0%", t: "5 хв", c: "orange-500", cat: "all", b: "", l: "" },
-            { n: "E-Groshi", s: "30 000", r: "0.01%", t: "5 хв", c: "green-600", cat: "all", b: "", l: "" },
-            { n: "Tengo", s: "25 000", r: "0.01%", t: "5 хв", c: "teal-600", cat: "all", b: "", l: "" },
-            { n: "Legko", s: "10 000", r: "0.01%", t: "5 хв", c: "sky-500", cat: "all", b: "", l: "" },
-            { n: "AlexCredit", s: "12 000", r: "0.01%", t: "10 хв", c: "slate-600", cat: "all", b: "", l: "" },
-            { n: "ClickCredit", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-400", cat: "auto new all", b: "📱", l: "" },
+            { n: "CreditKasa", s: "20 000", r: "0.01%", t: "8 хв", c: "amber-700", cat: "all", b: "", l: logos["CreditKasa"] },
+            { n: "Miloan", s: "20 000", r: "0%", t: "5 хв", c: "orange-500", cat: "all", b: "", l: logos["Miloan"] },
+            { n: "E-Groshi", s: "30 000", r: "0.01%", t: "5 хв", c: "green-600", cat: "all", b: "", l: logos["E-Groshi"] },
+            { n: "Tengo", s: "25 000", r: "0.01%", t: "5 хв", c: "teal-600", cat: "all", b: "", l: logos["Tengo"] },
+            { n: "AlexCredit", s: "12 000", r: "0.01%", t: "10 хв", c: "slate-600", cat: "all", b: "", l: logos["AlexCredit"] },
+            { n: "ClickCredit", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-400", cat: "auto new all", b: "📱", l: logos["ClickCredit"] },
             { n: "Treba", s: "10 000", r: "0.01%", t: "5 хв", c: "indigo-600", cat: "new all", b: "", l: "" },
             { n: "Lovilave", s: "10 000", r: "0.01%", t: "5 хв", c: "rose-400", cat: "new all", b: "❤️", l: "" },
             { n: "Microcash", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-500", cat: "auto all", b: "", l: "" },
             { n: "SunCredit", s: "8 000", r: "0.01%", t: "10 хв", c: "orange-400", cat: "all", b: "", l: "" },
-            { n: "Avira", s: "15 000", r: "0.01%", t: "15 хв", c: "violet-600", cat: "all", b: "", l: "" },
-            { n: "SOS Credit", s: "15 000", r: "0.01%", t: "5 хв", c: "red-500", cat: "all", b: "", l: "" },
-            { n: "Credos", s: "20 000", r: "0.01%", t: "5 хв", c: "indigo-800", cat: "all", b: "", l: "" }
+            { n: "Avira", s: "15 000", r: "0.01%", t: "15 хв", c: "violet-600", cat: "all", b: "", l: logos["AviraCredit"] },
+            { n: "SOS Credit", s: "15 000", r: "0.01%", t: "5 хв", c: "red-500", cat: "all", b: "", l: logos["SOS Credit"] },
+            { n: "Credos", s: "20 000", r: "0.01%", t: "5 хв", c: "indigo-800", cat: "all", b: "", l: logos["Credos"] }
         ];
 
-        let curCat = 'new';
+        let curCat = 'top';
         let lim = 9;
 
         function calc() {
@@ -194,31 +201,33 @@
         function render() {
             const grid = document.getElementById('grid');
             grid.innerHTML = '';
-            
             const flt = db.filter(x => x.cat.includes(curCat));
             const view = flt.slice(0, lim);
 
             view.forEach((o, i) => {
-                // Логотип (SVG або літера)
-                let img = o.l ? o.l : `<div class="w-14 h-14 rounded-xl bg-slate-50 flex items-center justify-center text-xl font-black text-${o.c}">${o.n[0]}</div>`;
+                // Лого: якщо є посилання/SVG - ставимо його, якщо ні - літера
+                // Додана логіка onerror - якщо картинка не вантажиться, показує літеру
+                let img;
+                if (o.l) {
+                    img = `<img src="${o.l}" class="w-14 h-14 object-contain rounded-xl" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-xl font-black text-${o.c} border border-slate-100\\'>${o.n[0]}</div>'">`;
+                } else {
+                    img = `<div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-xl font-black text-${o.c} border border-slate-100">${o.n[0]}</div>`;
+                }
                 
-                // Бейдж
-                let bg = o.b ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-bl-lg font-bold">${o.b}</div>` : '';
-                
-                // Рамка для ТОП
+                let bg = o.b ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-bl-lg font-bold shadow-sm">${o.b}</div>` : '';
                 let brd = (curCat === 'top' || curCat === 'all') && i < 3 ? 'top-border' : 'border-slate-100';
-
-                // Посилання
                 let lnk = o.link ? o.link : '#';
 
                 grid.innerHTML += `
                 <div class="bg-white p-5 rounded-3xl border ${brd} relative hover-card flex flex-col h-full card-shadow">
                     ${bg}
                     <div class="flex items-center gap-4 mb-4">
-                        ${img}
+                        <div class="w-14 h-14 shrink-0 flex items-center justify-center bg-white rounded-xl border border-slate-100 p-1 overflow-hidden">
+                            ${img}
+                        </div>
                         <div>
-                            <h3 class="font-bold text-slate-800">${o.n}</h3>
-                            <div class="text-[10px] text-yellow-500">★★★★★</div>
+                            <h3 class="font-bold text-slate-800 leading-tight">${o.n}</h3>
+                            <div class="text-[10px] text-yellow-500 mt-1">★★★★★</div>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-2 mb-4 text-center">
@@ -232,7 +241,7 @@
                         </div>
                     </div>
                     <div class="mt-auto">
-                        <a href="${lnk}" target="_blank" class="btn-cta block w-full py-3 rounded-xl text-white text-center text-xs font-bold uppercase shadow-lg shadow-blue-500/20">Отримати</a>
+                        <a href="${lnk}" target="_blank" class="btn-cta block w-full py-3 rounded-xl text-white text-center text-xs font-bold uppercase shadow-lg shadow-blue-500/20 transition-opacity">Отримати</a>
                         <div class="text-center mt-2 text-[10px] text-slate-400">⏱ ${o.t}</div>
                     </div>
                 </div>`;
@@ -254,8 +263,7 @@
             render();
         }
 
-        // Init
         window.onload = () => { calc(); render(); };
     </script>
 </body>
-</html>
+    </html>
