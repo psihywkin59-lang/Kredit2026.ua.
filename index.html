@@ -227,4 +227,169 @@
             { name: "Lovilave", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "rose-400", cat: ["new", "all"], badge: "Робот", link: "https://go.salesdoubler.net/in/offer/3348?aid=81470", domain: "lovilave.com.ua" },
             { name: "ShvydkoGroshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "red-700", cat: ["all"], badge: "Бренд", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470", domain: "sgroshi.com.ua" },
             { name: "ClickCredit", sum: "3 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-400", cat: ["auto", "new", "all"], badge: "📱 App", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470", domain: "clickcredit.ua" },
-            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "indigo-800", cat: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", do
+            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "indigo-800", cat: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", domain: "credos.com.ua" },
+            
+            { name: "Amigo", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "green-700", cat: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6363?aid=81470", domain: "amigo.com.ua" },
+            { name: "BeeCredit", sum: "20 000", rate: "0.01%", term: "15 днів", age: "18-65", time: "5 хв", color: "yellow-400", cat: ["new", "all"], badge: "🐝", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470", domain: "bee.credit" },
+            { name: "Miloan", sum: "20 000", rate: "0%", term: "15 днів", age: "18-65", time: "5 хв", color: "orange-500", cat: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1436?aid=81470", domain: "miloan.ua" },
+            { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-75", time: "8 хв", color: "amber-700", cat: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470", domain: "creditkasa.com.ua" },
+            { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-700", cat: ["top", "all"], badge: "👍", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470", domain: "mycredit.ua" }
+        ];
+
+        // --- 2. ЛОГІКА ІНТЕРФЕЙСУ ---
+        
+        let activeCategory = 'all'; 
+        let visibleCount = 9;
+
+        // Калькулятор
+        function updateCalculator() {
+            const sumInput = document.getElementById('inputSum');
+            const daysInput = document.getElementById('inputDays');
+            
+            if(!sumInput || !daysInput) return;
+
+            const sum = sumInput.value;
+            const days = daysInput.value;
+
+            document.getElementById('displaySum').innerText = parseInt(sum).toLocaleString().replace(/,/g, " ");
+            document.getElementById('displayDays').innerText = days;
+
+            // Розрахунок під 0.01%
+            const interest = sum * 0.0001 * days;
+            const total = parseFloat(sum) + interest;
+            
+            // Розрахунок економії (стандарт 2%)
+            const standardInterest = sum * 0.02 * days;
+            const saving = standardInterest - interest;
+
+            document.getElementById('displayTotal').innerText = total.toLocaleString(undefined, {minimumFractionDigits: 0}).replace(/,/g, " ");
+            document.getElementById('displayRate').innerText = Math.round(interest) + " грн";
+            document.getElementById('displaySaving').innerText = Math.round(saving).toLocaleString().replace(/,/g, " ") + " грн";
+        }
+
+        // Рендер сітки карток
+        function renderGrid() {
+            const grid = document.getElementById('offersGrid');
+            if(!grid) return;
+            
+            grid.innerHTML = "";
+
+            // Фільтрація
+            let filtered = allOffers;
+            if (activeCategory !== 'all') {
+                filtered = allOffers.filter(offer => offer.cat && offer.cat.includes(activeCategory));
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center py-12 text-slate-400">В цій категорії поки немає пропозицій</div>';
+                document.getElementById('loadMoreBtn').classList.add('hidden-btn');
+                return;
+            }
+
+            // Малюємо картки
+            let html = "";
+            let limit = visibleCount;
+            // Якщо видимих менше ніж є, показуємо кнопку, інакше ховаємо
+            const btn = document.getElementById('loadMoreBtn');
+            if (filtered.length > visibleCount) {
+                btn.classList.remove('hidden-btn');
+            } else {
+                btn.classList.add('hidden-btn');
+            }
+
+            filtered.forEach((offer, index) => {
+                if (index >= limit) return;
+
+                // Рамки для ТОПів
+                let borderClass = "";
+                if ((activeCategory === 'all' || activeCategory === 'top') && index === 0) borderClass = "top-border-1 transform md:-translate-y-2 z-10 shadow-2xl";
+                else if ((activeCategory === 'all' || activeCategory === 'top') && index === 1) borderClass = "top-border-2";
+                else if ((activeCategory === 'all' || activeCategory === 'top') && index === 2) borderClass = "top-border-3";
+
+                // Генеруємо посилання на лого
+                const logoUrl = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${offer.domain}&size=256`;
+
+                // Бейдж
+                let badgeBlock = "";
+                if (offer.badge) {
+                    badgeBlock = `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl uppercase z-10">${offer.badge}</div>`;
+                }
+
+                html += `
+                <div class="bg-white rounded-[24px] p-6 border border-slate-100 relative hover-card flex flex-col h-full ${borderClass}">
+                    ${badgeBlock}
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="w-16 h-16 bg-white rounded-xl flex items-center justify-center border border-slate-100 p-1 shadow-sm shrink-0">
+                            <img src="${logoUrl}" class="max-w-full max-h-full object-contain" alt="${offer.name}" onerror="this.style.display='none';this.parentElement.innerHTML='<span class=\\'text-xl font-bold\\'>${offer.name[0]}</span>'">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg leading-tight">${offer.name}</h3>
+                            <div class="flex text-yellow-400 text-[10px] mt-1">★★★★★</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3 mb-6 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                        <div class="text-center bg-white rounded-xl py-2 shadow-sm">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Сума до</p>
+                            <p class="text-xl font-black text-slate-800 tracking-tight">${offer.sum}</p>
+                        </div>
+                        <div class="text-center bg-white rounded-xl py-2 shadow-sm border border-green-100 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-green-50 opacity-50"></div>
+                            <p class="text-[9px] text-green-600 font-bold uppercase tracking-wider relative z-10">Ставка</p>
+                            <p class="text-xl font-black text-green-600 relative z-10">${offer.rate}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between text-[11px] text-slate-500 font-medium mb-6 px-2 border-t border-dashed border-slate-200 pt-4">
+                        <span>Вік: <span class="text-slate-900 font-bold">${offer.age}</span></span>
+                        <span>Термін: <span class="text-slate-900 font-bold">${offer.term}</span></span>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="${offer.link}" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-4 rounded-xl text-sm font-bold uppercase tracking-wider shadow-lg shadow-blue-500/30 transition-all hover:scale-[1.02] relative overflow-hidden group">
+                            <span class="relative z-10">Отримати гроші</span>
+                            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        </a>
+                        <div class="text-center mt-3 text-[10px] text-slate-400 flex items-center justify-center gap-1">
+                            <span>⏱</span> Рішення за ${offer.time}
+                        </div>
+                    </div>
+                </div>`;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        // Перемикання табів
+        function switchTab(category) {
+            activeCategory = category;
+            visibleCount = 9; // Скидаємо лічильник при зміні табу
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active-tab'));
+            const activeBtn = document.getElementById('btn-' + category);
+            if(activeBtn) activeBtn.classList.add('active-tab');
+
+            renderGrid();
+        }
+
+        // Показати більше
+        function showMoreOffers() {
+            visibleCount += 9;
+            renderGrid();
+        }
+
+        // FAQ
+        function toggleFaqWindow() {
+            const faq = document.getElementById('faq-root');
+            if(faq) faq.classList.toggle('faq-visible');
+        }
+
+        // Старт
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCalculator();
+            renderGrid();
+        });
+        
+    </script>
+</body>
+</html>
