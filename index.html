@@ -8,38 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Geologica', sans-serif; background: #F8FAFC; color: #0f172a; }
-        
-        /* Ефекти карток */
         .hover-card { transition: all 0.2s ease; }
         .hover-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-color: #3b82f6; }
-
-        /* Стилізація повзунків */
         input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; cursor: pointer; }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
-            background: #3b82f6; margin-top: -10px; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%; height: 6px; background: #cbd5e1; border-radius: 3px;
-        }
-
-        /* Активний стан кнопок меню */
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #3b82f6; margin-top: -10px; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #cbd5e1; border-radius: 3px; }
         .tab-btn.active { background-color: #0f172a; color: white; border-color: #0f172a; }
-
-        /* Утиліта для приховування */
         .hidden { display: none !important; }
-
-        /* Стилі для логотипа */
-        .logo-container {
-            position: relative; width: 70px; height: 70px; border-radius: 16px; overflow: hidden; flex-shrink: 0;
-            background-color: #ffffff; border: 1px solid #e2e8f0; 
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        /* Картинка логотипа */
-        .logo-img {
-            width: 90%; height: 90%; object-fit: contain;
-        }
+        .logo-container { position: relative; width: 60px; height: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background-color: transparent; border: none; }
+        .logo-img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: all 0.3s; }
+        .modal-overlay.open { opacity: 1; pointer-events: auto; }
+        .modal-content { background: white; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; border-radius: 24px; padding: 30px; transform: translateY(20px); transition: all 0.3s; }
+        .modal-overlay.open .modal-content { transform: translateY(0); }
     </style>
 </head>
 <body class="pb-20">
@@ -64,36 +45,25 @@
         <section class="mb-12 bg-[#0f172a] text-white p-6 md:p-10 rounded-[2.5rem] relative overflow-hidden shadow-2xl">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 blur-[150px] opacity-30 pointer-events-none"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600 blur-[100px] opacity-30 pointer-events-none"></div>
-
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div>
                     <h2 class="text-3xl md:text-5xl font-black uppercase italic leading-tight mb-6">Гроші на карту <br><span class="text-blue-400">під 0.01%</span></h2>
-                    
                     <div class="space-y-8">
                         <div>
-                            <div class="flex justify-between text-sm font-bold mb-2 text-slate-300">
-                                <span>Сума:</span> <span class="text-white text-xl"><span id="calcSum">10 000</span> ₴</span>
-                            </div>
+                            <div class="flex justify-between text-sm font-bold mb-2 text-slate-300"><span>Сума:</span> <span class="text-white text-xl"><span id="calcSum">10 000</span> ₴</span></div>
                             <input type="range" id="rangeSum" min="500" max="30000" step="100" value="10000" oninput="updateCalc()">
                         </div>
                         <div>
-                            <div class="flex justify-between text-sm font-bold mb-2 text-slate-300">
-                                <span>Термін:</span> <span class="text-white text-xl"><span id="calcDays">15</span> днів</span>
-                            </div>
+                            <div class="flex justify-between text-sm font-bold mb-2 text-slate-300"><span>Термін:</span> <span class="text-white text-xl"><span id="calcDays">15</span> днів</span></div>
                             <input type="range" id="rangeDays" min="1" max="30" step="1" value="15" oninput="updateCalc()">
                         </div>
                     </div>
                 </div>
-
-                <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-[2rem] p-8 shadow-xl">
-                    <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
-                        <span class="text-xs font-bold text-slate-400 uppercase">До повернення:</span>
-                        <span class="text-xs font-bold bg-blue-600 px-3 py-1 rounded-lg text-white">-99% знижка</span>
-                    </div>
-                    <div class="text-5xl font-black mb-2"><span id="calcTotal">10 015</span> <span class="text-lg text-slate-400">грн</span></div>
+                <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-[2rem] p-8 shadow-xl text-center">
+                    <span class="text-xs font-bold text-slate-400 uppercase">До повернення:</span>
+                    <div class="text-5xl font-black mt-2 mb-2"><span id="calcTotal">10 015</span> ₴</div>
                     <div class="text-sm text-green-400 font-bold mb-6">Переплата: лише <span id="calcOverpay">15</span> грн</div>
-                    
-                    <div class="bg-white/5 p-4 rounded-xl text-center border border-white/5">
+                    <div class="bg-white/5 p-4 rounded-xl border border-white/5">
                         <span class="text-xs text-slate-400 uppercase font-bold tracking-wider">Ваша економія</span>
                         <div class="text-2xl font-bold text-yellow-400 mt-1"><span id="calcSaving">2 985</span> грн</div>
                     </div>
@@ -102,54 +72,64 @@
         </section>
 
         <div class="flex flex-wrap gap-3 mb-8" id="tabsContainer">
-            <button id="btn-all" onclick="setTab('all')" class="tab-btn active px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">Всі (30)</button>
-            <button id="btn-top" onclick="setTab('top')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">🔥 ТОП видача</button>
+            <button id="btn-top" onclick="setTab('top')" class="tab-btn active px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">🔥 ТОП видача</button>
+            <button id="btn-all" onclick="setTab('all')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">Всі (30)</button>
             <button id="btn-new" onclick="setTab('new')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">🆕 Новинки</button>
             <button id="btn-auto" onclick="setTab('auto')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">⚡ Без дзвінків</button>
         </div>
 
         <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-
-        <div class="mt-12 text-center">
-            <button id="btnLoadMore" onclick="loadMore()" class="hidden bg-white border border-slate-300 text-slate-800 font-bold px-10 py-4 rounded-full hover:bg-slate-50 shadow-sm transition-transform hover:-translate-y-1">
-                Показати ще пропозиції ↓
-            </button>
-        </div>
+        <div class="mt-12 text-center"><button id="btnLoadMore" onclick="loadMore()" class="hidden bg-white border border-slate-300 text-slate-800 font-bold px-10 py-4 rounded-full hover:bg-slate-50 shadow-sm transition-transform hover:-translate-y-1">Показати ще пропозиції ↓</button></div>
 
         <footer class="mt-20 border-t border-slate-200 pt-10 pb-10">
-            <div class="bg-red-50 border border-red-100 rounded-2xl p-6 mb-10">
+            <div class="bg-red-50 border border-red-100 rounded-2xl p-6 mb-10 text-xs text-red-900/70 leading-relaxed">
                 <h4 class="text-red-700 font-bold uppercase text-sm mb-3">⚠️ Застереження про наслідки несплати кредиту</h4>
-                <p class="text-xs text-red-900/70 leading-relaxed mb-2">
-                    Порушення строків сплати кредиту може призвести до нарахування штрафних санкцій, збільшення відсоткової ставки та пені. Інформація про прострочення передається до Українського бюро кредитних історій (УБКІ), що негативно вплине на ваш кредитний рейтинг та ускладнить отримання кредитів у майбутньому.
-                </p>
-                <p class="text-xs text-red-900/70 leading-relaxed">
-                    Кредитор має право передати заборгованість колекторським компаніям або звернутися до суду для примусового стягнення боргу. Будь ласка, оцінюйте свої фінансові можливості відповідально.
-                </p>
+                Порушення строків сплати кредиту може призвести до нарахування штрафних санкцій, пені та негативно вплине на вашу кредитну історію. Кредитор має право звернутися до суду або колекторських служб.
             </div>
 
-            <div class="text-center">
-                <div class="flex justify-center gap-6 mb-6 text-sm font-bold text-slate-400">
-                    <a href="#" class="hover:text-blue-600">Про нас</a>
-                    <a href="#" class="hover:text-blue-600">Політика конфіденційності</a>
-                    <a href="#" class="hover:text-blue-600">Контакти</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 text-sm text-slate-500">
+                <div>
+                    <h5 class="font-bold text-slate-800 mb-3 uppercase tracking-wider">Про нас</h5>
+                    <p class="text-xs leading-relaxed">
+                        SmartCredit 2026 — це незалежний інформаційний сервіс порівняння фінансових продуктів. Ми не є банком, МФО або кредитною організацією та не видаємо кредити. Всі умови кредитування визначаються безпосередньо фінансовими установами. Інформація на сайті носить виключно ознайомчий характер.
+                    </p>
                 </div>
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">© 2026 SmartCredit Aggregator</p>
+                <div class="flex flex-col gap-3 items-start md:items-end">
+                    <button onclick="openModal('policy')" class="hover:text-blue-600 font-bold">📜 Політика конфіденційності</button>
+                    <button onclick="openModal('contact')" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 shadow-lg">✉️ Зв'язатися з нами</button>
+                </div>
             </div>
+            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 text-center">© 2026 SmartCredit Aggregator</p>
         </footer>
+    </div>
 
+    <div id="modal-policy" class="modal-overlay">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4"><h3 class="text-xl font-bold">Політика</h3><button onclick="closeModal('policy')" class="text-2xl">&times;</button></div>
+            <p class="text-sm text-slate-600">Ми поважаємо вашу конфіденційність. Ми не збираємо платіжні дані та не передаємо інформацію третім особам без вашої згоди.</p>
+            <button onclick="closeModal('policy')" class="mt-6 w-full bg-slate-100 py-3 rounded-xl font-bold">Закрити</button>
+        </div>
+    </div>
+
+    <div id="modal-contact" class="modal-overlay">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4"><h3 class="text-xl font-bold">Напишіть нам</h3><button onclick="closeModal('contact')" class="text-2xl">&times;</button></div>
+            <form action="https://formspree.io/f/psihywkin59@gmail.com" method="POST" class="space-y-4">
+                <input type="text" name="name" required class="w-full border border-slate-200 rounded-xl px-4 py-3" placeholder="Ваше ім'я">
+                <input type="email" name="email" required class="w-full border border-slate-200 rounded-xl px-4 py-3" placeholder="Ваш Email">
+                <textarea name="message" required rows="4" class="w-full border border-slate-200 rounded-xl px-4 py-3" placeholder="Ваше повідомлення..."></textarea>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl">Надіслати</button>
+            </form>
+        </div>
     </div>
 
     <script>
-        // 1. БАЗА ДАНИХ (ОНОВЛЕНА: З ЛІЦЕНЗІЯМИ ТА КОНТАКТАМИ)
         const offers = [
-            // TOP GROUP
             { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-70", time: "5 хв", tags: ["top", "all"], badge: "👑 ТОП-1", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470", domain: "tvoyapozyka.com.ua", license: "Ліцензія НБУ №21/118-pk від 12.02.2024", phone: "0 800 211 503" },
             { name: "Moneyveo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "2 хв", tags: ["top", "all", "auto"], badge: "⚡ Швидко", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470", domain: "moneyveo.ua", license: "Свідоцтво ІК №105 від 21.05.2013", phone: "0 800 21 93 93" },
             { name: "CreditPlus", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["top", "all", "auto"], badge: "🔥 Хіт", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470", domain: "creditplus.ua", license: "ФК №870 від 28.02.2017", phone: "0 800 753 363" },
             { name: "Credit7", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "3 хв", tags: ["top", "all", "auto"], badge: "👍 Схвал", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470", domain: "credit7.ua", license: "ФК №1177 від 04.04.2019", phone: "0 800 33 07 33" },
             { name: "FirstCredit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "Авто", tags: ["top", "all", "new"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470", domain: "firstcredit.ua", license: "Ліцензія №562 від 09.01.2023", phone: "0 800 30 55 66" },
-
-            // OTHER OFFERS
             { name: "Monto", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470", domain: "monto.com.ua", license: "ФК №1234 від 10.10.2023", phone: "0 800 300 200" },
             { name: "Avira", sum: "8 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "15 хв", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470", domain: "aviracredit.com.ua", license: "ФК №1111 від 15.05.2022", phone: "0 800 20 40 80" },
             { name: "Pango", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["new", "auto", "all"], badge: "🤖 ШІ", link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470", domain: "pango.com.ua", license: "Ліцензія НБУ №21/220", phone: "0 800 33 20 30" },
@@ -159,166 +139,83 @@
             { name: "LegkoCredit", sum: "10 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8356?aid=81470", domain: "legkocredit.com.ua", license: "ФК №777 від 07.07.2020", phone: "0 800 12 34 56" },
             { name: "Tengo", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470", domain: "tengo.ua", license: "ФК №176 від 14.07.2016", phone: "0 44 337 00 37" },
             { name: "E-Groshi", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", tags: ["all", "auto"], badge: "Авто", link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470", domain: "e-groshi.com", license: "ФК №974 від 12.12.2017", phone: "0 800 300 330" },
-            { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: "24/7", link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470", domain: "soscredit.ua", license: "Свідоцтво ІК №144 від 20.08.2015", phone: "0 800 211 777" },
+            { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: "24/7", link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470", domain: "soscredit.ua", license: "ІК №144 від 20.08.2015", phone: "0 800 211 777" },
             { name: "Cly", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/2591?aid=81470", domain: "cly.ua", license: "ФК №888 від 01.01.2019", phone: "0 800 99 88 77" },
             { name: "MisterMoney", sum: "12 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1845?aid=81470", domain: "mistermoney.com.ua", license: "ФК №999 від 09.09.2018", phone: "0 800 66 55 44" },
-            { name: "SunCredit", sum: "5 000", rate: "0.01%", term: "14 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8198?aid=81470", domain: "suncredit.com.ua", license: "Ліцензія НБУ №333", phone: "0 800 11 22 33" },
+            { name: "SunCredit", sum: "5 000", rate: "0.01%", term: "14 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8198?aid=81470", domain: "suncredit.com.ua", license: "НБУ №333", phone: "0 800 11 22 33" },
             { name: "Limon", sum: "18 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "🍋", link: "https://rdr.salesdoubler.com.ua/in/offer/8080?aid=81470", domain: "limoncredit.com.ua", license: "ФК №444 від 04.04.2021", phone: "0 800 44 55 66" },
             { name: "Microcash", sum: "6 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "3 хв", tags: ["auto", "all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1823?aid=81470", domain: "microcash.com.ua", license: "ФК №1055 від 12.06.2018", phone: "0 800 77 88 99" },
-            { name: "Treba", sum: "12 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8355?aid=81470", domain: "treba.credit", license: "Ліцензія НБУ №678", phone: "0 800 500 400" },
+            { name: "Treba", sum: "12 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/8355?aid=81470", domain: "treba.credit", license: "НБУ №678", phone: "0 800 500 400" },
             { name: "Lovilave", sum: "10 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "Робот", link: "https://go.salesdoubler.net/in/offer/3348?aid=81470", domain: "lovilave.com.ua", license: "ФК №1366 від 22.05.2020", phone: "0 800 30 10 30" },
-            { name: "ShvydkoGroshi", sum: "30 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: "Бренд", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470", domain: "sgroshi.com.ua", license: "Свідоцтво ІК №78 від 28.02.2011", phone: "0 800 50 10 20" },
+            { name: "ShvydkoGroshi", sum: "30 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["all"], badge: "Бренд", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470", domain: "sgroshi.com.ua", license: "Свідоцтво ІК №78 від 2011", phone: "0 800 50 10 20" },
             { name: "ClickCredit", sum: "3 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "3 хв", tags: ["auto", "new", "all"], badge: "📱", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470", domain: "clickcredit.ua", license: "ФК №1287 від 12.11.2019", phone: "0 800 75 33 63" },
             { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470", domain: "credos.com.ua", license: "ФК №1423 від 23.07.2020", phone: "0 800 20 02 20" },
-            { name: "Amigo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6363?aid=81470", domain: "amigo.com.ua", license: "Ліцензія НБУ №900", phone: "0 800 90 09 00" },
-            { name: "BeeCredit", sum: "20 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "🐝", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470", domain: "bee.credit", license: "Ліцензія НБУ №101", phone: "0 800 10 11 01" },
+            { name: "Amigo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "10 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6363?aid=81470", domain: "amigo.com.ua", license: "НБУ №900", phone: "0 800 90 09 00" },
+            { name: "BeeCredit", sum: "20 000", rate: "0.01%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["new", "all"], badge: "🐝", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470", domain: "bee.credit", license: "НБУ №101", phone: "0 800 10 11 01" },
             { name: "Miloan", sum: "20 000", rate: "0%", term: "15 дн", age: "18-65", time: "5 хв", tags: ["all"], badge: null, link: "https://rdr.fmcgsd.net/in/offer/1436?aid=81470", domain: "miloan.ua", license: "ФК №168 від 14.07.2016", phone: "044 337 36 67" },
             { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дн", age: "18-75", time: "8 хв", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470", domain: "creditkasa.com.ua", license: "ФК №116 від 01.08.2013", phone: "0 800 20 02 21" },
             { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", tags: ["top", "all"], badge: "👍", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470", domain: "mycredit.ua", license: "ФК №146 від 19.10.2015", phone: "0 800 214 111" }
         ];
 
-        // 2. ЗМІННІ СТАНУ
-        let activeTab = 'all';
-        let visibleCount = 9;
+        let activeTab = 'top', visibleCount = 9;
 
-        // 3. ФУНКЦІЯ КАЛЬКУЛЯТОРА
         function updateCalc() {
-            const rangeSum = document.getElementById('rangeSum');
-            const rangeDays = document.getElementById('rangeDays');
-
-            // Захист від відсутності елементів
-            if (!rangeSum || !rangeDays) return;
-
-            const sum = parseInt(rangeSum.value);
-            const days = parseInt(rangeDays.value);
-
-            // Оновлюємо текст біля повзунків
-            document.getElementById('calcSum').textContent = sum.toLocaleString().replace(/,/g, " ");
-            document.getElementById('calcDays').textContent = days;
-
-            // Розрахунок під 0.01%
-            const interest = Math.round(sum * 0.0001 * days);
-            const total = sum + interest;
-
-            // Економія (порівняно зі стандартом 2%)
-            const standardInterest = Math.round(sum * 0.02 * days);
-            const saving = standardInterest - interest;
-
-            // Вивід результатів
-            document.getElementById('calcTotal').textContent = total.toLocaleString().replace(/,/g, " ");
+            const rs = document.getElementById('rangeSum'), rd = document.getElementById('rangeDays');
+            const s = parseInt(rs.value), d = parseInt(rd.value);
+            document.getElementById('calcSum').textContent = s.toLocaleString().replace(/,/g, " ");
+            document.getElementById('calcDays').textContent = d;
+            const interest = Math.round(s * 0.0001 * d);
+            document.getElementById('calcTotal').textContent = (s + interest).toLocaleString().replace(/,/g, " ");
             document.getElementById('calcOverpay').textContent = interest;
-            document.getElementById('calcSaving').textContent = saving.toLocaleString().replace(/,/g, " ");
+            document.getElementById('calcSaving').textContent = (Math.round(s * 0.02 * d) - interest).toLocaleString().replace(/,/g, " ");
         }
 
-        // 4. ФУНКЦІЯ РЕНДЕРИНГУ КАРТОК
         function renderGrid() {
             const container = document.getElementById('grid');
-            if (!container) return;
-
-            // Очищаємо контейнер
             container.innerHTML = '';
-
-            // Фільтруємо оффери
-            const filtered = offers.filter(offer => offer.tags.includes(activeTab));
-
-            // Логіка кнопки "Показати ще"
-            const btnLoadMore = document.getElementById('btnLoadMore');
-            if (filtered.length > visibleCount) {
-                btnLoadMore.classList.remove('hidden');
-            } else {
-                btnLoadMore.classList.add('hidden');
-            }
-
-            // Генеруємо HTML для видимих карток
-            const visibleOffers = filtered.slice(0, visibleCount);
+            const filtered = offers.filter(o => o.tags.includes(activeTab));
+            document.getElementById('btnLoadMore').classList.toggle('hidden', filtered.length <= visibleCount);
             
-            visibleOffers.forEach((item, index) => {
-                // Стиль рамки для першого оффера (тільки в 'all' або 'top')
-                let borderClass = 'border-slate-100';
-                if ((activeTab === 'all' || activeTab === 'top') && index === 0) {
-                    borderClass = 'border-yellow-400 ring-4 ring-yellow-400/20 z-10 shadow-xl';
-                }
-
-                // URL логотипа
-                const logoUrl = `https://logo.clearbit.com/${item.domain}`;
-
+            filtered.slice(0, visibleCount).forEach((item, index) => {
+                let borderClass = (activeTab === 'top' && index === 0) ? 'border-yellow-400 ring-4 ring-yellow-400/20 shadow-xl' : 'border-slate-100';
+                const logoUrl = `https://www.google.com/s2/favicons?domain=${item.domain}&sz=128`;
                 const html = `
                 <div class="bg-white rounded-[20px] p-5 border ${borderClass} shadow-sm hover-card relative flex flex-col h-full">
-                    ${item.badge ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl uppercase z-20 shadow-md">${item.badge}</div>` : ''}
-                    
+                    ${item.badge ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl uppercase z-20">${item.badge}</div>` : ''}
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="logo-container">
-                            <img src="${logoUrl}" class="logo-img" alt="${item.name}" onerror="this.style.display='none'">
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-lg leading-tight text-slate-800">${item.name}</h3>
-                            <div class="text-xs text-yellow-400 mt-1">★★★★★</div>
-                        </div>
+                        <div class="logo-container"><img src="${logoUrl}" class="logo-img" alt="${item.name}"></div>
+                        <div><h3 class="font-bold text-lg text-slate-800">${item.name}</h3><div class="text-xs text-yellow-400">★★★★★</div></div>
                     </div>
-
                     <div class="grid grid-cols-2 gap-2 mb-4">
-                        <div class="bg-slate-50 rounded-lg p-2 text-center border border-slate-100">
-                            <div class="text-[10px] text-slate-400 font-bold uppercase">Сума до</div>
-                            <div class="text-lg font-black text-slate-800 tracking-tight">${item.sum}</div>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-2 text-center border border-green-100">
-                            <div class="text-[10px] text-green-600 font-bold uppercase">Ставка</div>
-                            <div class="text-lg font-black text-green-600">${item.rate}</div>
-                        </div>
+                        <div class="bg-slate-50 rounded-lg p-2 text-center border border-slate-100"><div class="text-[10px] text-slate-400 font-bold uppercase">Сума</div><div class="text-lg font-black text-slate-800 tracking-tight">${item.sum}</div></div>
+                        <div class="bg-green-50 rounded-lg p-2 text-center border border-green-100"><div class="text-[10px] text-green-600 font-bold uppercase">Ставка</div><div class="text-lg font-black text-green-600">${item.rate}</div></div>
                     </div>
-
                     <div class="flex justify-between text-xs text-slate-500 font-bold px-2 mb-4 border-t border-slate-100 pt-3">
-                        <span>Вік: ${item.age}</span>
-                        <span>Термін: ${item.term}</span>
+                        <span>Вік: ${item.age}</span><span>Термін: ${item.term}</span>
                     </div>
-
                     <div class="mt-auto">
-                        <a href="${item.link}" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3.5 rounded-xl font-bold uppercase tracking-wider shadow-lg shadow-blue-600/20 transition-all active:scale-95">
-                            Отримати
-                        </a>
+                        <a href="${item.link}" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3.5 rounded-xl font-bold uppercase shadow-lg shadow-blue-600/20 transition-all active:scale-95">Отримати</a>
                         <div class="text-center mt-2 text-[10px] text-slate-400 mb-3">⏱ Рішення за ${item.time}</div>
-                        
                         <div class="border-t border-slate-100 pt-3 text-[9px] text-slate-400 text-center leading-tight">
-                            <p class="mb-1">📜 ${item.license}</p>
-                            <p>📞 <a href="tel:${item.phone.replace(/\s/g, '')}" class="hover:text-blue-500">${item.phone}</a></p>
+                            <p class="mb-1">📜 ${item.license}</p><p>📞 <a href="tel:${item.phone.replace(/\s/g, '')}" class="hover:text-blue-500">${item.phone}</a></p>
                         </div>
                     </div>
-                </div>
-                `;
+                </div>`;
                 container.insertAdjacentHTML('beforeend', html);
             });
         }
 
-        // 5. ПЕРЕМИКАННЯ ТАБІВ
-        function setTab(tabName) {
-            activeTab = tabName;
-            visibleCount = 9; 
-
-            // Оновлюємо класи кнопок
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                if (btn.id === `btn-${tabName}`) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-
+        function setTab(t) {
+            activeTab = t; visibleCount = 9;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.toggle('active', btn.id === `btn-${t}`));
             renderGrid();
         }
 
-        // 6. ЗАВАНТАЖИТИ ЩЕ
-        function loadMore() {
-            visibleCount += 9;
-            renderGrid();
-        }
+        function loadMore() { visibleCount += 9; renderGrid(); }
+        function openModal(id) { document.getElementById(`modal-${id}`).classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeModal(id) { document.getElementById(`modal-${id}`).classList.remove('open'); document.body.style.overflow = ''; }
 
-        // 7. ЗАПУСК ПРИ ЗАВАНТАЖЕННІ
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCalc();
-            renderGrid();
-        });
-
+        document.addEventListener('DOMContentLoaded', () => { updateCalc(); renderGrid(); });
     </script>
-    
 </body>
 </html>
