@@ -39,7 +39,7 @@
                 </div>
             </div>
             <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-100">
-                <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1"></span> 32 МФО
+                <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1"></span> 27 МФО
             </span>
         </header>
 
@@ -96,7 +96,7 @@
                         </thead>
                         <tbody class="divide-y">
                             <tr><td class="py-2 font-bold">CreditPlus</td><td>ТОВ "АВЕНТУС УКРАЇНА"</td><td>ФК № 870</td><td>690%</td></tr>
-                            <tr><td class="py-2 font-bold">Credit7</td><td>ТОВ "ЛІНЕУРА"</td><td>ФК № 1177</td><td>720%</td></tr>
+                            <tr><td class="py-2 font-bold">Credit7</td><td>ТОВ "ЛІНЕУРА УКРАЇНА"</td><td>ФК № 1177</td><td>720%</td></tr>
                             <tr><td class="py-2 font-bold">SelfieCredit</td><td>ТОВ "СЕЛФІ КРЕДИТ"</td><td>ФК № 2169</td><td>700%</td></tr>
                             <tr><td class="py-2 font-bold">Moneyveo</td><td>ТОВ "МАНІВЕО"</td><td>ФК № 1028</td><td>650%</td></tr>
                             <tr><td class="py-2 font-bold">MyCredit</td><td>ТОВ "1 БАНК"</td><td>ФК № 146</td><td>590%</td></tr>
@@ -123,12 +123,11 @@
     <button onclick="document.getElementById('faq').classList.remove('hidden')" class="fixed bottom-6 right-6 z-40 bg-slate-900 text-white w-12 h-12 rounded-full shadow-lg font-bold">?</button>
 
     <script>
-        // Векторні логотипи (Кодування виправлено!)
-        const svgCP = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 40'%3E%3Crect width='140' height='40' rx='8' fill='%231e3a8a'/%3E%3Ctext x='10' y='28' font-family='Arial' font-weight='900' font-size='24' fill='white'%3ECredit%3C/text%3E%3Ctext x='82' y='28' font-family='Arial' font-weight='900' font-size='24' fill='%23f97316'%3EPlus%3C/text%3E%3C/svg%3E";
-        
-        const svgC7 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 40'%3E%3Crect width='140' height='40' rx='8' fill='%23f0fdf4'/%3E%3Ctext x='15' y='28' font-family='Arial' font-weight='900' font-size='26' fill='%236d28d9'%3ECredit%3C/text%3E%3Ctext x='100' y='28' font-family='Arial' font-weight='900' font-size='28' fill='%2322c55e'%3E7%3C/text%3E%3C/svg%3E";
+        // Векторні логотипи
+        const svgCP = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='25' fill='%231e3a8a'%3E%3C/circle%3E%3Cpath d='M25 10 V40 M10 25 H40' stroke='%23f97316' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E";
+        const svgC7 = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'%3E%3Crect width='50' height='50' rx='12' fill='%2322c55e'%3E%3C/rect%3E%3Ctext x='12' y='38' font-family='Arial' font-weight='900' font-size='40' fill='white'%3E7%3C/text%3E%3C/svg%3E";
 
-        // Логотипи з мережі (Clearbit)
+        // Логотипи (Clearbit)
         const logos = {
             "Moneyveo": "https://logo.clearbit.com/moneyveo.ua",
             "MyCredit": "https://logo.clearbit.com/mycredit.ua",
@@ -145,43 +144,60 @@
             "ClickCredit": "https://logo.clearbit.com/clickcredit.ua",
             "ZeCredit": "https://logo.clearbit.com/zecredit.ua",
             "Money4YOU": "https://logo.clearbit.com/money4you.ua",
-            "AviraCredit": "https://logo.clearbit.com/aviracredit.com.ua",
+            "Avira": "https://logo.clearbit.com/aviracredit.com.ua",
             "BananaCredit": "https://logo.clearbit.com/bananacredit.com.ua",
             "CreditBox": "https://logo.clearbit.com/creditbox.in.ua",
             "FinBar": "https://logo.clearbit.com/finbar.com.ua",
-            "CreditMarket": "https://logo.clearbit.com/creditmarket.ua"
+            "CreditMarket": "https://logo.clearbit.com/creditmarket.ua",
+            "Monto": "https://logo.clearbit.com/monto.com.ua",
+            "Cly": "https://logo.clearbit.com/cly.com.ua",
+            "BeeCredit": "https://logo.clearbit.com/beecredit.com.ua",
+            "FirstCredit": "https://logo.clearbit.com/firstcredit.com.ua",
+            "Legko": "https://logo.clearbit.com/legkocredit.com.ua",
+            "Treba": "https://logo.clearbit.com/treba.credit",
+            "Lovilave": "https://logo.clearbit.com/lovilave.com.ua",
+            "Microcash": "https://logo.clearbit.com/microcash.com.ua",
+            "Limon": "https://logo.clearbit.com/limon-credit.com.ua",
+            "SunCredit": "https://logo.clearbit.com/suncredit.com.ua",
+            "Top1": "https://logo.clearbit.com/top1.com.ua",
+            "MisterMoney": "https://logo.clearbit.com/mrmoney.com.ua",
+            "Amigo": "https://logo.clearbit.com/amigo.com.ua",
+            "Credos": "https://logo.clearbit.com/credos.com.ua"
         };
 
         const db = [
             // ТОП-5
             { n: "CreditPlus", s: "25 000", r: "0.01%", t: "5 хв", c: "blue-600", cat: "top auto all", b: "🔥 #1", l: svgCP, link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
             { n: "Credit7", s: "15 000", r: "0.01%", t: "7 хв", c: "lime-500", cat: "top auto all", b: "⚡ ТОП", l: svgC7, link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
-            { n: "SelfieCredit", s: "20 000", r: "0.01%", t: "3 хв", c: "indigo-500", cat: "top new all", b: "📸", l: logos["SelfieCredit"] },
-            { n: "MyCredit", s: "18 000", r: "0.01%", t: "5 хв", c: "blue-700", cat: "top all", b: "👍", l: logos["MyCredit"] },
-            { n: "Moneyveo", s: "30 000", r: "0.01%", t: "2 хв", c: "green-600", cat: "top all", b: "24/7", l: logos["Moneyveo"] },
+            { n: "SelfieCredit", s: "20 000", r: "0.01%", t: "3 хв", c: "indigo-500", cat: "top new all", b: "📸", l: logos["SelfieCredit"], link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" },
+            { n: "MyCredit", s: "18 000", r: "0.01%", t: "5 хв", c: "blue-700", cat: "top all", b: "👍", l: logos["MyCredit"], link: "" },
+            { n: "Moneyveo", s: "30 000", r: "0.01%", t: "2 хв", c: "green-600", cat: "top all", b: "24/7", l: logos["Moneyveo"], link: "" },
 
             // НОВІ
-            { n: "Monto", s: "15 000", r: "0.01%", t: "5 хв", c: "blue-800", cat: "new all", b: "🆕", l: "" },
-            { n: "Pango", s: "12 000", r: "0.01%", t: "5 хв", c: "zinc-800", cat: "new auto all", b: "🤖 AI", l: logos["Pango"] },
-            { n: "Cly", s: "15 000", r: "0.01%", t: "5 хв", c: "cyan-500", cat: "new all", b: "🆕", l: "" },
-            { n: "BeeCredit", s: "10 000", r: "0.01%", t: "5 хв", c: "yellow-500", cat: "new all", b: "🐝", l: "" },
-            { n: "StarFin", s: "20 000", r: "0.01%", t: "10 хв", c: "blue-500", cat: "new all", b: "New", l: logos["StarFin"] },
-            { n: "FirstCredit", s: "20 000", r: "0.01%", t: "5 хв", c: "purple-600", cat: "new auto all", b: "Без фото", l: "" },
+            { n: "Monto", s: "15 000", r: "0.01%", t: "5 хв", c: "blue-800", cat: "new all", b: "🆕", l: logos["Monto"], link: "" },
+            { n: "Pango", s: "12 000", r: "0.01%", t: "5 хв", c: "zinc-800", cat: "new auto all", b: "🤖 AI", l: logos["Pango"], link: "" },
+            { n: "Cly", s: "15 000", r: "0.01%", t: "5 хв", c: "cyan-500", cat: "new all", b: "🆕", l: logos["Cly"], link: "" },
+            { n: "BeeCredit", s: "10 000", r: "0.01%", t: "5 хв", c: "yellow-500", cat: "new all", b: "🐝", l: logos["BeeCredit"], link: "" },
+            { n: "StarFin", s: "20 000", r: "0.01%", t: "10 хв", c: "blue-500", cat: "new all", b: "New", l: logos["StarFin"], link: "" },
+            { n: "FirstCredit", s: "20 000", r: "0.01%", t: "5 хв", c: "purple-600", cat: "new auto all", b: "Без фото", l: "", link: "" },
 
             // ІНШІ
-            { n: "CreditKasa", s: "20 000", r: "0.01%", t: "8 хв", c: "amber-700", cat: "all", b: "", l: logos["CreditKasa"] },
-            { n: "Miloan", s: "20 000", r: "0%", t: "5 хв", c: "orange-500", cat: "all", b: "", l: logos["Miloan"] },
-            { n: "E-Groshi", s: "30 000", r: "0.01%", t: "5 хв", c: "green-600", cat: "all", b: "", l: logos["E-Groshi"] },
-            { n: "Tengo", s: "25 000", r: "0.01%", t: "5 хв", c: "teal-600", cat: "all", b: "", l: logos["Tengo"] },
-            { n: "AlexCredit", s: "12 000", r: "0.01%", t: "10 хв", c: "slate-600", cat: "all", b: "", l: logos["AlexCredit"] },
-            { n: "ClickCredit", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-400", cat: "auto new all", b: "📱", l: logos["ClickCredit"] },
-            { n: "Treba", s: "10 000", r: "0.01%", t: "5 хв", c: "indigo-600", cat: "new all", b: "", l: "" },
-            { n: "Lovilave", s: "10 000", r: "0.01%", t: "5 хв", c: "rose-400", cat: "new all", b: "❤️", l: "" },
-            { n: "Microcash", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-500", cat: "auto all", b: "", l: "" },
-            { n: "SunCredit", s: "8 000", r: "0.01%", t: "10 хв", c: "orange-400", cat: "all", b: "", l: "" },
-            { n: "Avira", s: "15 000", r: "0.01%", t: "15 хв", c: "violet-600", cat: "all", b: "", l: logos["AviraCredit"] },
-            { n: "SOS Credit", s: "15 000", r: "0.01%", t: "5 хв", c: "red-500", cat: "all", b: "", l: logos["SOS Credit"] },
-            { n: "Credos", s: "20 000", r: "0.01%", t: "5 хв", c: "indigo-800", cat: "all", b: "", l: logos["Credos"] }
+            { n: "CreditKasa", s: "20 000", r: "0.01%", t: "8 хв", c: "amber-700", cat: "all", b: "", l: logos["CreditKasa"], link: "" },
+            { n: "Miloan", s: "20 000", r: "0%", t: "5 хв", c: "orange-500", cat: "all", b: "", l: logos["Miloan"], link: "" },
+            { n: "E-Groshi", s: "30 000", r: "0.01%", t: "5 хв", c: "green-600", cat: "all", b: "", l: logos["E-Groshi"], link: "" },
+            { n: "Tengo", s: "25 000", r: "0.01%", t: "5 хв", c: "teal-600", cat: "all", b: "", l: logos["Tengo"], link: "" },
+            { n: "Legko", s: "10 000", r: "0.01%", t: "5 хв", c: "sky-500", cat: "all", b: "", l: logos["Legko"], link: "" },
+            { n: "AlexCredit", s: "12 000", r: "0.01%", t: "10 хв", c: "slate-600", cat: "all", b: "", l: logos["AlexCredit"], link: "" },
+            { n: "ClickCredit", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-400", cat: "auto new all", b: "📱", l: logos["ClickCredit"], link: "" },
+            { n: "Treba", s: "10 000", r: "0.01%", t: "5 хв", c: "indigo-600", cat: "new all", b: "", l: logos["Treba"], link: "" },
+            { n: "Lovilave", s: "10 000", r: "0.01%", t: "5 хв", c: "rose-400", cat: "new all", b: "❤️", l: logos["Lovilave"], link: "" },
+            { n: "Microcash", s: "12 000", r: "0.01%", t: "3 хв", c: "blue-500", cat: "auto all", b: "", l: logos["Microcash"], link: "" },
+            { n: "SunCredit", s: "8 000", r: "0.01%", t: "10 хв", c: "orange-400", cat: "all", b: "", l: logos["SunCredit"], link: "" },
+            { n: "Avira", s: "15 000", r: "0.01%", t: "15 хв", c: "violet-600", cat: "all", b: "", l: logos["Avira"], link: "" },
+            { n: "MisterMoney", s: "10 000", r: "0.01%", t: "5 хв", c: "green-600", cat: "all", b: "", l: logos["MisterMoney"], link: "" },
+            { n: "SOS Credit", s: "15 000", r: "0.01%", t: "5 хв", c: "red-500", cat: "all", b: "", l: logos["SOS Credit"], link: "" },
+            { n: "Amigo", s: "15 000", r: "0.01%", t: "10 хв", c: "green-700", cat: "all", b: "", l: logos["Amigo"], link: "" },
+            { n: "Credos", s: "20 000", r: "0.01%", t: "5 хв", c: "indigo-800", cat: "all", b: "", l: logos["Credos"], link: "" }
         ];
 
         let curCat = 'top';
@@ -205,13 +221,11 @@
             const view = flt.slice(0, lim);
 
             view.forEach((o, i) => {
-                // Лого: якщо є посилання/SVG - ставимо його, якщо ні - літера
-                // Додана логіка onerror - якщо картинка не вантажиться, показує літеру
                 let img;
                 if (o.l) {
-                    img = `<img src="${o.l}" class="w-14 h-14 object-contain rounded-xl" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-xl font-black text-${o.c} border border-slate-100\\'>${o.n[0]}</div>'">`;
+                    img = `<img src="${o.l}" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'w-full h-full flex items-center justify-center text-xl font-black text-${o.c}\\'>${o.n[0]}</div>'">`;
                 } else {
-                    img = `<div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-xl font-black text-${o.c} border border-slate-100">${o.n[0]}</div>`;
+                    img = `<div class="w-full h-full flex items-center justify-center text-xl font-black text-${o.c}">${o.n[0]}</div>`;
                 }
                 
                 let bg = o.b ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] px-2 py-1 rounded-bl-lg font-bold shadow-sm">${o.b}</div>` : '';
@@ -222,7 +236,7 @@
                 <div class="bg-white p-5 rounded-3xl border ${brd} relative hover-card flex flex-col h-full card-shadow">
                     ${bg}
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 shrink-0 flex items-center justify-center bg-white rounded-xl border border-slate-100 p-1 overflow-hidden">
+                        <div class="w-14 h-14 shrink-0 bg-white rounded-xl border border-slate-100 p-1 overflow-hidden flex items-center justify-center shadow-sm">
                             ${img}
                         </div>
                         <div>
@@ -266,4 +280,4 @@
         window.onload = () => { calc(); render(); };
     </script>
 </body>
-    </html>
+                                </html>
