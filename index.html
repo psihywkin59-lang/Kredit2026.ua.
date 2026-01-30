@@ -3,214 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit 2026 — Моніторинг кредитів онлайн</title>
+    <title>SmartCredit 2026 — Розумний підбір кредиту</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Geologica', sans-serif; background: #f8fafc; }
-        .card-shadow { box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05); }
-        .btn-gradient { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.3s ease; }
-        .btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+        body { font-family: 'Geologica', sans-serif; background: #F8FAFC; color: #0f172a; }
         
-        /* Стили для FAQ */
+        /* Ефекти та анімації */
+        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
+        .hover-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+
+        /* Стилі для ТОП-3 */
+        .top-1-border { border: 2px solid #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+        .top-2-border { border: 2px solid #94a3b8; }
+        .top-3-border { border: 2px solid #b45309; }
+
+        /* Кнопка CTA */
+        .btn-cta { 
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); 
+            transition: all 0.2s ease;
+        }
+        .btn-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+        /* Таби категорій */
+        .tab-btn { transition: all 0.2s; }
+        .tab-btn.active { background-color: #0f172a; color: white; border-color: #0f172a; }
+
+        /* Кастомний Range Slider */
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
+            background: #2563eb; cursor: pointer; margin-top: -8px; 
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: #e2e8f0; border-radius: 2px;
+        }
+
+        /* Анімація FAQ */
         #faq-box { display: none; }
         .faq-active #faq-box { display: block; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Приховати за замовчуванням */
+        .hidden-offer { display: none !important; }
     </style>
 </head>
-<body class="p-4 md:p-10">
-    <div class="max-w-7xl mx-auto">
-        <!-- Header -->
-        <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4 bg-slate-900 p-8 rounded-[40px] text-white">
-            <div>
-                <h1 class="text-3xl font-black italic uppercase tracking-tighter">Smart<span class="text-blue-400">Credit</span></h1>
-                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Панель фінансового моніторингу</p>
-            </div>
-            <div class="flex gap-3">
-                <span class="bg-blue-500/20 text-blue-300 text-[10px] font-black px-4 py-2 rounded-full border border-blue-500/30 uppercase">28 Офферів</span>
-                <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-black px-4 py-2 rounded-full border border-emerald-500/30 uppercase">Оновлено: Сьогодні</span>
-            </div>
-        </div>
+<body class="antialiased pb-20">
 
-        <!-- Кредитний Калькулятор (SEO + Юзабіліті) -->
-        <div class="mb-10 bg-white p-8 rounded-[40px] card-shadow border border-slate-100">
-            <h2 class="text-xl font-black uppercase tracking-tight mb-6 text-slate-800 flex items-center gap-2">
-                <span class="w-2 h-6 bg-blue-600 rounded-full"></span> Підберіть вигідні умови
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4 bg-white p-6 rounded-[2rem] border border-slate-100 card-shadow">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-black italic text-xl">S</div>
                 <div>
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Сума: <span id="sumVal" class="text-blue-600 text-lg ml-2">5 000</span> грн</label>
-                    <input type="range" id="sumRange" min="500" max="30000" step="100" value="5000" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 mb-8" oninput="calc()">
+                    <h1 class="text-xl font-black uppercase tracking-tight text-slate-900 leading-none">Smart<span class="text-blue-600">Credit</span></h1>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Каталог 2026</p>
+                </div>
+            </div>
+            <div class="flex gap-2">
+                <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-100 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> 30 МФО
+                </span>
+                <span class="px-3 py-1 bg-slate-50 text-slate-600 text-xs font-bold rounded-full border border-slate-100">Оновлено сьогодні</span>
+            </div>
+        </header>
+
+        <section class="mb-12 bg-slate-900 text-white p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden shadow-2xl">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 blur-[120px] opacity-30 pointer-events-none"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-3xl font-black uppercase italic tracking-tight">Розрахуйте <br><span class="text-blue-400">найвигідніші умови</span></h2>
                     
-                    <label class="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Термін: <span id="daysVal" class="text-blue-600 text-lg ml-2">10</span> днів</label>
-                    <input type="range" id="daysRange" min="1" max="30" step="1" value="10" class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="calc()">
-                </div>
-                <div class="bg-slate-900 rounded-3xl p-6 text-white flex flex-col justify-center relative overflow-hidden">
-                    <div class="relative z-10">
-                        <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-1">Разом до повернення:</p>
-                        <p class="text-4xl font-black"><span id="total">5005.00</span> <span class="text-lg font-medium text-slate-400">грн</span></p>
-                        <p class="text-[9px] text-slate-500 mt-4 leading-relaxed border-t border-slate-800 pt-3 italic uppercase font-bold">
-                            РРПС: від 3.65% до 660 520% річних. Дані розраховані за ставкою 0.01%/день.
-                        </p>
-                    </div>
-                    <div class="absolute -right-4 -bottom-4 text-white/5 font-black text-6xl italic uppercase">Calculator</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Grid Container -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <script>
-                const offers = [
-                    { name: "Moneyveo", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "2 хв", color: "pink-500" },
-                    { name: "CreditPlus", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "blue-600" },
-                    { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-600" },
-                    { name: "Credit7", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "7 хв", color: "blue-600" },
-                    { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-600" },
-                    { name: "StarFin", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", color: "blue-600" },
-                    { name: "Miloan", sum: "20 000", rate: "0%", term: "15 днів", age: "18-65", time: "5 хв", color: "orange-500" },
-                    { name: "E-Groshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "5 хв", color: "blue-600" },
-                    { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дней", age: "18-75", time: "8 хв", color: "blue-600" },
-                    { name: "Tengo", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "green-600" },
-                    { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "blue-600" },
-                    { name: "SlonCredit", sum: "30 000", rate: "VIP", term: "12 міс", age: "18-65", time: "15 хв", color: "blue-600" },
-                    { name: "Швидко Гроші", sum: "15 000", rate: "0.01%", term: "14 днів", age: "18-70", time: "10 хв", color: "blue-600" },
-                    { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-600" },
-                    { name: "Pango", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "blue-600" },
-                    { name: "ClickCredit", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-600" },
-                    { name: "ZeCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "blue-600" },
-                    { name: "BananaCredit", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-60", time: "5 хв", color: "yellow-500" },
-                    { name: "AviraCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "15 хв", color: "blue-600" },
-                    { name: "Money4YOU", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-600" },
-                    { name: "EasyCash", sum: "8 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", color: "blue-600" },
-                    { name: "CreditBox", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "blue-600" },
-                    { name: "Credos", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "blue-600" },
-                    { name: "KF.UA", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-70", time: "15 хв", color: "blue-600" },
-                    { name: "Microcash", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "3 хв", color: "blue-600" },
-                    { name: "FinBar", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", color: "blue-600" },
-                    { name: "AnyDayCash", sum: "10 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "5 хв", color: "blue-600" },
-                    { name: "CreditMarket", sum: "100 000", rate: "Фікс", term: "36 міс", age: "21-70", time: "30 хв", color: "slate-900" }
-                ];
-
-                offers.forEach((offer, index) => {
-                    document.write(`
-                        <div class="bg-white rounded-[32px] p-6 border border-slate-100 card-shadow group transition-all hover:scale-[1.02] flex flex-col">
-                            <div class="flex items-center gap-4 mb-6">
-                                <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center font-black text-blue-600 text-xl border border-slate-100">
-                                    ${offer.name.charAt(0)}
-                                </div>
-                                <div>
-                                    <h3 class="font-black text-slate-800 leading-tight">${offer.name}</h3>
-                                    <span class="text-[9px] text-slate-400 font-black uppercase tracking-widest">ID: 00${index + 100}</span>
-                                </div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-2">
+                                <span class="text-slate-400">Я хочу отримати:</span>
+                                <span class="text-2xl text-white"><span id="sumVal">5 000</span> грн</span>
                             </div>
-
-                            <div class="grid grid-cols-2 gap-4 mb-6 grow">
-                                <div class="bg-slate-50/50 p-3 rounded-2xl">
-                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1">Сума до</p>
-                                    <p class="text-base font-black text-slate-900">${offer.sum} ₴</p>
-                                </div>
-                                <div class="bg-slate-50/50 p-3 rounded-2xl text-emerald-500">
-                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1">Ставка</p>
-                                    <p class="text-base font-black">${offer.rate}</p>
-                                </div>
-                                <div>
-                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1 px-3">Термін</p>
-                                    <p class="text-xs font-bold text-slate-700 px-3">${offer.term}</p>
-                                </div>
-                                <div>
-                                    <p class="text-[8px] text-slate-400 font-bold uppercase mb-1 px-3">Вік</p>
-                                    <p class="text-xs font-bold text-slate-700 px-3">${offer.age} р.</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center justify-between pt-5 border-t border-slate-100 mt-auto">
-                                <div class="flex items-center gap-1.5 text-slate-400">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    <span class="text-[10px] font-black uppercase">${offer.time}</span>
-                                </div>
-                                <a href="#" class="btn-gradient text-white text-[10px] font-black uppercase px-6 py-3 rounded-xl tracking-wider">Отримати</a>
-                            </div>
+                            <input type="range" id="sumRange" min="500" max="30000" step="100" value="5000" class="w-full" oninput="calc()">
                         </div>
-                    `);
-                });
-            </script>
-        </div>
+                        
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-2">
+                                <span class="text-slate-400">На термін:</span>
+                                <span class="text-2xl text-white"><span id="daysVal">10</span> днів</span>
+                            </div>
+                            <input type="range" id="daysRange" min="1" max="30" step="1" value="10" class="w-full" oninput="calc()">
+                        </div>
+                    </div>
+                </div>
 
-        <!-- SEO-статьи и важная информация -->
-        <div class="mt-20 space-y-10">
-            <div class="bg-slate-900 rounded-[40px] p-10 text-white">
-                <h2 class="text-2xl font-black uppercase italic mb-8 tracking-tighter">Наслідки неплати за кредитом</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-slate-400 text-sm leading-relaxed">
-                    <p>Несвоєчасне погашення мікрокредиту призводить до негативних фінансових наслідків. По-перше, згідно зі ст. 625 ЦК України, нараховується пеня та штрафи, які можуть збільшити суму боргу у декілька разів. По-друге, ваша кредитна історія (УБКІ) буде зіпсована, що унеможливить отримання позик у майбутньому.</p>
-                    <p>Кредитори мають право передати борг колекторським компаніям або звернутися до суду для примусового стягнення коштів через виконавчу службу, що може призвести до арешту рахунків.</p>
+                <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-[2rem] p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">До повернення:</p>
+                            <div class="text-4xl font-black" id="total">5005.00 <span class="text-lg text-slate-400 font-medium">грн</span></div>
+                        </div>
+                        <div class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-lg">-99%</div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between border-b border-white/10 pb-3">
+                            <span class="text-slate-400">Відсотки (стандарт):</span>
+                            <span class="line-through text-slate-500 decoration-red-500" id="standardCost">1000 грн</span>
+                        </div>
+                        <div class="flex justify-between pt-1">
+                            <span class="text-slate-400">Відсотки (акція):</span>
+                            <span class="text-green-400 font-bold" id="promoCost">5 грн</span>
+                        </div>
+                        <div class="bg-green-500/20 text-green-300 p-3 rounded-xl text-xs font-bold mt-4 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            Ви економите: <span id="saving">995</span> грн
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-8 rounded-[32px] border border-slate-100 card-shadow">
-                    <h3 class="font-black text-slate-800 uppercase text-xs mb-3 tracking-widest">Про реальну ставку (РРПС)</h3>
-                    <p class="text-[11px] text-slate-500 leading-relaxed">Реальна річна процентна ставка враховує всі витрати за кредитом. Для мікрозаймів в Україні у 2026 році вона може становити від 3,65% (для пільгових періодів) до 660 520% річних.</p>
-                </div>
-                <div class="bg-white p-8 rounded-[32px] border border-slate-100 card-shadow">
-                    <h3 class="font-black text-slate-800 uppercase text-xs mb-3 tracking-widest">Як обрати кредит?</h3>
-                    <p class="text-[11px] text-slate-500 leading-relaxed">Звертайте увагу на термін акційної ставки. Більшість МФО пропонують 0.01% лише на перший кредит до 10-30 днів. Після цього терміну ставка стає стандартною (близько 1-2% на день).</p>
-                </div>
-                <div class="bg-white p-8 rounded-[32px] border border-slate-100 card-shadow">
-                    <h3 class="font-black text-slate-800 uppercase text-xs mb-3 tracking-widest">Вимоги до позичальника</h3>
-                    <p class="text-[11px] text-slate-500 leading-relaxed">Для оформлення достатньо мати паспорт України, ІПН, мобільний телефон та активну банківську картку. Вік позичальника зазвичай має бути від 18 до 70 років.</p>
-                </div>
+        <div class="flex flex-wrap gap-2 mb-8" id="tabsContainer">
+            <button onclick="filterOffers('all')" class="tab-btn active px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">Всі МФО</button>
+            <button onclick="filterOffers('top')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">🔥 Топ видача</button>
+            <button onclick="filterOffers('auto')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">⚡ Без дзвінків</button>
+            <button onclick="filterOffers('new')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">🆕 Нові</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="offersGrid">
             </div>
+
+        <div class="mt-12 text-center" id="loadMoreContainer">
+            <button onclick="loadMore()" class="bg-white border border-slate-200 text-slate-700 font-bold px-8 py-4 rounded-xl hover:bg-slate-50 transition-colors shadow-sm w-full md:w-auto">
+                Показати ще пропозиції
+            </button>
         </div>
 
-        <!-- Footer -->
-        <div class="mt-12 text-center text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em] pb-10">
-            © 2025-2026 SmartCredit System • Всі права захищено • Дані оновлюються в реальному часі
-        </div>
+        <footer class="mt-20 pt-10 border-t border-slate-200 text-center">
+            <p class="text-xs text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed mb-4">
+                Інформація на сайті не є публічною офертою. Сервіс не видає кредити, а лише підбирає пропозиції. Реальна річна відсоткова ставка (РРПС) може становити від 3,5% до 760%.
+            </p>
+            <p class="text-[10px] font-black uppercase text-slate-300 tracking-[0.2em]">© 2026 SmartCredit</p>
+        </footer>
+
     </div>
 
-    <!-- Плавающее FAQ -->
     <div id="faq-root" class="fixed bottom-6 right-6 z-[100]">
-        <div id="faq-box" class="bg-white card-shadow rounded-[32px] p-6 w-80 mb-4 border border-slate-100 text-slate-900 shadow-2xl">
-            <h4 class="font-black uppercase text-[10px] text-blue-600 mb-4 tracking-widest border-b pb-3">Швидка допомога</h4>
-            <div class="space-y-4">
-                <div>
-                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1 leading-tight">Чи можна отримати кредит без відсотків?</p>
-                    <p class="text-[11px] font-medium text-slate-600">Так, для нових клієнтів діє ставка 0.01%. Це майже безкоштовно.</p>
-                </div>
-                <div>
-                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1 leading-tight">Що робити при простроченні?</p>
-                    <p class="text-[11px] font-medium text-slate-600 text-red-500 font-bold underline cursor-pointer">Обов'язково оформіть пролонгацію, щоб уникнути штрафів!</p>
-                </div>
-                <div>
-                    <p class="text-[10px] font-black uppercase text-slate-400 mb-1 leading-tight">Яка реальна ставка?</p>
-                    <p class="text-[11px] font-medium text-slate-600">РРПС залежить від МФО, дивіться паспорт кредиту перед підписанням СМС-кодом.</p>
-                </div>
-            </div>
+        <div id="faq-box" class="bg-white card-shadow rounded-2xl p-5 w-72 mb-4 border border-slate-100 text-slate-900 shadow-2xl">
+            <h4 class="font-bold text-xs text-blue-600 mb-3 uppercase tracking-wider">Підказка</h4>
+            <p class="text-xs text-slate-600 leading-relaxed font-medium">Щоб гарантовано отримати гроші, подайте заявки в <span class="text-slate-900 font-bold">3-4 різні компанії</span> з топу списку.</p>
         </div>
-        <button onclick="toggleFaq()" class="bg-slate-900 text-white w-16 h-16 rounded-full card-shadow flex items-center justify-center font-black hover:scale-110 transition-all text-xl border-4 border-white shadow-xl">
-            ?
-        </button>
+        <button onclick="toggleFaq()" class="bg-slate-900 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center font-bold text-xl hover:bg-slate-800 transition-colors">?</button>
     </div>
 
     <script>
-        function calc() {
-            const sum = document.getElementById('sumRange').value;
-            const days = document.getElementById('daysRange').value;
-            document.getElementById('sumVal').innerText = Number(sum).toLocaleString();
-            document.getElementById('daysVal').innerText = days;
+        // ДАНІ (30 шт.)
+        // cat: категорії (top, auto, new, all)
+        // badge: текст стікера або null
+        // logo: шлях до картинки (наприклад 'img/creditplus.png')
+        // link: реферальне посилання
+        const offers = [
+            // ТОП-3 (Виділені)
+            { 
+                name: "CreditPlus", 
+                sum: "25 000", 
+                rate: "0.01%", 
+                term: "30 днів", 
+                age: "18-65", 
+                time: "5 хв", 
+                color: "blue-600", 
+                cat: ["top", "auto"], 
+                badge: "🔥 Лідер ринку",
+                logo: "img/creditplus.png", // Переконайтеся, що файл існує
+                link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" 
+            },
+            { name: "Credit7", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "7 хв", color: "lime-500", cat: ["top", "auto"], badge: "⚡ Миттєво" },
+            { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "indigo-500", cat: ["top", "new"], badge: "📸 Через селфі" },
             
-            // Розрахунок під 0.01% на день
-            const total = parseFloat(sum) + (sum * 0.0001 * days);
-            document.getElementById('total').innerText = total.toLocaleString(undefined, {minimumFractionDigits: 2});
-        }
-
-        function toggleFaq() {
-            document.getElementById('faq-root').classList.toggle('faq-active');
-        }
-
-        // Ініціалізація
-        window.onload = calc;
-    </script>
-</body>
-</html>
+            // Основний список
+            { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-700", cat: ["top"], badge: "👍 Надійний" },
+            { name: "CreditKasa",
