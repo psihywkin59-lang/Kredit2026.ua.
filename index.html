@@ -33,7 +33,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #99c7ae;
-            height: 375px; 
+            height: 385px; 
         }
         .offer-card:hover { 
             transform: translateY(-8px);
@@ -52,28 +52,30 @@
         .rating-stars { color: #fbbf24; font-size: 14px; margin: 5px 0; text-align: center; }
         .approval-rate { font-size: 11px; font-weight: 700; color: #059669; background: #f0fdf4; padding: 2px 8px; border-radius: 6px; display: inline-block; }
 
+        /* АКЦЕНТОВАНІ КНОПКИ КРЕДИТІВ */
         .btn-green { 
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white; font-weight: 900; padding: 14px; border-radius: 16px; 
-            text-align: center; text-transform: uppercase; font-size: 13px; 
+            color: white; font-weight: 900; padding: 18px 14px; border-radius: 18px; 
+            text-align: center; text-transform: uppercase; font-size: 15px; 
             letter-spacing: 0.05em; transition: 0.3s; cursor: pointer; border: none; width: 100%;
         }
         .btn-green:hover { filter: brightness(1.1); transform: scale(1.03); }
 
         .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 10px; font-weight: 700; }
 
-        /* ТАБИ */
-        .tab-btn { padding: 12px 20px; font-weight: 900; color: #064e3b; border-radius: 14px; transition: 0.3s; font-size: 12px; text-transform: uppercase; white-space: nowrap; }
-        .tab-btn.active { background: #059669; color: #ffffff; box-shadow: 0 8px 15px rgba(5, 150, 105, 0.2); }
+        /* ЗБІЛЬШЕНІ ВКЛАДКИ КРЕДИТІВ */
+        .tab-btn { padding: 18px 32px; font-weight: 900; color: #064e3b; border-radius: 20px; transition: 0.3s; font-size: 15px; text-transform: uppercase; white-space: nowrap; border: 1px solid #99c7ae; background: rgba(255,255,255,0.5); }
+        .tab-btn.active { background: #059669; color: #ffffff; border-color: #059669; box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3); }
 
-        .info-main-btn { padding: 16px 40px; font-weight: 900; background: #ffffff; border: 2px solid #059669; color: #059669; border-radius: 20px; transition: 0.3s; width: 100%; max-width: 300px; margin-bottom: 20px; }
+        /* ЗМЕНШЕНА КНОПКА ІНФО */
+        .info-main-btn { padding: 10px 24px; font-weight: 800; background: #ffffff; border: 1px solid #059669; color: #059669; border-radius: 14px; transition: 0.3s; font-size: 12px; }
         .info-main-btn.active { background: #059669; color: #ffffff; }
 
-        /* FAQ */
-        .faq-box { background: #ffffff; border-radius: 35px; overflow: hidden; border: 1px solid #99c7ae; }
-        .faq-trigger { width: 100%; text-align: left; padding: 20px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; border-bottom: 1px solid #f1f5f9; }
-        .faq-content { padding: 0 20px 20px; color: #475569; font-size: 14px; line-height: 1.6; display: none; }
-        .faq-icon { background: #10b981; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        /* ЗМЕНШЕНИЙ FAQ */
+        .faq-box { background: #ffffff; border-radius: 24px; overflow: hidden; border: 1px solid #99c7ae; max-width: 600px; margin: 0 auto; }
+        .faq-trigger { width: 100%; text-align: left; padding: 16px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; border-bottom: 1px solid #f1f5f9; font-size: 13px; }
+        .faq-content { padding: 0 16px 16px; color: #475569; font-size: 12px; line-height: 1.5; display: none; }
+        .faq-icon { background: #10b981; color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
 
         .seo-section { background: rgba(255,255,255,0.8); border-radius: 40px; padding: 40px; border: 1px solid #99c7ae; }
         
@@ -85,7 +87,7 @@
     <header class="bg-white/90 backdrop-blur-lg border-b border-emerald-200 py-4 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-black italic">S</div>
+                <div class="w-10 h-10 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-black italic shadow-lg">S</div>
                 <span class="text-2xl font-black text-emerald-900 tracking-tighter uppercase">SmartCredit</span>
             </div>
             <div class="hidden md:block">
@@ -95,11 +97,11 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4 mt-8">
-        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-8 shadow-2xl max-w-4xl mx-auto">
+        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-10 shadow-2xl max-w-4xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="space-y-8 text-center lg:text-left">
                     <div>
-                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Сума</span> <span class="text-4xl font-black text-emerald-900"><span id="cSum">10 000</span> ₴</span></div>
+                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Бажана сума</span> <span class="text-4xl font-black text-emerald-900"><span id="cSum">10 000</span> ₴</span></div>
                         <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()" class="w-full">
                     </div>
                     <div>
@@ -110,14 +112,15 @@
                 <div class="bg-emerald-950 rounded-[30px] p-8 text-center text-white border-b-8 border-emerald-600">
                     <div class="text-emerald-400 uppercase text-[10px] font-black mb-1">До повернення</div>
                     <div class="text-6xl font-black mb-4"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Ставка 0.01% включена</div>
+                    <div class="text-[11px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-900/50 px-4 py-2 rounded-lg inline-block">Ставка 0.01% активована</div>
                 </div>
             </div>
         </div>
 
-        <div class="text-center mb-6">
-            <button id="b-info" onclick="setTab('info')" class="info-main-btn active uppercase tracking-widest">ℹ️ ІНФОРМАЦІЯ ТА FAQ</button>
-            <div class="flex bg-emerald-950/10 p-1.5 rounded-2xl w-fit mx-auto overflow-x-auto no-scrollbar">
+        <div class="text-center mb-10">
+            <button id="b-info" onclick="setTab('info')" class="info-main-btn active uppercase tracking-widest mb-6">ℹ️ ІНФОРМАЦІЯ ТА FAQ</button>
+            
+            <div class="flex gap-4 justify-center flex-wrap">
                 <button id="b-top" onclick="setTab('top')" class="tab-btn">🔥 ТОП ВИДАЧА</button>
                 <button id="b-all" onclick="setTab('all')" class="tab-btn">УСІ КРЕДИТИ</button>
                 <button id="b-new" onclick="setTab('new')" class="tab-btn">✨ НОВИНКИ</button>
@@ -127,20 +130,20 @@
         <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-24 hidden"></div>
 
         <div id="info-content" class="space-y-12 mb-24">
-            <div class="seo-section">
+            <div class="seo-section shadow-sm">
                 <h1 class="text-3xl font-black text-emerald-950 mb-6 uppercase tracking-tighter">Кредит онлайн на картку: актуальні умови <span class="js-month-now"></span></h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-700">
-                    <p>На нашому порталі SmartCredit представлені всі ліцензовані МФО України. У <strong><span class="js-month-now"></span></strong> році нові клієнти можуть отримати позику під 0.01%. Це кращий спосіб вирішити фінансові питання без переплат.</p>
-                    <p>Для 100% схвалення рекомендуємо подавати заявки одночасно у 3-4 компанії з розділу "ТОП". Це гарантує отримання коштів протягом 15 хвилин на будь-яку банківську картку.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm leading-relaxed text-slate-700">
+                    <p>Наш сервіс SmartCredit допомагає знайти найвигідніші пропозиції від мікрофінансових організацій України. У <strong><span class="js-month-now"></span></strong> році лідери ринку пропонують позики під 0.01% для нових клієнтів. Це ідеальний спосіб отримати фінансову підтримку без зайвих переплат.</p>
+                    <p>Для гарантованого схвалення ми рекомендуємо подавати заявки одразу у 3-4 МФО. Це підвищує шанси на отримання грошей до 99%, навіть якщо ваша кредитна історія не є ідеальною.</p>
                 </div>
             </div>
 
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl font-black text-emerald-950 mb-6 text-center uppercase tracking-tighter">Питання та відповіді</h2>
-                <div class="faq-box shadow-xl">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-xl font-black text-emerald-950 mb-6 text-center uppercase tracking-tighter opacity-80">Популярні запитання</h2>
+                <div class="faq-box shadow-lg">
                     <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
-                        <div class="faq-content">Це акція для нових клієнтів. Оберіть оффер з плашкою "0.01%" та зареєструйтеся вперше.</div>
+                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи реально отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
+                        <div class="faq-content">Так, це акція для залучення нових клієнтів. Оберіть оффер з плашкою "0.01%" та зареєструйтеся вперше.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-trigger" onclick="toggleFaq(this)"><span>Які документи потрібні?</span> <span class="faq-icon">?</span></button>
@@ -156,8 +159,8 @@
     </main>
 
     <footer class="bg-white border-t border-emerald-100 pt-16 pb-10">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | All Rights Reserved</div>
+        <div class="max-w-6xl mx-auto px-4 text-center text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">
+            © 2026 SmartCredit | All Rights Reserved
         </div>
     </footer>
 
