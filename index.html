@@ -8,46 +8,67 @@
     <style>
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f8fafc; color: #334155; }
         
-        /* Стиль карток EasyZaim */
         .offer-card { 
             background: #ffffff; 
             border: 1px solid #e2e8f0; 
-            border-radius: 12px; 
-            padding: 20px; 
+            border-radius: 16px; 
+            padding: 24px; 
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
         }
         .offer-card:hover { 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
             border-color: #cbd5e1;
+            transform: translateY(-2px);
         }
 
-        .logo-box {
-            width: 80px;
-            height: 50px;
+        /* Великий контейнер для логотипу */
+        .logo-wrapper {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 20px;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
+            background: #fff;
+            border-radius: 8px;
         }
-        .logo-img {
-            max-width: 100%;
-            max-height: 100%;
+
+        .logo-main {
+            max-width: 180px;
+            max-height: 80px;
             object-fit: contain;
+            z-index: 2;
+        }
+
+        /* Назва поверх лого (видима лише якщо картинка не завантажилась або як бекап) */
+        .logo-fallback-text {
+            position: absolute;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #1e293b;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-blue {
             background: #2563eb;
             color: white;
             font-weight: 700;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             text-align: center;
             display: block;
             width: 100%;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            text-transform: uppercase;
         }
-        .btn-blue:hover { background: #1d4ed8; }
+        .btn-blue:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
 
         .tab-btn { padding-bottom: 12px; font-weight: 600; color: #94a3b8; transition: all 0.2s; border-bottom: 2px solid transparent; }
         .tab-btn.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
@@ -61,82 +82,74 @@
     <header class="bg-white border-b border-slate-200 py-4 mb-8 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-9 h-9 bg-blue-600 rounded flex items-center justify-center text-white font-black italic">S</div>
-                <span class="text-xl font-bold tracking-tight text-slate-900">SmartCredit</span>
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black italic shadow-sm">S</div>
+                <span class="text-2xl font-bold tracking-tight text-slate-900">SmartCredit</span>
             </div>
-            <div class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">30 ОФЕРІВ ОНЛАЙН</div>
+            <div class="text-xs font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-full border border-blue-100">30 ОФЕРІВ ОНЛАЙН</div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4">
         
-        <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-10 mb-10">
+        <div class="bg-white rounded-3xl border border-slate-200 p-8 md:p-12 mb-12 shadow-sm">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
+                <div class="space-y-10">
                     <div>
-                        <div class="flex justify-between font-bold mb-4"><span>Сума</span> <span class="text-xl text-blue-600"><span id="cSum">10 000</span> ₴</span></div>
+                        <div class="flex justify-between font-bold mb-4 text-lg"><span>Сума</span> <span class="text-2xl text-blue-600"><span id="cSum">10 000</span> ₴</span></div>
                         <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
                     </div>
                     <div>
-                        <div class="flex justify-between font-bold mb-4"><span>Термін</span> <span class="text-xl text-blue-600"><span id="cDays">15</span> днів</span></div>
+                        <div class="flex justify-between font-bold mb-4 text-lg"><span>Термін</span> <span class="text-2xl text-blue-600"><span id="cDays">15</span> днів</span></div>
                         <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
                     </div>
                 </div>
-                <div class="bg-slate-50 rounded-2xl p-8 text-center border border-slate-100">
-                    <div class="text-slate-400 uppercase text-xs font-bold mb-2 tracking-widest">Ви повертаєте</div>
-                    <div class="text-5xl font-black text-slate-900 mb-2"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="text-green-600 font-bold">Ставка 0.01% схвалена!</div>
+                <div class="bg-slate-50 rounded-3xl p-10 text-center border border-slate-100 shadow-inner">
+                    <div class="text-slate-400 uppercase text-xs font-black mb-3 tracking-widest">Ви повертаєте</div>
+                    <div class="text-6xl font-black text-slate-900 mb-3 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
+                    <div class="text-green-600 font-bold text-lg">Ставка 0.01% схвалена!</div>
                 </div>
             </div>
         </div>
 
-        <div class="flex gap-8 border-b border-slate-200 mb-8 overflow-x-auto">
-            <button id="b-top" onclick="setTab('top')" class="tab-btn active uppercase text-xs tracking-wider">Топ видача</button>
-            <button id="b-all" onclick="setTab('all')" class="tab-btn uppercase text-xs tracking-wider">Всі кредити</button>
-            <button id="b-new" onclick="setTab('new')" class="tab-btn uppercase text-xs tracking-wider">Новинки</button>
+        <div class="flex gap-10 border-b border-slate-200 mb-10 overflow-x-auto no-scrollbar">
+            <button id="b-top" onclick="setTab('top')" class="tab-btn active uppercase text-xs font-black tracking-widest">Топ видача</button>
+            <button id="b-all" onclick="setTab('all')" class="tab-btn uppercase text-xs font-black tracking-widest">Всі кредити</button>
+            <button id="b-new" onclick="setTab('new')" class="tab-btn uppercase text-xs font-black tracking-widest">Новинки</button>
         </div>
 
-        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-        <div class="mt-12 text-center">
-            <button id="more" onclick="load()" class="hidden border border-slate-300 px-10 py-3 rounded-lg font-bold text-slate-600 hover:bg-white transition">Показати ще</button>
+        <div class="mt-16 text-center">
+            <button id="more" onclick="load()" class="hidden border-2 border-slate-200 px-12 py-4 rounded-xl font-black text-slate-500 hover:bg-white hover:border-blue-200 hover:text-blue-600 transition-all uppercase text-sm tracking-widest">Показати ще пропозиції</button>
         </div>
     </main>
 
-    <footer class="mt-20 border-t border-slate-200 pt-10">
+    <footer class="mt-24 border-t border-slate-200 pt-16 bg-slate-50/50">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="bg-white border border-slate-200 rounded-xl p-6 mb-8 text-[11px] text-slate-400 leading-relaxed">
-                <p class="mb-4"><strong>ПРО НАС:</strong> SmartCredit 2026 є виключно інформаційним сервісом. Ми не є фінансовою установою, банком або кредитором. Ми допомагаємо порівняти умови різних МФО України для вашої зручності. Всі рішення про видачу кредиту приймаються безпосередньо компаніями, на сайти яких ви переходите.</p>
-                <p><strong>ЗАСТЕРЕЖЕННЯ:</strong> Несвоєчасне виконання зобов'язань за кредитним договором може призвести до нарахування штрафних санкцій та погіршення вашої кредитної історії. Закликаємо ставитися до отримання кредитів відповідально.</p>
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 mb-12 text-[12px] text-slate-500 leading-relaxed shadow-sm">
+                <p class="mb-6"><strong>ПРО НАС:</strong> SmartCredit 2026 — це незалежний інформаційний портал. Ми не є фінансовою установою, банком чи кредитором. Наша мета — надати вам максимально повну та актуальну інформацію про ринок МФО України. Ми не беремо комісію з користувачів.</p>
+                <p><strong>ПОПЕРЕДЖЕННЯ:</strong> Кредит — це фінансова відповідальність. Перед підписанням договору обов'язково перевірте графік платежів та повну вартість кредиту. Несвоєчасна оплата може призвести до штрафів та дзвінків від колекторів.</p>
             </div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
-                <div class="flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
-                    <button onclick="openM('contact')">Контакти</button>
-                    <button onclick="openM('policy')">Політика</button>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <div class="flex gap-10 text-xs font-black uppercase tracking-widest text-slate-600">
+                    <button onclick="openM('contact')" class="hover:text-blue-600 transition-colors">Контакти</button>
+                    <button onclick="openM('policy')" class="hover:text-blue-600 transition-colors">Політика</button>
                 </div>
-                <div class="text-[10px] font-bold text-slate-300">© 2026 SMARTCREDIT AGGREGATOR</div>
+                <div class="text-[11px] font-black text-slate-400 tracking-tighter">© 2026 SMARTCREDIT AGGREGATOR — КРАЩІ КРЕДИТИ УКРАЇНИ</div>
             </div>
         </div>
     </footer>
 
-    <div id="m-contact" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl">
-            <h3 class="text-xl font-bold mb-6">Напишіть нам</h3>
-            <form action="https://formspree.io/f/psihywkin59@gmail.com" method="POST" class="space-y-4">
-                <input type="text" name="name" placeholder="Ваше ім'я" required class="w-full border border-slate-200 p-3 rounded-lg outline-none focus:border-blue-500">
-                <input type="email" name="email" placeholder="Ваш Email" required class="w-full border border-slate-200 p-3 rounded-lg outline-none focus:border-blue-500">
-                <textarea name="message" placeholder="Ваше повідомлення" required class="w-full border border-slate-200 p-3 rounded-lg h-32 outline-none focus:border-blue-500"></textarea>
-                <button class="btn-blue">Надіслати повідомлення</button>
-                <button type="button" onclick="closeM('contact')" class="w-full text-slate-400 text-sm font-bold mt-2">Скасувати</button>
+    <div id="m-contact" class="fixed inset-0 bg-slate-900/60 hidden items-center justify-center z-[100] p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-10 w-full max-w-md shadow-2xl">
+            <h3 class="text-2xl font-black mb-8 text-slate-800">Напишіть нам</h3>
+            <form action="https://formspree.io/f/psihywkin59@gmail.com" method="POST" class="space-y-5">
+                <input type="text" name="name" placeholder="Ваше ім'я" required class="w-full border border-slate-200 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50">
+                <input type="email" name="email" placeholder="Ваш Email" required class="w-full border border-slate-200 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50">
+                <textarea name="message" placeholder="Повідомлення..." required class="w-full border border-slate-200 p-4 rounded-xl h-32 outline-none focus:border-blue-500 bg-slate-50"></textarea>
+                <button class="btn-blue shadow-lg">Надіслати повідомлення</button>
+                <button type="button" onclick="closeM('contact')" class="w-full text-slate-400 text-xs font-black uppercase tracking-widest mt-4">Закрити</button>
             </form>
-        </div>
-    </div>
-
-    <div id="m-policy" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-2xl p-8 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[80vh]">
-            <h3 class="text-xl font-bold mb-4">Політика конфіденційності</h3>
-            <p class="text-sm text-slate-500 leading-relaxed">Цей сайт не збирає та не зберігає ваші персональні або платіжні дані. Ми використовуємо стандартні файли cookie для аналізу трафіку. Переходячи на сайти партнерів, ви погоджуєтесь з їхніми правилами обробки даних.</p>
-            <button onclick="closeM('policy')" class="btn-blue mt-6">Зрозуміло</button>
         </div>
     </div>
 
@@ -151,11 +164,8 @@
             { name: "Avira", sum: "8 000", rate: "0.01%", domain: "aviracredit.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470" },
             { name: "Pango", sum: "15 000", rate: "0.01%", domain: "pango.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470" },
             { name: "SelfieCredit", sum: "25 000", rate: "0.01%", domain: "selfiecredit.com.ua", tags: ["top", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" },
-            { name: "AlexCredit", sum: "12 000", rate: "0.01%", domain: "alexcredit.com.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470" },
             { name: "Tengo", sum: "20 000", rate: "0.01%", domain: "tengo.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470" },
             { name: "E-Groshi", sum: "20 000", rate: "0.01%", domain: "e-groshi.com", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470" },
-            { name: "SOS Credit", sum: "15 000", rate: "0.01%", domain: "soscredit.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470" },
-            { name: "ClickCredit", sum: "15 000", rate: "0.01%", domain: "clickcredit.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470" },
             { name: "MyCredit", sum: "18 000", rate: "0.01%", domain: "mycredit.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" }
         ];
 
@@ -174,24 +184,31 @@
             document.getElementById('more').classList.toggle('hidden', list.length <= count);
 
             list.slice(0, count).forEach(o => {
-                // Найбільш надійний сервіс логотипів від DuckDuckGo
-                const logo = `https://icons.duckduckgo.com/ip3/${o.domain}.ico`;
+                // Використовуємо сервіс логотипів Google з великим розміром
+                const logo = `https://www.google.com/s2/favicons?domain=${o.domain}&sz=128`;
                 grid.innerHTML += `
                 <div class="offer-card">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="logo-box">
-                            <img src="${logo}" class="logo-img" onerror="this.src='https://ui-avatars.com/api/?name=${o.name}&background=f1f5f9&color=64748b&size=128'" alt="${o.name}">
+                    <div class="logo-wrapper">
+                        <span class="logo-fallback-text">${o.name}</span>
+                        <img src="${logo}" class="logo-main" onerror="this.style.opacity='0'" alt="${o.name}">
+                    </div>
+                    
+                    <div class="flex-1 space-y-4 mb-8">
+                        <div class="flex justify-between items-center border-b border-slate-50 pb-3">
+                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Сума до</span>
+                            <span class="font-black text-xl text-slate-800">${parseInt(o.sum).toLocaleString()} ₴</span>
                         </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-slate-900">${o.name}</h3>
-                            <div class="text-yellow-400 text-[10px]">★★★★★</div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-400 text-xs font-bold uppercase tracking-wider">Перша ставка</span>
+                            <span class="font-black text-xl text-green-600">${o.rate}</span>
                         </div>
                     </div>
-                    <div class="space-y-3 mb-6 text-sm">
-                        <div class="flex justify-between border-b border-slate-50 pb-2"><span class="text-slate-400">Макс. сума</span> <span class="font-bold text-slate-700">${parseInt(o.sum).toLocaleString()} ₴</span></div>
-                        <div class="flex justify-between border-b border-slate-50 pb-2"><span class="text-slate-400">Ставка</span> <span class="font-bold text-green-600">${o.rate}</span></div>
+
+                    <a href="${o.link}" target="_blank" class="btn-blue shadow-blue-100">Отримати кошти</a>
+                    
+                    <div class="mt-4 flex justify-center gap-1">
+                         <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
                     </div>
-                    <a href="${o.link}" target="_blank" class="btn-blue">Отримати</a>
                 </div>`;
             });
         }
