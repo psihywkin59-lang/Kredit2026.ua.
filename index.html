@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit 2026 — Розумний підбір кредиту</title>
+    <meta name="description" content="SmartCredit 2026 — порівняння найкращих кредитів онлайн в Україні. Отримайте гроші на картку за 5 хвилин під 0.01%. Без відмов та дзвінків.">
+    <title>SmartCredit 2026 — Кредити онлайн на картку без відмов</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Geologica', sans-serif; background: #F8FAFC; color: #0f172a; }
         
-        /* Ефекти та анімації */
+        /* Ефекти */
         .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
         .hover-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .hover-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .hover-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
 
-        /* Стилі для ТОП-3 */
-        .top-1-border { border: 2px solid #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.2); }
+        /* Стилі рамок ТОП-3 */
+        .top-1-border { border: 2px solid #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.15); }
         .top-2-border { border: 2px solid #94a3b8; }
         .top-3-border { border: 2px solid #b45309; }
 
@@ -26,11 +27,11 @@
         }
         .btn-cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-        /* Таби категорій */
+        /* Таби */
         .tab-btn { transition: all 0.2s; }
         .tab-btn.active { background-color: #0f172a; color: white; border-color: #0f172a; }
 
-        /* Кастомний Range Slider */
+        /* Повзунки */
         input[type=range] { -webkit-appearance: none; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
@@ -41,12 +42,11 @@
             width: 100%; height: 4px; cursor: pointer; background: #e2e8f0; border-radius: 2px;
         }
 
-        /* Анімація FAQ */
+        /* FAQ анімація */
         #faq-box { display: none; }
         .faq-active #faq-box { display: block; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Приховати за замовчуванням */
         .hidden-offer { display: none !important; }
     </style>
 </head>
@@ -66,7 +66,6 @@
                 <span class="px-3 py-1 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-100 flex items-center gap-1.5">
                     <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span> 30 МФО
                 </span>
-                <span class="px-3 py-1 bg-slate-50 text-slate-600 text-xs font-bold rounded-full border border-slate-100">Оновлено сьогодні</span>
             </div>
         </header>
 
@@ -76,19 +75,17 @@
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
                     <h2 class="text-3xl font-black uppercase italic tracking-tight">Розрахуйте <br><span class="text-blue-400">найвигідніші умови</span></h2>
-                    
                     <div class="space-y-6">
                         <div>
                             <div class="flex justify-between text-sm font-bold mb-2">
-                                <span class="text-slate-400">Я хочу отримати:</span>
+                                <span class="text-slate-400">Сума:</span>
                                 <span class="text-2xl text-white"><span id="sumVal">5 000</span> грн</span>
                             </div>
                             <input type="range" id="sumRange" min="500" max="30000" step="100" value="5000" class="w-full" oninput="calc()">
                         </div>
-                        
                         <div>
                             <div class="flex justify-between text-sm font-bold mb-2">
-                                <span class="text-slate-400">На термін:</span>
+                                <span class="text-slate-400">Термін:</span>
                                 <span class="text-2xl text-white"><span id="daysVal">10</span> днів</span>
                             </div>
                             <input type="range" id="daysRange" min="1" max="30" step="1" value="10" class="w-full" oninput="calc()">
@@ -104,33 +101,23 @@
                         </div>
                         <div class="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-lg">-99%</div>
                     </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between border-b border-white/10 pb-3">
-                            <span class="text-slate-400">Відсотки (стандарт):</span>
-                            <span class="line-through text-slate-500 decoration-red-500" id="standardCost">1000 грн</span>
-                        </div>
-                        <div class="flex justify-between pt-1">
-                            <span class="text-slate-400">Відсотки (акція):</span>
-                            <span class="text-green-400 font-bold" id="promoCost">5 грн</span>
-                        </div>
-                        <div class="bg-green-500/20 text-green-300 p-3 rounded-xl text-xs font-bold mt-4 flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                            Ви економите: <span id="saving">995</span> грн
-                        </div>
+                    <div class="bg-green-500/20 text-green-300 p-3 rounded-xl text-xs font-bold mt-4">
+                        Економія: <span id="saving">995</span> грн
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="flex flex-wrap gap-2 mb-8" id="tabsContainer">
-            <button onclick="filterOffers('all')" class="tab-btn active px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">Всі МФО</button>
-            <button onclick="filterOffers('top')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">🔥 Топ видача</button>
+        <div class="flex flex-wrap gap-2 mb-8 sticky top-2 z-30 bg-[#F8FAFC]/90 backdrop-blur-sm py-2" id="tabsContainer">
+            <button onclick="filterOffers('top')" class="tab-btn active px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">🔥 ТОП видача</button>
+            <button onclick="filterOffers('all')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">Всі МФО</button>
             <button onclick="filterOffers('auto')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">⚡ Без дзвінків</button>
             <button onclick="filterOffers('new')" class="tab-btn px-5 py-2.5 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300">🆕 Нові</button>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="offersGrid">
-            </div>
+            <div class="col-span-full text-center py-10">Завантаження пропозицій 2026...</div>
+        </div>
 
         <div class="mt-12 text-center" id="loadMoreContainer">
             <button onclick="loadMore()" class="bg-white border border-slate-200 text-slate-700 font-bold px-8 py-4 rounded-xl hover:bg-slate-50 transition-colors shadow-sm w-full md:w-auto">
@@ -138,31 +125,64 @@
             </button>
         </div>
 
-        <footer class="mt-20 pt-10 border-t border-slate-200 text-center">
-            <p class="text-xs text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed mb-4">
-                Інформація на сайті не є публічною офертою. Сервіс не видає кредити, а лише підбирає пропозиції. Реальна річна відсоткова ставка (РРПС) може становити від 3,5% до 760%.
-            </p>
-            <p class="text-[10px] font-black uppercase text-slate-300 tracking-[0.2em]">© 2026 SmartCredit</p>
-        </footer>
+        <section class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <article class="bg-white p-8 rounded-[2rem] border border-slate-100 card-shadow">
+                <h2 class="text-xl font-black text-slate-800 mb-4 flex items-center gap-2">
+                    <span class="text-blue-600">#1</span> Як отримати кредит без відмови?
+                </h2>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3">
+                    <p>У 2026 році ринок мікрокредитування України пропонує максимально спрощені умови. Щоб отримати <strong>гроші на картку онлайн</strong>, достатньо мати паспорт, ІПН та активний номер телефону. Більшість МФО використовують автоматичні системи скорингу, тому рішення приймається за 2-5 хвилин.</p>
+                    <p>Найвищий відсоток схвалення мають нові компанії та лідери ринку, такі як <span class="font-bold">CreditPlus</span> та <span class="font-bold">SelfieCredit</span>. Вони часто видають позики навіть людям без офіційного працевлаштування або з неідеальною кредитною історією.</p>
+                </div>
+            </article>
+            
+            <article class="bg-white p-8 rounded-[2rem] border border-slate-100 card-shadow">
+                <h2 class="text-xl font-black text-slate-800 mb-4 flex items-center gap-2">
+                    <span class="text-blue-600">#2</span> Що варто знати про 0.01%?
+                </h2>
+                <div class="text-sm text-slate-600 leading-relaxed space-y-3">
+                    <p>Майже всі мікрофінансові організації пропонують новим клієнтам <strong>перший кредит під 0.01%</strong>. Це маркетинговий хід, який реально працює на користь клієнта. Взявши 10 000 грн на 30 днів, ви повернете всього 10 030 грн.</p>
+                    <p>Але важливо пам'ятати: пільгова ставка діє лише за умови своєчасного погашення. Якщо прострочити платіж хоча б на день, відсотки можуть бути перераховані за стандартною ставкою. Завжди перевіряйте дату повернення в особистому кабінеті!</p>
+                </div>
+            </article>
+        </section>
 
+        <div class="mt-12 p-8 rounded-[2rem] bg-slate-100 border border-slate-200 text-center">
+            <h3 class="text-red-500 font-black uppercase text-sm tracking-widest mb-3">⚠️ Важлива інформація про безпеку</h3>
+            <p class="text-xs text-slate-500 max-w-3xl mx-auto leading-relaxed">
+                Несвоєчасне погашення кредиту може призвести до нарахування штрафів та пені згідно зі ст. 625 ЦКУ. Інформація про прострочення передається в УБКІ, що негативно впливає на кредитну історію та ускладнить отримання позик, іпотеки або розстрочки в майбутньому. У разі тривалої несплати борг може бути переданий колекторським компаніям або стягнутий у судовому порядку. Оцінюйте свої фінансові можливості відповідально.
+            </p>
+        </div>
+
+        <footer class="mt-10 pt-10 border-t border-slate-200 text-center pb-10">
+            <p class="text-xs text-slate-400 font-medium max-w-2xl mx-auto leading-relaxed mb-4">
+                Інформація на сайті не є публічною офертою. Сервіс SmartCredit не є фінансовою установою, банком або кредитором, а лише надає інформаційні послуги з підбору фінансових продуктів. Реальна річна відсоткова ставка (РРПС) може становити від 3,5% до 760% річних залежно від умов конкретного кредитора.
+            </p>
+            <p class="text-[10px] font-black uppercase text-slate-300 tracking-[0.2em]">© 2026 SmartCredit System • Всі права захищено</p>
+        </footer>
     </div>
 
     <div id="faq-root" class="fixed bottom-6 right-6 z-[100]">
         <div id="faq-box" class="bg-white card-shadow rounded-2xl p-5 w-72 mb-4 border border-slate-100 text-slate-900 shadow-2xl">
-            <h4 class="font-bold text-xs text-blue-600 mb-3 uppercase tracking-wider">Підказка</h4>
-            <p class="text-xs text-slate-600 leading-relaxed font-medium">Щоб гарантовано отримати гроші, подайте заявки в <span class="text-slate-900 font-bold">3-4 різні компанії</span> з топу списку.</p>
+            <h4 class="font-bold text-xs text-blue-600 mb-3 uppercase tracking-wider border-b pb-2">Питання та відповіді</h4>
+            <div class="space-y-3">
+                <div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase">Як отримати 0%?</p>
+                    <p class="text-[11px] font-medium text-slate-700">Перший кредит для нових клієнтів майже завжди під 0.01%.</p>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold text-red-500 uppercase">Що буде за несплату?</p>
+                    <p class="text-[11px] font-medium text-slate-700">Штрафи, зіпсована кредитна історія, дзвінки колекторів та суд.</p>
+                </div>
+            </div>
         </div>
         <button onclick="toggleFaq()" class="bg-slate-900 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center font-bold text-xl hover:bg-slate-800 transition-colors">?</button>
     </div>
 
     <script>
-        // ДАНІ (30 шт.)
-        // cat: категорії (top, auto, new, all)
-        // badge: текст стікера або null
-        // logo: шлях до картинки (наприклад 'img/creditplus.png')
-        // link: реферальне посилання
+        // --- ДАНІ ОФФЕРІВ 2026 ---
         const offers = [
-            // ТОП-3 (Виділені)
+            // 1. CreditPlus (ТОП) - З вашим лого
             { 
                 name: "CreditPlus", 
                 sum: "25 000", 
@@ -172,13 +192,84 @@
                 time: "5 хв", 
                 color: "blue-600", 
                 cat: ["top", "auto"], 
-                badge: "🔥 Лідер ринку",
-                logo: "img/creditplus.png", // Переконайтеся, що файл існує
+                badge: "🔥 Лідер 2026",
+                logo: "img/creditplus.png", 
                 link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" 
             },
+            // 2. Credit7 (ТОП)
             { name: "Credit7", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "7 хв", color: "lime-500", cat: ["top", "auto"], badge: "⚡ Миттєво" },
-            { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "indigo-500", cat: ["top", "new"], badge: "📸 Через селфі" },
-            
-            // Основний список
+            // 3. SelfieCredit (ТОП)
+            { name: "SelfieCredit", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "indigo-500", cat: ["top", "new"], badge: "📸 Селфі" },
+            // 4. MyCredit (ТОП)
             { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "blue-700", cat: ["top"], badge: "👍 Надійний" },
-            { name: "CreditKasa",
+            // 5. Moneyveo (ТОП)
+            { name: "Moneyveo", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "2 хв", color: "green-500", cat: ["top"], badge: "Старі-добрі" },
+            
+            // Інші оффери
+            { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 днів", age: "18-75", time: "8 хв", color: "amber-700", cat: ["all"], badge: null },
+            { name: "StarFin", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "10 хв", color: "blue-500", cat: ["new"], badge: "🆕" },
+            { name: "Miloan", sum: "20 000", rate: "0%", term: "15 днів", age: "18-65", time: "5 хв", color: "orange-500", cat: ["all"], badge: null },
+            { name: "FirstCredit", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "purple-600", cat: ["new", "auto"], badge: "Без фото" },
+            { name: "E-Groshi", sum: "30 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "5 хв", color: "green-600", cat: ["all"], badge: null },
+            { name: "Tengo", sum: "25 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "teal-600", cat: ["all"], badge: null },
+            { name: "Pango", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "zinc-800", cat: ["new", "auto"], badge: "🤖 Бот" },
+            { name: "LegkoCredit", sum: "10 000", rate: "0.01%", term: "15 днів", age: "18-65", time: "5 хв", color: "sky-500", cat: ["all"], badge: null },
+            { name: "AlexCredit", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "slate-600", cat: ["all"], badge: null },
+            { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", term: "20 днів", age: "18-70", time: "5 хв", color: "pink-500", cat: ["all"], badge: null },
+            { name: "ClickCredit", sum: "12 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "3 хв", color: "blue-400", cat: ["auto", "new"], badge: "📱 Додаток" },
+            { name: "TrebaCredit", sum: "10 000", rate: "0.01%", term: "15 днів", age: "18-65", time: "5 хв", color: "indigo-600", cat: ["new"], badge: null },
+            { name: "Lovilave", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "rose-400", cat: ["new"], badge: "❤️" },
+            { name: "Microcash", sum: "12 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "3 хв", color: "blue-500", cat: ["auto"], badge: null },
+            { name: "Monto", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-60", time: "5 хв", color: "blue-800", cat: ["new"], badge: null },
+            { name: "Limon", sum: "15 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "yellow-500", cat: ["new"], badge: "🍋" },
+            { name: "SunCredit", sum: "8 000", rate: "0.01%", term: "14 днів", age: "18-65", time: "10 хв", color: "orange-400", cat: ["all"], badge: null },
+            { name: "Top1", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "red-600", cat: ["all"], badge: null },
+            { name: "AviraCredit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "15 хв", color: "violet-600", cat: ["all"], badge: null },
+            { name: "MisterMoney", sum: "10 000", rate: "0.01%", term: "20 днів", age: "18-65", time: "5 хв", color: "green-600", cat: ["all"], badge: null },
+            { name: "Cly", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "cyan-500", cat: ["new"], badge: null },
+            { name: "SOS Credit", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-70", time: "5 хв", color: "red-500", cat: ["all"], badge: null },
+            { name: "BeeCredit", sum: "10 000", rate: "0.01%", term: "15 днів", age: "18-65", time: "5 хв", color: "yellow-400", cat: ["new"], badge: "🐝" },
+            { name: "Amigo", sum: "15 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "10 хв", color: "green-700", cat: ["all"], badge: null },
+            { name: "Credos", sum: "20 000", rate: "0.01%", term: "30 днів", age: "18-65", time: "5 хв", color: "indigo-800", cat: ["all"], badge: null }
+        ];
+
+        // Старт з ТОПу
+        let currentFilter = 'top';
+        let itemsToShow = 9; 
+
+        function renderOffers(filterType) {
+            const grid = document.getElementById('offersGrid');
+            if (!grid) return;
+
+            let filtered = offers;
+            if (filterType !== 'all') {
+                filtered = offers.filter(o => o.cat && o.cat.includes(filterType));
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center text-slate-400 py-10">В цій категорії поки пусто...</div>';
+                document.getElementById('loadMoreContainer').style.display = 'none';
+                return;
+            }
+
+            let htmlBuffer = '';
+
+            filtered.forEach((offer, index) => {
+                if (index >= itemsToShow) return;
+
+                let topClass = '';
+                // Виділяємо перші 3 тільки якщо ми в ТОПі або в Усіх
+                if ((filterType === 'all' || filterType === 'top') && index === 0) topClass = 'top-1-border md:col-span-1 lg:col-span-1 transform scale-[1.02] z-10';
+                if ((filterType === 'all' || filterType === 'top') && index === 1) topClass = 'top-2-border';
+                if ((filterType === 'all' || filterType === 'top') && index === 2) topClass = 'top-3-border';
+
+                let badgeHtml = '';
+                if (offer.badge) {
+                    badgeHtml = `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl uppercase tracking-wider z-20 shadow-sm">${offer.badge}</div>`;
+                }
+
+                let logoHtml = '';
+                if (offer.logo) {
+                    logoHtml = `<div class="w-14 h-14 flex items-center justify-center shrink-0 bg-white rounded-xl p-1"><img src="${offer.logo}" class="max-w-full max-h-full object-contain" alt="${offer.name}" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'text-xl font-black\'>${offer.name.charAt(0)}</div>';"></div>`;
+                } else {
+                    logoHtml = `<div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center font-black text-${offer.color || 'blue-600'} text-xl
