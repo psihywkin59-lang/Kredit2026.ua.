@@ -11,9 +11,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
         
+        /* НАСИЧЕНИЙ М'ЯТНИЙ ФОН */
         body { font-family: 'Inter', sans-serif; background: #bcf0d3; color: #1e293b; scroll-behavior: smooth; }
         
-        /* Ефект ТОП ВИДАЧІ */
+        /* ЕФЕКТ ДЛЯ ТОП ВИДАЧІ */
         .is-top-card { 
             border: 4px solid #fbbf24 !important; 
             box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
@@ -34,7 +35,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #99c7ae;
-            height: 360px; 
+            height: 370px; 
         }
         .offer-card:hover { 
             transform: translateY(-8px);
@@ -50,44 +51,40 @@
         .logo-wrapper { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; height: 110px; }
         .logo-img { max-width: 90%; max-height: 100px; object-fit: contain; }
 
-        .rating-stars { color: #fbbf24; font-size: 14px; margin: 5px 0; }
+        .rating-stars { color: #fbbf24; font-size: 14px; margin: 5px 0; text-align: center; }
         .approval-rate { font-size: 11px; font-weight: 700; color: #059669; background: #f0fdf4; padding: 2px 8px; border-radius: 6px; display: inline-block; }
 
         .btn-green { 
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white; font-weight: 900; padding: 14px; border-radius: 16px; 
             text-align: center; text-transform: uppercase; font-size: 13px; 
-            letter-spacing: 0.05em; transition: 0.3s; cursor: pointer; border: none;
+            letter-spacing: 0.05em; transition: 0.3s; cursor: pointer; border: none; width: 100%;
         }
-        .btn-green:hover { filter: brightness(1.1); transform: scale(1.02); }
+        .btn-green:hover { filter: brightness(1.1); transform: scale(1.03); }
 
-        .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 8px; font-weight: 700; }
+        .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 10px; font-weight: 700; }
 
-        .tab-btn { padding: 12px 24px; font-weight: 900; color: #064e3b; border-radius: 16px; transition: 0.3s; font-size: 12px; }
-        .tab-btn.active { background: #059669; color: #ffffff; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.2); }
+        .tab-btn { padding: 14px 28px; font-weight: 900; color: #064e3b; border-radius: 18px; transition: 0.3s; font-size: 13px; text-transform: uppercase; }
+        .tab-btn.active { background: #059669; color: #ffffff; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3); }
 
-        /* FAQ Accordion */
-        .faq-box { background: #ffffff; border-radius: 30px; border: 1px solid #99c7ae; overflow: hidden; }
-        .faq-trigger { width: 100%; text-align: left; padding: 20px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; border-bottom: 1px solid #f1f5f9; }
-        .faq-content { padding: 0 20px 20px; color: #64748b; font-size: 14px; display: none; }
-        .faq-icon { background: #10b981; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+        /* FAQ ACCORDION */
+        .faq-box { background: #ffffff; border-radius: 35px; overflow: hidden; border: 1px solid #99c7ae; }
+        .faq-item { border-bottom: 1px solid #f1f5f9; }
+        .faq-trigger { width: 100%; text-align: left; padding: 22px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; }
+        .faq-trigger:hover { background: #f0fdf4; }
+        .faq-content { padding: 0 22px 22px; color: #475569; font-size: 14px; line-height: 1.7; display: none; }
+        .faq-icon { background: #10b981; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; }
 
-        /* Modal */
-        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: white; padding: 30px; border-radius: 24px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; }
-        
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        /* SEO SECTION */
+        .seo-section { background: rgba(255,255,255,0.7); border-radius: 40px; padding: 40px; border: 1px solid #99c7ae; }
+        .seo-h2 { font-size: 26px; font-weight: 900; color: #064e3b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.5px; }
+
+        input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; }
+        input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #99c7ae; border-radius: 10px; }
+        input[type=range]::-webkit-slider-thumb { height: 28px; width: 28px; border-radius: 50%; background: #059669; -webkit-appearance: none; margin-top: -10px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
     </style>
 </head>
 <body>
-
-    <div id="modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <h2 id="modal-title" class="text-2xl font-black mb-4 uppercase tracking-tighter"></h2>
-            <div id="modal-body" class="text-slate-600 text-sm leading-relaxed space-y-4"></div>
-            <button onclick="closeModal()" class="mt-8 btn-green">Зрозуміло</button>
-        </div>
-    </div>
 
     <header class="bg-white/90 backdrop-blur-lg border-b border-emerald-200 py-4 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
@@ -96,84 +93,88 @@
                 <span class="text-2xl font-black text-emerald-900 tracking-tighter uppercase">SmartCredit</span>
             </div>
             <div class="hidden md:block">
-                <span class="text-[11px] font-black text-emerald-700 bg-emerald-100/50 px-4 py-2 rounded-full border border-emerald-200 uppercase tracking-widest">
-                    🔥 Оновлено: <span class="js-month-now"></span>
-                </span>
+                <span class="text-[11px] font-black text-emerald-700 bg-emerald-100/50 px-4 py-2 rounded-full border border-emerald-200 uppercase tracking-widest">👑 Актуально на <span class="js-month-now"></span></span>
             </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 mt-8">
-        
-        <div class="bg-white rounded-[40px] border border-emerald-100 p-6 mb-12 shadow-2xl max-w-4xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center text-center lg:text-left">
-                <div class="space-y-6">
+        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-12 shadow-2xl max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="space-y-8 text-center lg:text-left">
                     <div>
-                        <div class="flex justify-between mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400"><span>Сума</span> <span><span id="cSum">10 000</span> ₴</span></div>
-                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()" class="w-full">
+                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Сума</span> <span class="text-4xl font-black text-emerald-900"><span id="cSum">10 000</span> ₴</span></div>
+                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400"><span>Термін</span> <span><span id="cDays">15</span> днів</span></div>
-                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()" class="w-full">
+                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Термін</span> <span class="text-4xl font-black text-emerald-900"><span id="cDays">15</span> днів</span></div>
+                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
                     </div>
                 </div>
-                <div class="bg-emerald-950 rounded-[30px] p-6 text-white border-b-8 border-emerald-600 shadow-inner">
-                    <div class="text-[9px] font-black mb-1 tracking-widest text-emerald-400 uppercase">До повернення</div>
-                    <div class="text-5xl font-black mb-2 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="text-[10px] font-bold text-emerald-400">0.01% ПІЛЬГОВА СТАВКА</div>
+                <div class="bg-emerald-950 rounded-[30px] p-8 text-center text-white border-b-8 border-emerald-600 shadow-inner">
+                    <div class="text-emerald-400 uppercase text-[10px] font-black mb-1 tracking-widest">До повернення за 0.01%</div>
+                    <div class="text-6xl font-black mb-4 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
+                    <div class="bg-emerald-500/20 py-2 px-4 rounded-xl inline-block text-emerald-400 font-bold text-[10px] uppercase tracking-widest">Пільгова ставка активована</div>
                 </div>
             </div>
         </div>
 
-        <div class="flex bg-emerald-950/10 p-1.5 rounded-2xl mb-10 w-fit mx-auto md:mx-0 overflow-x-auto no-scrollbar">
+        <div class="flex bg-emerald-950/10 p-1.5 rounded-2xl mb-12 w-fit mx-auto md:mx-0 overflow-x-auto">
             <button id="b-top" onclick="setTab('top')" class="tab-btn active">🔥 ТОП ВИДАЧА</button>
-            <button id="b-all" onclick="setTab('all')" class="tab-btn">ВСІ КРЕДИТИ</button>
+            <button id="b-all" onclick="setTab('all')" class="tab-btn">УСІ КРЕДИТИ</button>
             <button id="b-new" onclick="setTab('new')" class="tab-btn">✨ НОВИНКИ</button>
         </div>
 
         <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-24"></div>
 
         <div class="max-w-3xl mx-auto mb-24">
-            <h2 class="text-2xl font-black text-emerald-950 mb-8 text-center uppercase tracking-tighter">Довідковий центр</h2>
+            <h2 class="text-3xl font-black text-emerald-950 mb-10 text-center tracking-tighter uppercase">Поширені запитання</h2>
             <div class="faq-box shadow-xl">
                 <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
-                    <div class="faq-content">Більшість компаній з нашого списку надають пільгову ставку для нових клієнтів. Просто оберіть оффер з плашкою "0.01%" та заповніть анкету.</div>
+                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи реально отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
+                    <div class="faq-content">Так, це реальна акція для залучення нових клієнтів. Більшість компаній зі списку пропонують таку ставку на перший кредит.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи потрібна довідка про доходи?</span> <span class="faq-icon">?</span></button>
-                    <div class="faq-content">Ні, мікрофінансові організації (МФО) вимагають лише паспорт та ІПН. Офіційне працевлаштування не є обов'язковим.</div>
+                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як підвищити шанси на схвалення?</span> <span class="faq-icon">?</span></button>
+                    <div class="faq-content">Радимо подавати заявки одразу у 3-4 компанії. Також перевірте, щоб дані в анкеті точно збігалися з паспортними.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як швидко зарахують гроші?</span> <span class="faq-icon">?</span></button>
-                    <div class="faq-content">Система працює автоматично. Від моменту подачі до отримання грошей на картку зазвичай минає 10-15 хвилин.</div>
+                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як швидко прийдуть гроші?</span> <span class="faq-icon">?</span></button>
+                    <div class="faq-content">Система працює 24/7. Після схвалення (5-10 хв) гроші приходять на вашу картку миттєво.</div>
                 </div>
             </div>
         </div>
 
-        <div class="bg-white/50 border border-emerald-100 rounded-[40px] p-8 md:p-12 mb-20 text-slate-700 leading-relaxed shadow-sm">
-            <h1 class="text-3xl font-black mb-6 text-emerald-950 uppercase tracking-tighter">Кредит онлайн на картку в Україні: <span class="js-month-now"></span></h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-                <div>
-                    <p class="mb-4">На нашому порталі SmartCredit ви знайдете найкращі пропозиції від ліцензованих МФО станом на <strong><span class="js-month-now"></span></strong>. Ми щоденно оновлюємо дані, щоб ви могли отримати кошти на максимально вигідних умовах.</p>
-                    <p>Для гарантованого отримання грошей рекомендуємо подавати заявки одразу у декілька компаній із розділу "Топ видача". Це підвищує ймовірність схвалення до 99%.</p>
+        <div class="seo-section mb-24 space-y-16">
+            <article>
+                <h2 class="seo-h2">Кредит онлайн на картку: як обрати вигідні умови у <span class="js-month-now"></span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-700">
+                    <p>Шукаєте швидку фінансову допомогу? У <strong><span class="js-month-now"></span></strong> році ринок мікрокредитування в Україні пропонує унікальні можливості. На нашому порталі ми зібрали перевірені МФО, які видають позики без довідки про доходи та поручителів.</p>
+                    <p>Головною перевагою є можливість отримати кошти під 0.01% на перший кредит. Це дозволяє закрити термінові потреби практично без переплат. Ми рекомендуємо звертати увагу на наш розділ "Топ видача", де представлені лідери ринку з найвищим відсотком схвалення.</p>
                 </div>
-                <div>
-                    <p class="mb-4">Всі представлені компанії працюють згідно з чинним законодавством України та мають відповідні ліцензії НБУ. Ваші персональні дані надійно захищені протоколами шифрування.</p>
-                    <p>Пам'ятайте, що мікрокредит — це відповідальність. Повертайте кошти вчасно, щоб уникнути штрафних санкцій.</p>
+            </article>
+
+            <article>
+                <h2 class="seo-h2">Переваги мікрокредитів перед банківськими позиками</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-700">
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Швидкість:</strong> розгляд заявки триває до 15 хвилин проти кількох днів у банку.</li>
+                        <li><strong>Лояльність:</strong> високий шанс отримати гроші навіть з неідеальною кредитною історією.</li>
+                        <li><strong>Доступність:</strong> сервіси працюють цілодобово, без вихідних та свят.</li>
+                    </ul>
+                    <p>Для оформлення вам знадобиться лише паспорт та ІПН. Весь процес відбувається онлайн, що економить ваш час. SmartCredit допомагає знайти надійного партнера серед десятків пропозицій на ринку України.</p>
                 </div>
-            </div>
+            </article>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-emerald-100 pt-12 pb-8">
+    <footer class="bg-white border-t border-emerald-100 pt-16 pb-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="flex flex-wrap justify-center gap-6 mb-10 text-[11px] font-black text-emerald-700 uppercase tracking-widest">
-                <button onclick="openPolicy('terms')">Умови використання</button>
-                <button onclick="openPolicy('privacy')">Політика конфіденційності</button>
-                <button onclick="openPolicy('contacts')">Зворотній зв'язок</button>
+            <div class="bg-emerald-50 rounded-3xl p-8 mb-10 text-[11px] text-emerald-900/70 leading-relaxed text-left">
+                <p class="mb-4"><strong>ГЕО:</strong> Україна (крім тимчасово окупованих територій та зон бойових дій).</p>
+                <p><strong>УВАГА:</strong> SmartCredit 2026 — це агрегатор пропозицій. Ми не видаємо кредити. Оцінюйте свою платоспроможність. Несвоєчасна виплата може погіршити кредитну історію.</p>
             </div>
-            <div class="text-[9px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | Всі права захищено</div>
+            <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | All Rights Reserved</div>
         </div>
     </footer>
 
@@ -182,10 +183,10 @@
             { name: "CreditPlus", domain: "creditplus.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №870", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/77587/original.png?1680595488", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
             { name: "Credit7", domain: "credit7.ua", tags: ["top", "all"], badge: "ХІТ", lic: "ФК №1177", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81287/original.png?1757079436", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
             { name: "StarFin", domain: "starfin.ua", tags: ["new", "all", "top"], badge: "НОВЕ", lic: "НБУ №445", rate: "97%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/78516/original.svg?1695211509", link: "https://go.salesdoubler.net/in/offer/5706?aid=81470" },
+            { name: "Moneyveo", domain: "moneyveo.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №161", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/80938/original.png?1746520515", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470" },
             { name: "FirstCredit", domain: "firstcredit.ua", tags: ["new", "all"], badge: "АВТО", lic: "НБУ №562", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81501/original.png?1765190597", link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470" },
             { name: "Monto", domain: "monto.com.ua", tags: ["new", "all"], badge: "НОВЕ", lic: "ФК №1234", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81504/original.png?1765274136", link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470" },
             { name: "BeeCredit", domain: "bee.credit", tags: ["new", "all"], badge: "НОВЕ", lic: "НБУ №101", rate: "94%", stars: 4, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/008/142/thumb/300x100.png?1764159472", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470" },
-            { name: "Moneyveo", domain: "moneyveo.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №161", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/80938/original.png?1746520515", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470" },
             { name: "CreditKasa", domain: "creditkasa.com.ua", tags: ["all", "top"], badge: "ХІТ", lic: "ФК №116", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81545/original.png?1768309008", link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470" },
             { name: "SlonCredit", domain: "sloncredit.ua", tags: ["all", "top"], badge: "НАДІЙНО", lic: "ФК №1111", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81540/original.png?1767610054", link: "https://rdr.fmcgsd.net/in/offer/1921?aid=81470" },
             { name: "MyCredit", domain: "mycredit.ua", tags: ["top", "all"], badge: "РЕКОМЕНД", lic: "ФК №146", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81274/original.png?1756824516", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" },
@@ -221,31 +222,10 @@
             content.style.display = isOpen ? 'none' : 'block';
         }
 
-        function openPolicy(type) {
-            const m = document.getElementById('modal');
-            const t = document.getElementById('modal-title');
-            const b = document.getElementById('modal-body');
-            if(type==='terms') { 
-                t.innerText = 'Умови використання'; 
-                b.innerHTML = '<p>Сервіс SmartCredit надає виключно інформаційні послуги. Ми не є фінансовою установою та не видаємо кредити.</p><p>Користуючись сайтом, ви погоджуєтесь з тим, що адміністрація не несе відповідальності за умови договорів, які ви підписуєте на сайтах кредиторів.</p>'; 
-            }
-            if(type==='privacy') { 
-                t.innerText = 'Конфіденційність'; 
-                b.innerHTML = '<p>Ми поважаємо вашу приватність. Наш сайт не збирає, не зберігає та не передає третім особам ваші персональні дані.</p><p>Вся інформація, яку ви вводите на сайтах МФО, захищається безпосередньо цими організаціями.</p>'; 
-            }
-            if(type==='contacts') { 
-                t.innerText = 'Зворотній зв\'язок'; 
-                b.innerHTML = '<p>З питань розміщення реклами або співпраці пишіть нам на пошту:</p><p class="font-bold text-emerald-600">support@smartcredit.ua</p>'; 
-            }
-            m.style.display = 'flex';
-        }
-
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
-
         function render() {
             const grid = document.getElementById('grid'); grid.innerHTML = '';
             let list = offers.filter(o => o.tags.includes(currentTab));
-            if (currentTab === 'top') list = [...list].sort(() => Math.random() - 0.5);
+            // РАНДОМ ВИДАЛЕНО ДЛЯ СТАБІЛЬНОГО ТОПУ
             list.forEach(o => {
                 const isTop = (currentTab === 'top') ? 'is-top-card' : '';
                 const b = o.badge ? `<div class="badge">${o.badge}</div>` : '';
