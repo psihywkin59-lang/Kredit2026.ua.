@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit — Порівняння кредитів 2026</title>
+    <title>SmartCredit — Всі кредити України онлайн 2026</title>
+    <meta name="description" content="Порівняння мікрокредитів України. Отримайте гроші на картку під 0.01% за 5 хвилин. Тільки ліцензовані МФО.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; scroll-behavior: smooth; }
         
-        /* ПРЯМОКУТНА КАРТКА ЯК НА SALESDOUBLER */
+        /* ПРИЄМНИЙ ФОН САЙТУ */
+        body { font-family: 'Inter', sans-serif; background: #f3f4f6; color: #1e293b; scroll-behavior: smooth; }
+        
         .offer-card { 
             background: #ffffff; 
             border-radius: 20px; 
@@ -20,48 +22,47 @@
             flex-direction: column;
             justify-content: space-between;
             border: 1px solid #e2e8f0;
-            height: 240px; /* Повернули прямокутну форму */
+            height: 250px;
         }
         .offer-card:hover { 
-            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.08);
-            transform: translateY(-4px);
-            border-color: #3b82f6;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            border-color: #10b981; /* Зелений акцент при наведенні */
         }
 
         .badge {
             position: absolute;
             top: 12px;
             right: 12px;
-            background: #fef2f2;
-            color: #ef4444;
-            padding: 3px 10px;
-            border-radius: 6px;
+            background: #ecfdf5;
+            color: #059669;
+            padding: 4px 10px;
+            border-radius: 8px;
             font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
+            border: 1px solid #d1fae5;
             z-index: 10;
         }
 
-        /* КОНТЕЙНЕР ДЛЯ ВЕЛИКОГО ГОРИЗОНТАЛЬНОГО ЛОГО */
         .logo-wrapper { 
             flex-grow: 1;
             display: flex; 
             align-items: center; 
             justify-content: center; 
             width: 100%;
-            max-height: 100px;
-            overflow: hidden;
+            padding: 10px;
         }
         
         .logo-img { 
             width: 100%;
-            height: 80px; /* Збільшена висота */
-            object-fit: contain; /* Логотип заповнює простір без деформації */
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+            max-height: 85px;
+            object-fit: contain;
         }
 
-        .btn-main { 
-            background: #2563eb;
+        /* ЗЕЛЕНА КНОПКА */
+        .btn-green { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white; 
             font-weight: 800; 
             padding: 14px; 
@@ -70,113 +71,129 @@
             text-transform: uppercase; 
             font-size: 13px; 
             letter-spacing: 0.05em;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
-        .btn-main:hover { background: #1d4ed8; }
+        .btn-green:hover { 
+            filter: brightness(1.1);
+            box-shadow: 0 8px 15px rgba(16, 185, 129, 0.4);
+        }
 
-        .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 8px; font-weight: 600; }
-        .tab-btn { padding: 10px 20px; font-weight: 800; color: #64748b; border-radius: 12px; transition: 0.2s; font-size: 12px; text-transform: uppercase; }
-        .tab-btn.active { background: #fff; color: #3b82f6; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 8px; font-weight: 600; text-transform: uppercase; }
 
+        .tab-btn { padding: 12px 24px; font-weight: 800; color: #64748b; border-radius: 14px; transition: 0.2s; font-size: 12px; text-transform: uppercase; }
+        .tab-btn.active { background: #fff; color: #059669; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+        .form-input { width: 100%; border: 1px solid #e2e8f0; padding: 14px; border-radius: 14px; outline: none; background: #fff; }
+        
         input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; }
-        input[type=range]::-webkit-slider-runnable-track { height: 6px; background: #e2e8f0; border-radius: 10px; }
-        input[type=range]::-webkit-slider-thumb { height: 24px; width: 24px; border-radius: 50%; background: #2563eb; -webkit-appearance: none; margin-top: -9px; border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #e2e8f0; border-radius: 10px; }
+        input[type=range]::-webkit-slider-thumb { height: 28px; width: 28px; border-radius: 50%; background: #10b981; -webkit-appearance: none; margin-top: -10px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <header class="bg-white border-b border-slate-200 py-4 sticky top-0 z-50">
+    <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 py-4 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black italic shadow-md">S</div>
-                <span class="text-xl font-black text-slate-900 tracking-tight uppercase">SmartCredit</span>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center text-white font-black italic shadow-lg shadow-emerald-100">S</div>
+                <span class="text-2xl font-black text-slate-900 tracking-tighter">SmartCredit</span>
             </div>
-            <div class="text-[9px] font-black text-slate-400 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200 uppercase tracking-widest">30 АКТИВНИХ ПРОПОЗИЦІЙ</div>
+            <div class="hidden md:block text-[10px] font-black text-emerald-600 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100 uppercase tracking-widest">30 онлайн пропозицій</div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 mt-8">
+    <main class="max-w-6xl mx-auto px-4 mt-10">
         
-        <div class="bg-white rounded-3xl border border-slate-200 p-8 mb-10 shadow-sm">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div class="bg-white rounded-[40px] border border-slate-200 p-8 md:p-12 mb-12 shadow-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
                     <div>
-                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px]"><span>Сума позики</span> <span class="text-3xl font-black text-slate-900"><span id="cSum">10 000</span> ₴</span></div>
+                        <div class="flex justify-between items-end mb-4 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Сума кредиту</span> <span class="text-4xl font-black text-slate-900"><span id="cSum">10 000</span> ₴</span></div>
                         <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
                     </div>
                     <div>
-                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px]"><span>Термін (дні)</span> <span class="text-3xl font-black text-slate-900"><span id="cDays">15</span></span></div>
+                        <div class="flex justify-between items-end mb-4 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Термін (дні)</span> <span class="text-4xl font-black text-slate-900"><span id="cDays">15</span></span></div>
                         <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
                     </div>
                 </div>
-                <div class="bg-blue-600 rounded-3xl p-8 text-center text-white shadow-xl shadow-blue-200">
-                    <div class="text-blue-100 uppercase text-[9px] font-black mb-1 tracking-widest">Сума до повернення</div>
-                    <div class="text-5xl font-black mb-2"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="text-blue-100 font-bold text-xs opacity-80">Ставка 0.01% включена</div>
+                <div class="bg-slate-900 rounded-[35px] p-10 text-center text-white shadow-xl shadow-slate-200">
+                    <div class="text-emerald-400 uppercase text-[10px] font-black mb-2 tracking-[0.3em]">Всього до повернення</div>
+                    <div class="text-6xl font-black mb-4 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
+                    <div class="bg-emerald-500/20 py-2 px-4 rounded-xl inline-block text-emerald-400 font-bold text-xs">Ставка 0.01% доступна</div>
                 </div>
             </div>
         </div>
 
-        <div class="flex bg-slate-200/50 p-1 rounded-2xl mb-8 w-fit overflow-x-auto no-scrollbar">
+        <div class="flex bg-slate-200/50 p-1.5 rounded-2xl mb-10 w-fit mx-auto md:mx-0">
             <button id="b-top" onclick="setTab('top')" class="tab-btn active">Топ видача</button>
             <button id="b-all" onclick="setTab('all')" class="tab-btn">Всі кредити</button>
             <button id="b-new" onclick="setTab('new')" class="tab-btn">Новинки</button>
         </div>
 
-        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-20"></div>
+        <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-20"></div>
 
-        <div class="bg-white border border-slate-200 rounded-3xl p-10 mb-20 shadow-sm max-w-3xl mx-auto">
-            <h2 class="text-2xl font-black text-center text-slate-900 mb-8 uppercase tracking-tighter">Зв'язатись з нами</h2>
-            <form action="#" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" placeholder="Ім'я" class="p-3 border rounded-xl outline-none focus:border-blue-500 bg-slate-50 text-sm">
-                <input type="email" placeholder="Email" class="p-3 border rounded-xl outline-none focus:border-blue-500 bg-slate-50 text-sm">
-                <textarea placeholder="Повідомлення" class="p-3 border rounded-xl outline-none focus:border-blue-500 bg-slate-50 text-sm md:col-span-2 h-24"></textarea>
-                <button type="submit" class="btn-main md:col-span-2">Відправити</button>
+        <div class="bg-white border border-slate-200 rounded-[40px] p-8 md:p-16 mb-20 shadow-sm max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-black text-slate-900 mb-4 tracking-tighter">Виникли запитання?</h2>
+                <p class="text-slate-500 font-medium">Залиште заявку, і ми допоможемо розібратися.</p>
+            </div>
+            <form action="#" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="text" placeholder="Ваше ім'я" class="form-input">
+                <input type="email" placeholder="Ваш Email" class="form-input">
+                <textarea placeholder="Ваше повідомлення..." class="form-input md:col-span-2 h-32"></textarea>
+                <div class="md:col-span-2 text-center">
+                    <button type="submit" class="btn-green px-12">Надіслати</button>
+                </div>
             </form>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-slate-200 py-12">
+    <footer class="bg-white border-t border-slate-200 pt-16 pb-10 mt-10">
         <div class="max-w-6xl mx-auto px-4">
-            <p class="text-[10px] text-slate-400 font-medium leading-relaxed uppercase tracking-wider text-center max-w-3xl mx-auto">
-                SmartCredit 2026 — інформаційний портал. Ми не видаємо кредити. Всі МФО мають ліцензії НБУ. Оцінюйте свої можливості тверезо.
-            </p>
+            <div class="bg-slate-50 rounded-3xl p-8 mb-10 text-[11px] text-slate-500 leading-relaxed font-medium border border-slate-100">
+                <p class="mb-4"><strong>ПРО СЕРВІС:</strong> SmartCredit 2026 — це незалежний інформаційний портал, який допомагає користувачам порівняти умови мікрокредитування в Україні. Ми не є фінансовою установою, банком чи кредитором і не несемо відповідальності за укладені вами договори.</p>
+                <p><strong>ПОПЕРЕДЖЕННЯ:</strong> Кредит — це фінансова відповідальність. Перед підписанням договору обов'язково перевірте графік платежів та повну вартість кредиту. Несвоєчасна оплата може призвести до штрафів та погіршення кредитної історії.</p>
+            </div>
+            <div class="text-center text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                © 2026 SmartCredit Aggregator | Всі права захищено
+            </div>
         </div>
     </footer>
 
     <script>
-        // Логотипи підтягуються за прямими посиланнями з доменів (або замініть на свої лінки з SalesDoubler)
         const offers = [
-            { name: "CreditPlus", domain: "creditplus.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №870" },
-            { name: "Credit7", domain: "credit7.ua", tags: ["top", "all"], badge: "ХІТ", lic: "ФК №1177" },
-            { name: "FirstCredit", domain: "firstcredit.ua", tags: ["top", "all", "new"], badge: "АВТО", lic: "НБУ №562" },
-            { name: "Monto", domain: "monto.com.ua", tags: ["new", "all"], badge: "НОВИНКА", lic: "ФК №1234" },
-            { name: "Avira", domain: "aviracredit.com.ua", tags: ["new", "all"], badge: "ШВИДКО", lic: "ФК №1111" },
-            { name: "Pango", domain: "pango.com.ua", tags: ["new", "all"], badge: "0.01%", lic: "НБУ №21/220" },
-            { name: "SelfieCredit", domain: "selfiecredit.com.ua", tags: ["new", "top", "all"], badge: "ФОТО", lic: "ФК №2222" },
-            { name: "Top1", domain: "top1.com.ua", tags: ["all", "new"], badge: null, lic: "НБУ №555" },
-            { name: "AlexCredit", domain: "alexcredit.ua", tags: ["all"], badge: null, lic: "ФК №930" },
-            { name: "LegkoCredit", domain: "legkocredit.com.ua", tags: ["all"], badge: null, lic: "ФК №777" },
-            { name: "Tengo", domain: "tengo.ua", tags: ["all"], badge: "0.01%", lic: "ФК №176" },
-            { name: "E-Groshi", domain: "e-groshi.com", tags: ["all"], badge: "99%", lic: "ФК №974" },
-            { name: "SOS Credit", domain: "soscredit.ua", tags: ["all"], badge: null, lic: "ІК №144" },
-            { name: "Cly", domain: "cly.ua", tags: ["new", "all"], badge: null, lic: "ФК №888" },
-            { name: "MisterMoney", domain: "mistermoney.com.ua", tags: ["all"], badge: null, lic: "ФК №999" },
-            { name: "SunCredit", domain: "suncredit.com.ua", tags: ["all"], badge: null, lic: "НБУ №333" },
-            { name: "Limon", domain: "limoncredit.com.ua", tags: ["new", "all"], badge: null, lic: "ФК №444" },
-            { name: "Microcash", domain: "microcash.com.ua", tags: ["all"], badge: null, lic: "ФК №1055" },
-            { name: "Treba", domain: "treba.credit", tags: ["new", "all"], badge: null, lic: "НБУ №678" },
-            { name: "Lovilave", domain: "lovilave.com.ua", tags: ["new", "all"], badge: null, lic: "ФК №1366" },
-            { name: "ShvydkoGroshi", domain: "sgroshi.com.ua", tags: ["all"], badge: null, lic: "ІК №78" },
-            { name: "ClickCredit", domain: "clickcredit.ua", tags: ["new", "all"], badge: null, lic: "ФК №1287" },
-            { name: "Credos", domain: "credos.com.ua", tags: ["all"], badge: null, lic: "ФК №1423" },
-            { name: "Amigo", domain: "amigo.com.ua", tags: ["all"], badge: null, lic: "НБУ №900" },
-            { name: "BeeCredit", domain: "bee.credit", tags: ["new", "all"], badge: null, lic: "НБУ №101" },
-            { name: "Miloan", domain: "miloan.ua", tags: ["all"], badge: "0%", lic: "ФК №168" },
-            { name: "CreditKasa", domain: "creditkasa.com.ua", tags: ["all", "top"], badge: "ХІТ", lic: "ФК №116" },
-            { name: "SlonCredit", domain: "sloncredit.ua", tags: ["all", "top"], badge: "НАДІЙНО", lic: "ФК №1111" },
-            { name: "SunCredit", domain: "suncredit.com.ua", tags: ["all"], badge: null, lic: "НБУ №333" },
-            { name: "MyCredit", domain: "mycredit.ua", tags: ["top", "all"], badge: "РЕКОМЕНД", lic: "ФК №146" }
+            // Сюди вставляй посилання logoUrl: "посилання_з_SD"
+            { name: "CreditPlus", domain: "creditplus.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №870", logoUrl: "" },
+            { name: "Credit7", domain: "credit7.ua", tags: ["top", "all"], badge: "ХІТ", lic: "ФК №1177", logoUrl: "" },
+            { name: "FirstCredit", domain: "firstcredit.ua", tags: ["top", "all", "new"], badge: "АВТО", lic: "НБУ №562", logoUrl: "" },
+            { name: "Monto", domain: "monto.com.ua", tags: ["new", "all"], badge: "НОВЕ", lic: "ФК №1234", logoUrl: "" },
+            { name: "Avira", domain: "aviracredit.com.ua", tags: ["new", "all"], badge: "ШВИДКО", lic: "ФК №1111", logoUrl: "" },
+            { name: "Pango", domain: "pango.com.ua", tags: ["new", "all"], badge: "0.01%", lic: "НБУ №21/220", logoUrl: "" },
+            { name: "SelfieCredit", domain: "selfiecredit.com.ua", tags: ["new", "top", "all"], badge: "ПО ФОТО", lic: "ФК №2222", logoUrl: "" },
+            { name: "Top1", domain: "top1.com.ua", tags: ["all", "new"], badge: null, lic: "НБУ №555", logoUrl: "" },
+            { name: "AlexCredit", domain: "alexcredit.com.ua", tags: ["all"], badge: null, lic: "ФК №930", logoUrl: "" },
+            { name: "LegkoCredit", domain: "legkocredit.com.ua", tags: ["all"], badge: null, lic: "ФК №777", logoUrl: "" },
+            { name: "Tengo", domain: "tengo.ua", tags: ["all"], badge: "0.01%", lic: "ФК №176", logoUrl: "" },
+            { name: "E-Groshi", domain: "e-groshi.com", tags: ["all"], badge: "99%", lic: "ФК №974", logoUrl: "" },
+            { name: "SOS Credit", domain: "soscredit.ua", tags: ["all"], badge: null, lic: "ІК №144", logoUrl: "" },
+            { name: "Cly", domain: "cly.ua", tags: ["new", "all"], badge: null, lic: "ФК №888", logoUrl: "" },
+            { name: "MisterMoney", domain: "mistermoney.com.ua", tags: ["all"], badge: null, lic: "ФК №999", logoUrl: "" },
+            { name: "SunCredit", domain: "suncredit.com.ua", tags: ["all"], badge: null, lic: "НБУ №333", logoUrl: "" },
+            { name: "Limon", domain: "limoncredit.com.ua", tags: ["new", "all"], badge: null, lic: "ФК №444", logoUrl: "" },
+            { name: "Microcash", domain: "microcash.com.ua", tags: ["all"], badge: null, lic: "ФК №1055", logoUrl: "" },
+            { name: "Treba", domain: "treba.credit", tags: ["new", "all"], badge: null, lic: "НБУ №678", logoUrl: "" },
+            { name: "Lovilave", domain: "lovilave.com.ua", tags: ["new", "all"], badge: null, lic: "ФК №1366", logoUrl: "" },
+            { name: "ShvydkoGroshi", domain: "sgroshi.com.ua", tags: ["all"], badge: null, lic: "ІК №78", logoUrl: "" },
+            { name: "ClickCredit", domain: "clickcredit.ua", tags: ["new", "all"], badge: null, lic: "ФК №1287", logoUrl: "" },
+            { name: "Credos", domain: "credos.com.ua", tags: ["all"], badge: null, lic: "ФК №1423", logoUrl: "" },
+            { name: "Amigo", domain: "amigo.com.ua", tags: ["all"], badge: null, lic: "НБУ №900", logoUrl: "" },
+            { name: "BeeCredit", domain: "bee.credit", tags: ["new", "all"], badge: null, lic: "НБУ №101", logoUrl: "" },
+            { name: "Miloan", domain: "miloan.ua", tags: ["all"], badge: "0%", lic: "ФК №168", logoUrl: "" },
+            { name: "CreditKasa", domain: "creditkasa.com.ua", tags: ["all", "top"], badge: "ХІТ", lic: "ФК №116", logoUrl: "" },
+            { name: "SlonCredit", domain: "sloncredit.ua", tags: ["all", "top"], badge: "НАДІЙНО", lic: "ФК №1111", logoUrl: "" },
+            { name: "SunCredit", domain: "suncredit.com.ua", tags: ["all"], badge: null, lic: "НБУ №333", logoUrl: "" },
+            { name: "MyCredit", domain: "mycredit.ua", tags: ["top", "all"], badge: "РЕКОМЕНД", lic: "ФК №146", logoUrl: "" }
         ];
 
         let currentTab = 'top';
@@ -195,18 +212,17 @@
 
             list.forEach(o => {
                 const b = o.badge ? `<div class="badge">${o.badge}</div>` : '';
-                // Використовуємо Clearbit як основний, він дає якісні широкі PNG
-                const logoPath = `https://logo.clearbit.com/${o.domain}`;
+                // Якщо logoUrl порожній, беремо фавіконку Google 128px
+                const logo = o.logoUrl ? o.logoUrl : `https://www.google.com/s2/favicons?domain=${o.domain}&sz=128`;
 
                 grid.innerHTML += `
                 <div class="offer-card">
                     ${b}
                     <div class="logo-wrapper">
-                        <img src="${logoPath}" class="logo-img" alt="${o.name}" 
-                             onerror="this.src='https://www.google.com/s2/favicons?domain=${o.domain}&sz=128'; this.style.width='auto'; this.style.height='48px';">
+                        <img src="${logo}" class="logo-img" alt="${o.name}" onerror="this.src='https://logo.clearbit.com/${o.domain}'">
                     </div>
-                    <div>
-                        <a href="#" class="btn-main block w-full">Отримати</a>
+                    <div class="flex flex-col">
+                        <a href="#" class="btn-green">Отримати</a>
                         <p class="lic-text">${o.lic}</p>
                     </div>
                 </div>`;
