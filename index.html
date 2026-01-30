@@ -13,7 +13,6 @@
         
         body { font-family: 'Inter', sans-serif; background: #bcf0d3; color: #1e293b; scroll-behavior: smooth; }
         
-        /* ЗОЛОТА РАМКА ДЛЯ ТОП ВИДАЧІ */
         .is-top-card { 
             border: 4px solid #fbbf24 !important; 
             box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
@@ -55,16 +54,14 @@
 
         .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 10px; font-weight: 700; }
 
-        /* ЦЕНТРОВАНІ ТА ОДНАКОВІ ВКЛАДКИ */
         .tabs-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
         .tab-btn { 
-            width: 160px; text-align: center; padding: 16px 0; font-weight: 900; 
+            width: 150px; text-align: center; padding: 16px 0; font-weight: 900; 
             color: #064e3b; border-radius: 20px; transition: 0.3s; font-size: 14px; 
             text-transform: uppercase; border: 1px solid #99c7ae; background: rgba(255,255,255,0.4);
         }
         .tab-btn.active { background: #059669; color: #ffffff; border-color: #059669; box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3); }
 
-        /* ІНФО ТА FAQ */
         .info-main-btn { padding: 10px 24px; font-weight: 800; background: #ffffff; border: 1px solid #059669; color: #059669; border-radius: 14px; transition: 0.3s; font-size: 12px; }
         .info-main-btn.active { background: #059669; color: #ffffff; }
 
@@ -74,8 +71,10 @@
         .faq-content { padding: 0 16px 16px; color: #475569; font-size: 12px; line-height: 1.6; display: none; }
         .faq-icon { background: #10b981; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
 
-        .seo-section { background: rgba(255,255,255,0.8); border-radius: 40px; padding: 40px; border: 1px solid #99c7ae; }
-        
+        .seo-section { background: rgba(255,255,255,0.85); border-radius: 40px; padding: 40px; border: 1px solid #99c7ae; }
+        .seo-h2 { font-size: 24px; font-weight: 900; color: #064e3b; margin-bottom: 15px; text-transform: uppercase; }
+        .seo-text { font-size: 14px; line-height: 1.8; color: #334155; margin-bottom: 25px; }
+
         .no-scrollbar::-webkit-scrollbar { display: none; }
         input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; }
         input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #99c7ae; border-radius: 10px; }
@@ -112,7 +111,7 @@
                 <div class="bg-emerald-950 rounded-[30px] p-8 text-center text-white border-b-8 border-emerald-600 shadow-inner">
                     <div class="text-emerald-400 uppercase text-[10px] font-black mb-1">До повернення</div>
                     <div class="text-6xl font-black mb-4 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="bg-emerald-500/20 py-2 px-4 rounded-xl inline-block text-emerald-400 font-bold text-[10px] uppercase tracking-widest">Ставка 0.01% активована</div>
+                    <div class="bg-emerald-500/20 py-2 px-4 rounded-xl inline-block text-emerald-400 font-bold text-[10px] uppercase tracking-widest">Ставка 0.01% активна</div>
                 </div>
             </div>
         </div>
@@ -130,47 +129,57 @@
 
         <div id="info-content" class="space-y-12 mb-24">
             <div class="seo-section shadow-sm">
-                <h1 class="text-3xl font-black text-emerald-950 mb-6 uppercase tracking-tighter text-center">Онлайн кредит на картку в Україні <span class="js-month-now"></span></h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm leading-relaxed text-slate-700">
-                    <p>Наш сервіс SmartCredit допомагає знайти найвигідніші умови кредитування. У <strong><span class="js-month-now"></span></strong> році лідери ринку пропонують позики під 0.01% для нових клієнтів. Це дозволяє отримати фінансову підтримку миттєво без паперової тяганини та дзвінків.</p>
-                    <p>Для гарантованого схвалення ми рекомендуємо подавати заявки одночасно у 3-4 МФО. Це підвищує шанси на отримання грошей до 99%, навіть якщо ваша кредитна історія не є ідеальною або ви працюєте неофіційно.</p>
-                </div>
-            </div>
+                <h1 class="text-3xl font-black text-emerald-950 mb-8 uppercase tracking-tighter text-center">Кредит онлайн на картку в Україні: повний гайд на <span class="js-month-now"></span></h1>
+                
+                <section class="mb-10">
+                    <h2 class="seo-h2">1. Як обрати найкращу МФО у <span class="js-month-now"></span> році?</h2>
+                    <p class="seo-text">Ринок мікрофінансування в Україні продовжує стрімко розвиватися, пропонуючи користувачам все більш технологічні та вигідні рішення. Якщо раніше отримання позики асоціювалося з візитами до офісу та купою паперів, то сьогодні процес повністю автоматизований. Вибір надійної компанії — це перший крок до безпечного кредитування. На нашому сервісі SmartCredit ми відбираємо лише ті організації, які мають діючу ліцензію Національного банку України (НБУ). Це гарантує, що ваші права як споживача будуть захищені, а умови договору — прозорими. Звертайте увагу на рейтинг схвалення та наявність пільгового періоду під 0.01%.</p>
+                </section>
 
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-xl font-black text-emerald-950 mb-6 text-center uppercase tracking-tighter opacity-80">Допомога та запитання (FAQ)</h2>
-                <div class="faq-box shadow-xl">
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи реально отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
-                        <div class="faq-content">Так, це реальна акція для залучення нових клієнтів. Оберіть оффер з нашого списку з плашкою "0.01%" та зареєструйтеся вперше.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Які документи потрібні для оформлення?</span> <span class="faq-icon">?</span></button>
-                        <div class="faq-content">Вам знадобляться лише паспорт громадянина України (або ID-картка) та ІПН. Жодних довідок про доходи чи офіційного працевлаштування.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як швидко гроші зарахують на картку?</span> <span class="faq-icon">?</span></button>
-                        <div class="faq-content">Автоматичне рішення зазвичай приймається за 5-10 хвилин. Після підписання договору кодом із SMS гроші приходять миттєво в будь-який час доби.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи можна погасити кредит достроково?</span> <span class="faq-icon">?</span></button>
-                        <div class="faq-content">Так, ви можете закрити позику раніше терміну. При цьому відсотки будуть перераховані лише за дні фактичного користування грошима.</div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-trigger" onclick="toggleFaq(this)"><span>Що робити, якщо я не встигаю заплатити вчасно?</span> <span class="faq-icon">?</span></button>
-                        <div class="faq-content">У такому разі скористайтеся послугою "Пролонгація". Сплатіть лише нараховані відсотки, і термін користування кредитом буде продовжено без штрафів.</div>
+                <section class="mb-10">
+                    <h2 class="seo-h2">2. Кредитна історія: чи можна отримати гроші з простроченнями?</h2>
+                    <p class="seo-text">Одним із найпоширеніших міфів є те, що з поганою кредитною історією (КІ) шлях до позик закритий. Насправді, мікрофінансові організації України в <span class="js-month-now"></span> році використовують власні алгоритми скорингу, які аналізують сотні параметрів, а не лише дані з УБКІ. Навіть якщо у вас були затримки платежів у минулому, ви можете розраховувати на невелику суму для початку. Більше того, вчасне повернення мікрокредиту — це найкращий спосіб «реанімувати» свою репутацію перед банками. Кожна закрита вчасно позика додає позитивні бали до вашого досьє, відкриваючи доступ до великих кредитів у майбутньому.</p>
+                </section>
+
+                <section class="mb-10">
+                    <h2 class="seo-h2">3. Безпека даних та цифрова гігієна при онлайн-кредитуванні</h2>
+                    <p class="seo-text">Коли ви заповнюєте анкету на сайті МФО, ви передаєте конфіденційну інформацію: паспортні дані, ІПН та номер банківської картки. На нашому порталі всі переходи здійснюються за захищеними протоколами HTTPS. Компанії-партнери використовують міжнародні стандарти безпеки PCI DSS для обробки карткових даних. Ніколи не передавайте свій пароль від BankID або SMS-коди третім особам. Пам’ятайте, що легальна компанія ніколи не вимагатиме передоплату за «страховку» або «комісію за переказ» до моменту видачі коштів. Усі розрахунки відбуваються прозоро згідно з графіком платежів у вашому особистому кабінеті.</p>
+                </section>
+
+                <div class="max-w-3xl mx-auto mt-16">
+                    <h2 class="text-xl font-black text-emerald-950 mb-6 text-center uppercase tracking-tighter opacity-80">Популярні запитання (FAQ)</h2>
+                    <div class="faq-box shadow-xl">
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи реально отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
+                            <div class="faq-content">Так, це реальна маркетингова акція для залучення нових клієнтів. Більшість компаній зі списку пропонують таку ставку на перший кредит, щоб ви могли оцінити зручність сервісу.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFaq(this)"><span>Які документи потрібні для оформлення?</span> <span class="faq-icon">?</span></button>
+                            <div class="faq-content">Для реєстрації вам знадобляться лише паспорт громадянина України (паперовий або ID-картка) та ідентифікаційний код (ІПН). Також необхідна активна картка будь-якого банку України.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як швидко гроші зарахують на картку?</span> <span class="faq-icon">?</span></button>
+                            <div class="faq-content">Автоматичні системи приймають рішення за 5-10 хвилин. Після підтвердження договору кодом із SMS гроші перераховуються на вашу картку миттєво в режимі 24/7.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи можна погасити кредит достроково?</span> <span class="faq-icon">?</span></button>
+                            <div class="faq-content">Так, ви маєте законне право закрити позику раніше терміну. При цьому відсотки будуть перераховані лише за дні фактичного користування грошима без додаткових штрафних санкцій.</div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-trigger" onclick="toggleFaq(this)"><span>Що робити, якщо я не встигаю заплатити вчасно?</span> <span class="faq-icon">?</span></button>
+                            <div class="faq-content">Рекомендуємо скористатися послугою "Пролонгація" в особистому кабінеті. Сплатіть лише нараховані відсотки, і термін договору буде автоматично продовжено без псування вашої кредитної історії.</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-emerald-100 pt-16 pb-10 text-center">
-        <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | All Rights Reserved</div>
+    <footer class="bg-white border-t border-emerald-100 pt-16 pb-10 text-center text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">
+        © 2026 SmartCredit | Всі права захищено
     </footer>
 
     <script>
-        // ВСІ ПОСИЛАННЯ ПЕРЕВІРЕНІ ТА ОНОВЛЕНІ (aid=81470)
         const offers = [
             { name: "CreditPlus", domain: "creditplus.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №870", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/77587/original.png?1680595488", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
             { name: "Credit7", domain: "credit7.ua", tags: ["top", "all"], badge: "ХІТ", lic: "ФК №1177", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81287/original.png?1757079436", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
@@ -189,8 +198,6 @@
             { name: "AlexCredit", domain: "alexcredit.com.ua", tags: ["all"], badge: null, lic: "ФК №930", rate: "91%", stars: 3, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/001/509/original/alexcredit-ua-oboz-logo.png.svg?1674221248", link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470" },
             { name: "LegkoCredit", domain: "legkocredit.com.ua", tags: ["all"], badge: null, lic: "ФК №777", rate: "92%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81431/original.webp?1763042483", link: "https://rdr.salesdoubler.com.ua/in/offer/8356?aid=81470" },
             { name: "Tengo", domain: "tengo.ua", tags: ["all"], badge: "0.01%", lic: "ФК №176", rate: "97%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81511/original.png?1765448873", link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470" },
-            { name: "SlonCredit", domain: "sloncredit.ua", tags: ["all"], badge: "НАДІЙНО", lic: "ФК №1111", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81540/original.png?1767610054", link: "https://rdr.fmcgsd.net/in/offer/1921?aid=81470" },
-            { name: "MyCredit", domain: "mycredit.ua", tags: ["all"], badge: "РЕКОМЕНД", lic: "ФК №146", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81274/original.png?1756824516", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" },
             { name: "SOS Credit", domain: "soscredit.ua", tags: ["all"], badge: null, lic: "ІК №144", rate: "94%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/78147/original.png?1689779112", link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470" },
             { name: "Cly", domain: "cly.ua", tags: ["all"], badge: null, lic: "ФК №888", rate: "90%", stars: 3, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/002/591/original/cly_logo.png.svg?1674218719", link: "https://rdr.fmcgsd.net/in/offer/2591?aid=81470" },
             { name: "MisterMoney", domain: "mistermoney.com.ua", tags: ["all"], badge: null, lic: "ФК №999", rate: "91%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/74983/original.svg?1640951365", link: "https://rdr.fmcgsd.net/in/offer/1845?aid=81470" },
@@ -203,7 +210,9 @@
             { name: "Miloan", domain: "miloan.ua", tags: ["all"], badge: "0%", lic: "ФК №168", rate: "97%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81552/original.svg?1768809769", link: "https://rdr.fmcgsd.net/in/offer/1436?aid=81470" },
             { name: "Avira", domain: "aviracredit.com.ua", tags: ["all"], badge: "ШВИДКО", lic: "ФК №1111", rate: "93%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/72949/original.jpg?1615458640", link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470" },
             { name: "Pango", domain: "pango.com.ua", tags: ["all"], badge: "0.01%", lic: "НБУ №21/220", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81558/original.webp?1769094398", link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470" },
-            { name: "ТвояПозика", domain: "tvoyapozyka.com.ua", tags: ["all"], badge: "ДО 150К", lic: "ФК №121", rate: "90%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/76740/original.jpg?1668774561", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470" }
+            { name: "ТвояПозика", domain: "tvoyapozyka.com.ua", tags: ["all"], badge: "ДО 150К", lic: "ФК №121", rate: "90%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/76740/original.jpg?1668774561", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470" },
+            { name: "SlonCredit", domain: "sloncredit.ua", tags: ["all"], badge: "НАДІЙНО", lic: "ФК №1111", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81540/original.png?1767610054", link: "https://rdr.fmcgsd.net/in/offer/1921?aid=81470" },
+            { name: "MyCredit", domain: "mycredit.ua", tags: ["all"], badge: "РЕКОМЕНД", lic: "ФК №146", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81274/original.png?1756824516", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" }
         ];
 
         let currentTab = 'info';
@@ -230,6 +239,7 @@
             content.style.display = isOpen ? 'none' : 'block';
         }
 
+        /* ОБХІД ADBLOCK: ПЕРЕХІД ЧЕРЕЗ JS-TRIGGER */
         function openOffer(link) {
             window.open(link, '_blank', 'noreferrer,noopener');
         }
@@ -247,13 +257,13 @@
                 grid.innerHTML = '';
 
                 let list = [];
-                const topItems = offers.filter(o => o.tags.includes('top')).slice(0, 8); // ТІЛЬКИ 8 ОФЕРІВ ДЛЯ ТОПУ
+                const topItems = offers.filter(o => o.tags.includes('top')).slice(0, 8); // ТІЛЬКИ 8 ОФЕРІВ У ТОП
 
                 if (currentTab === 'top') {
                     list = topItems;
                 } else if (currentTab === 'all') {
                     const otherItems = offers.filter(o => !topItems.includes(o));
-                    list = [...otherItems, ...topItems]; // ТОП-оффери в кінці списку
+                    list = [...otherItems, ...topItems]; // АНТИ-ДУБЛЬ: ТОП-ОФЕРИ В КІНЦІ
                 } else {
                     list = offers.filter(o => o.tags.includes(currentTab));
                 }
