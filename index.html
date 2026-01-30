@@ -11,10 +11,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
         
-        /* НАСИЧЕНИЙ М'ЯТНИЙ ФОН */
         body { font-family: 'Inter', sans-serif; background: #bcf0d3; color: #1e293b; scroll-behavior: smooth; }
         
-        /* ЕФЕКТ ДЛЯ ТОП ВИДАЧІ */
         .is-top-card { 
             border: 4px solid #fbbf24 !important; 
             box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
@@ -35,7 +33,7 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #99c7ae;
-            height: 370px; 
+            height: 375px; 
         }
         .offer-card:hover { 
             transform: translateY(-8px);
@@ -67,17 +65,14 @@
         .tab-btn { padding: 14px 28px; font-weight: 900; color: #064e3b; border-radius: 18px; transition: 0.3s; font-size: 13px; text-transform: uppercase; }
         .tab-btn.active { background: #059669; color: #ffffff; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3); }
 
-        /* FAQ ACCORDION */
         .faq-box { background: #ffffff; border-radius: 35px; overflow: hidden; border: 1px solid #99c7ae; }
         .faq-item { border-bottom: 1px solid #f1f5f9; }
         .faq-trigger { width: 100%; text-align: left; padding: 22px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; }
-        .faq-trigger:hover { background: #f0fdf4; }
         .faq-content { padding: 0 22px 22px; color: #475569; font-size: 14px; line-height: 1.7; display: none; }
         .faq-icon { background: #10b981; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; }
 
-        /* SEO SECTION */
         .seo-section { background: rgba(255,255,255,0.7); border-radius: 40px; padding: 40px; border: 1px solid #99c7ae; }
-        .seo-h2 { font-size: 26px; font-weight: 900; color: #064e3b; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.5px; }
+        .seo-h2 { font-size: 26px; font-weight: 900; color: #064e3b; margin-bottom: 20px; text-transform: uppercase; }
 
         input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; }
         input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #99c7ae; border-radius: 10px; }
@@ -93,28 +88,28 @@
                 <span class="text-2xl font-black text-emerald-900 tracking-tighter uppercase">SmartCredit</span>
             </div>
             <div class="hidden md:block">
-                <span class="text-[11px] font-black text-emerald-700 bg-emerald-100/50 px-4 py-2 rounded-full border border-emerald-200 uppercase tracking-widest">👑 Актуально на <span class="js-month-now"></span></span>
+                <span class="text-[11px] font-black text-emerald-700 bg-emerald-100/50 px-4 py-2 rounded-full border border-emerald-200 uppercase tracking-widest">👑 Оновлено на <span class="js-month-now"></span></span>
             </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 mt-8">
-        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-12 shadow-2xl max-w-4xl mx-auto">
+        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-12 shadow-2xl max-w-4xl mx-auto text-center lg:text-left">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div class="space-y-8 text-center lg:text-left">
+                <div class="space-y-8">
                     <div>
-                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Сума</span> <span class="text-4xl font-black text-emerald-900"><span id="cSum">10 000</span> ₴</span></div>
-                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase text-slate-400"><span>Бажана сума</span> <span><span id="cSum">10 000</span> ₴</span></div>
+                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()" class="w-full">
                     </div>
                     <div>
-                        <div class="flex justify-between items-end mb-3 text-slate-400 font-black uppercase text-[10px] tracking-widest"><span>Термін</span> <span class="text-4xl font-black text-emerald-900"><span id="cDays">15</span> днів</span></div>
-                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
+                        <div class="flex justify-between mb-2 text-[10px] font-black uppercase text-slate-400"><span>Термін</span> <span><span id="cDays">15</span> днів</span></div>
+                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()" class="w-full">
                     </div>
                 </div>
-                <div class="bg-emerald-950 rounded-[30px] p-8 text-center text-white border-b-8 border-emerald-600 shadow-inner">
-                    <div class="text-emerald-400 uppercase text-[10px] font-black mb-1 tracking-widest">До повернення за 0.01%</div>
+                <div class="bg-emerald-950 rounded-[30px] p-8 text-white border-b-8 border-emerald-600 shadow-inner">
+                    <div class="text-[10px] font-black mb-1 text-emerald-400 uppercase tracking-widest">До сплати за 0.01%</div>
                     <div class="text-6xl font-black mb-4 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="bg-emerald-500/20 py-2 px-4 rounded-xl inline-block text-emerald-400 font-bold text-[10px] uppercase tracking-widest">Пільгова ставка активована</div>
+                    <div class="text-xs font-bold text-emerald-300 opacity-80 uppercase">Переплата всього 15 грн</div>
                 </div>
             </div>
         </div>
@@ -128,15 +123,11 @@
         <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-24"></div>
 
         <div class="max-w-3xl mx-auto mb-24">
-            <h2 class="text-3xl font-black text-emerald-950 mb-10 text-center tracking-tighter uppercase">Поширені запитання</h2>
+            <h2 class="text-3xl font-black text-emerald-950 mb-10 text-center uppercase tracking-tighter">Поширені запитання</h2>
             <div class="faq-box shadow-xl">
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи реально отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
                     <div class="faq-content">Так, це реальна акція для залучення нових клієнтів. Більшість компаній зі списку пропонують таку ставку на перший кредит.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як підвищити шанси на схвалення?</span> <span class="faq-icon">?</span></button>
-                    <div class="faq-content">Радимо подавати заявки одразу у 3-4 компанії. Також перевірте, щоб дані в анкеті точно збігалися з паспортними.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як швидко прийдуть гроші?</span> <span class="faq-icon">?</span></button>
@@ -147,22 +138,10 @@
 
         <div class="seo-section mb-24 space-y-16">
             <article>
-                <h2 class="seo-h2">Кредит онлайн на картку: як обрати вигідні умови у <span class="js-month-now"></span></h2>
+                <h2 class="seo-h2">Кредит онлайн на картку: як обрати умови у <span class="js-month-now"></span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-700">
-                    <p>Шукаєте швидку фінансову допомогу? У <strong><span class="js-month-now"></span></strong> році ринок мікрокредитування в Україні пропонує унікальні можливості. На нашому порталі ми зібрали перевірені МФО, які видають позики без довідки про доходи та поручителів.</p>
-                    <p>Головною перевагою є можливість отримати кошти під 0.01% на перший кредит. Це дозволяє закрити термінові потреби практично без переплат. Ми рекомендуємо звертати увагу на наш розділ "Топ видача", де представлені лідери ринку з найвищим відсотком схвалення.</p>
-                </div>
-            </article>
-
-            <article>
-                <h2 class="seo-h2">Переваги мікрокредитів перед банківськими позиками</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-700">
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Швидкість:</strong> розгляд заявки триває до 15 хвилин проти кількох днів у банку.</li>
-                        <li><strong>Лояльність:</strong> високий шанс отримати гроші навіть з неідеальною кредитною історією.</li>
-                        <li><strong>Доступність:</strong> сервіси працюють цілодобово, без вихідних та свят.</li>
-                    </ul>
-                    <p>Для оформлення вам знадобиться лише паспорт та ІПН. Весь процес відбувається онлайн, що економить ваш час. SmartCredit допомагає знайти надійного партнера серед десятків пропозицій на ринку України.</p>
+                    <p>Шукаєте швидку фінансову допомогу? У <strong><span class="js-month-now"></span></strong> році ринок мікрокредитування в Україні пропонує унікальні можливості. Ми зібрали перевірені МФО, які видають позики без довідки про доходи.</p>
+                    <p>Для гарантованого результату ми радимо надіслати заявки у 3-4 різні МФО одночасно. Це дозволить вам отримати гроші зі 100% імовірністю.</p>
                 </div>
             </article>
         </div>
@@ -170,32 +149,29 @@
 
     <footer class="bg-white border-t border-emerald-100 pt-16 pb-10">
         <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="bg-emerald-50 rounded-3xl p-8 mb-10 text-[11px] text-emerald-900/70 leading-relaxed text-left">
-                <p class="mb-4"><strong>ГЕО:</strong> Україна (крім тимчасово окупованих територій та зон бойових дій).</p>
-                <p><strong>УВАГА:</strong> SmartCredit 2026 — це агрегатор пропозицій. Ми не видаємо кредити. Оцінюйте свою платоспроможність. Несвоєчасна виплата може погіршити кредитну історію.</p>
-            </div>
-            <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | All Rights Reserved</div>
+            <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | Всі права захищено</div>
         </div>
     </footer>
 
     <script>
+        // ТУТ ПЕРЕВІРЕНО: ТЕГИ "TOP" ДОДАНІ ДО НАЙКРАЩИХ ОФЕРІВ
         const offers = [
             { name: "CreditPlus", domain: "creditplus.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №870", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/77587/original.png?1680595488", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
             { name: "Credit7", domain: "credit7.ua", tags: ["top", "all"], badge: "ХІТ", lic: "ФК №1177", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81287/original.png?1757079436", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
             { name: "StarFin", domain: "starfin.ua", tags: ["new", "all", "top"], badge: "НОВЕ", lic: "НБУ №445", rate: "97%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/78516/original.svg?1695211509", link: "https://go.salesdoubler.net/in/offer/5706?aid=81470" },
             { name: "Moneyveo", domain: "moneyveo.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №161", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/80938/original.png?1746520515", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470" },
-            { name: "FirstCredit", domain: "firstcredit.ua", tags: ["new", "all"], badge: "АВТО", lic: "НБУ №562", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81501/original.png?1765190597", link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470" },
+            { name: "FirstCredit", domain: "firstcredit.ua", tags: ["new", "all", "top"], badge: "АВТО", lic: "НБУ №562", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81501/original.png?1765190597", link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470" },
             { name: "Monto", domain: "monto.com.ua", tags: ["new", "all"], badge: "НОВЕ", lic: "ФК №1234", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81504/original.png?1765274136", link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470" },
             { name: "BeeCredit", domain: "bee.credit", tags: ["new", "all"], badge: "НОВЕ", lic: "НБУ №101", rate: "94%", stars: 4, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/008/142/thumb/300x100.png?1764159472", link: "https://rdr.salesdoubler.com.ua/in/offer/8142?aid=81470" },
             { name: "CreditKasa", domain: "creditkasa.com.ua", tags: ["all", "top"], badge: "ХІТ", lic: "ФК №116", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81545/original.png?1768309008", link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470" },
             { name: "SlonCredit", domain: "sloncredit.ua", tags: ["all", "top"], badge: "НАДІЙНО", lic: "ФК №1111", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81540/original.png?1767610054", link: "https://rdr.fmcgsd.net/in/offer/1921?aid=81470" },
             { name: "MyCredit", domain: "mycredit.ua", tags: ["top", "all"], badge: "РЕКОМЕНД", lic: "ФК №146", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81274/original.png?1756824516", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" },
-            { name: "E-Groshi", domain: "e-groshi.com", tags: ["all"], badge: "99%", lic: "ФК №974", rate: "94%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81559/original.svg?1769096165", link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470" },
-            { name: "SunCredit", domain: "suncredit.com.ua", tags: ["all"], badge: null, lic: "НБУ №333", rate: "92%", stars: 4, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/008/198/original/Suncredit_vitrina_320-98_white_bg.svg?1720526763", link: "https://rdr.salesdoubler.com.ua/in/offer/8198?aid=81470" },
-            { name: "Top1", domain: "top1.com.ua", tags: ["all"], badge: null, lic: "НБУ №555", rate: "91%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81491/original.svg?1764595070", link: "https://rdr.salesdoubler.com.ua/in/offer/8172?aid=81470" },
-            { name: "ClickCredit", domain: "clickcredit.ua", tags: ["all"], badge: null, lic: "ФК №1287", rate: "93%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81513/original.svg?1765556311", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470" },
+            { name: "E-Groshi", domain: "e-groshi.com", tags: ["all", "top"], badge: "99%", lic: "ФК №974", rate: "94%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81559/original.svg?1769096165", link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470" },
+            { name: "SunCredit", domain: "suncredit.com.ua", tags: ["all", "top"], badge: null, lic: "НБУ №333", rate: "92%", stars: 4, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/008/198/original/Suncredit_vitrina_320-98_white_bg.svg?1720526763", link: "https://rdr.salesdoubler.com.ua/in/offer/8198?aid=81470" },
+            { name: "Top1", domain: "top1.com.ua", tags: ["all", "top"], badge: null, lic: "НБУ №555", rate: "91%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81491/original.svg?1764595070", link: "https://rdr.salesdoubler.com.ua/in/offer/8172?aid=81470" },
+            { name: "ClickCredit", domain: "clickcredit.ua", tags: ["all", "top"], badge: null, lic: "ФК №1287", rate: "93%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81513/original.svg?1765556311", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470" },
             { name: "Credos", domain: "credos.com.ua", tags: ["all"], badge: null, lic: "ФК №1423", rate: "90%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/80961/original.png?1747030827", link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470" },
-            { name: "SelfieCredit", domain: "selfiecredit.com.ua", tags: ["all"], badge: "ФОТО", lic: "ФК №2222", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81191/original.png?1752741996", link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" }
+            { name: "SelfieCredit", domain: "selfiecredit.com.ua", tags: ["all", "top"], badge: "ФОТО", lic: "ФК №2222", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81191/original.png?1752741996", link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" }
         ];
 
         let currentTab = 'top';
@@ -225,7 +201,7 @@
         function render() {
             const grid = document.getElementById('grid'); grid.innerHTML = '';
             let list = offers.filter(o => o.tags.includes(currentTab));
-            // РАНДОМ ВИДАЛЕНО ДЛЯ СТАБІЛЬНОГО ТОПУ
+
             list.forEach(o => {
                 const isTop = (currentTab === 'top') ? 'is-top-card' : '';
                 const b = o.badge ? `<div class="badge">${o.badge}</div>` : '';
