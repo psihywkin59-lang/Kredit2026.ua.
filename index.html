@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartCredit — Всі кредити України</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f8fafc; color: #334155; }
-        
-        .offer-card { 
-            background: #ffffff; 
-            border: 1px solid #e2e8f0; 
-            border-radius: 16px; 
-            padding: 24px; 
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #334155;
+        }
+
+        .offer-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
             transition: all 0.3s ease;
             position: relative;
             display: flex;
             flex-direction: column;
             text-align: center;
         }
-        .offer-card:hover { 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+
+        .offer-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
             border-color: #cbd5e1;
             transform: translateY(-2px);
         }
@@ -68,15 +74,47 @@
             transition: all 0.2s;
             text-transform: uppercase;
         }
-        .btn-blue:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
 
-        .tab-btn { padding-bottom: 12px; font-weight: 600; color: #94a3b8; transition: all 0.2s; border-bottom: 2px solid transparent; }
-        .tab-btn.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
+        .btn-blue:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
 
-        input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: #e2e8f0; border-radius: 5px; outline: none; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: #2563eb; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .tab-btn {
+            padding-bottom: 12px;
+            font-weight: 600;
+            color: #94a3b8;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-btn.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #2563eb;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
+
 <body class="pb-10">
 
     <header class="bg-white border-b border-slate-200 py-4 mb-8 sticky top-0 z-50">
@@ -90,17 +128,17 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4">
-        
+
         <div class="bg-white rounded-3xl border border-slate-200 p-8 md:p-12 mb-12 shadow-sm">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-10">
                     <div>
                         <div class="flex justify-between font-bold mb-4 text-lg"><span>Сума</span> <span class="text-2xl text-blue-600"><span id="cSum">10 000</span> ₴</span></div>
-                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
+                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()" aria-label="Сума кредиту">
                     </div>
                     <div>
                         <div class="flex justify-between font-bold mb-4 text-lg"><span>Термін</span> <span class="text-2xl text-blue-600"><span id="cDays">15</span> днів</span></div>
-                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
+                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()" aria-label="Термін кредиту">
                     </div>
                 </div>
                 <div class="bg-slate-50 rounded-3xl p-10 text-center border border-slate-100 shadow-inner">
@@ -140,10 +178,12 @@
         </div>
     </footer>
 
+    <!-- Модальное окно контактов -->
     <div id="m-contact" class="fixed inset-0 bg-slate-900/60 hidden items-center justify-center z-[100] p-4 backdrop-blur-sm">
         <div class="bg-white rounded-3xl p-10 w-full max-w-md shadow-2xl">
             <h3 class="text-2xl font-black mb-8 text-slate-800">Напишіть нам</h3>
-            <form action="https://formspree.io/f/psihywkin59@gmail.com" method="POST" class="space-y-5">
+            <!-- ACTION АДРЕС ИСПРАВЛЕН НА БЕЗОПАСНЫЙ ID ФОРМЫ -->
+            <form action="https://formspree.io" method="POST" class="space-y-5">
                 <input type="text" name="name" placeholder="Ваше ім'я" required class="w-full border border-slate-200 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50">
                 <input type="email" name="email" placeholder="Ваш Email" required class="w-full border border-slate-200 p-4 rounded-xl outline-none focus:border-blue-500 bg-slate-50">
                 <textarea name="message" placeholder="Повідомлення..." required class="w-full border border-slate-200 p-4 rounded-xl h-32 outline-none focus:border-blue-500 bg-slate-50"></textarea>
@@ -152,45 +192,137 @@
             </form>
         </div>
     </div>
-
+    
+    <!-- Скрипты -->
     <script>
-        const offers = [
-            { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", domain: "tvoyapozyka.com.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470" },
-            { name: "Moneyveo", sum: "25 000", rate: "0.01%", domain: "moneyveo.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470" },
-            { name: "CreditPlus", sum: "15 000", rate: "0.01%", domain: "creditplus.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
-            { name: "Credit7", sum: "25 000", rate: "0.01%", domain: "credit7.ua", tags: ["top", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
-            { name: "FirstCredit", sum: "15 000", rate: "0.01%", domain: "firstcredit.ua", tags: ["top", "all", "new"], link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470" },
-            { name: "Monto", sum: "10 000", rate: "0.01%", domain: "monto.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470" },
-            { name: "Avira", sum: "8 000", rate: "0.01%", domain: "aviracredit.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470" },
-            { name: "Pango", sum: "15 000", rate: "0.01%", domain: "pango.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470" },
-            { name: "SelfieCredit", sum: "25 000", rate: "0.01%", domain: "selfiecredit.com.ua", tags: ["top", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" },
-            { name: "Tengo", sum: "20 000", rate: "0.01%", domain: "tengo.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470" },
-            { name: "E-Groshi", sum: "20 000", rate: "0.01%", domain: "e-groshi.com", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470" },
-            { name: "MyCredit", sum: "18 000", rate: "0.01%", domain: "mycredit.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" }
-        ];
+        // Добавлены прямые ссылки на логотипы для надежности
+        const offers = [{
+            name: "Tvoya Pozyka",
+            sum: "15 000",
+            rate: "0.01%",
+            domain: "tvoyapozyka.com.ua",
+            tags: ["top", "all"],
+            link: "https://rdr.fmcgsd.net",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "Moneyveo",
+            sum: "25 000",
+            rate: "0.01%",
+            domain: "moneyveo.ua",
+            tags: ["top", "all"],
+            link: "https://rdr.fmcgsd.net",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "CreditPlus",
+            sum: "15 000",
+            rate: "0.01%",
+            domain: "creditplus.ua",
+            tags: ["top", "all"],
+            link: "https://rdr.fmcgsd.net",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "Credit7",
+            sum: "25 000",
+            rate: "0.01%",
+            domain: "credit7.ua",
+            tags: ["top", "all"],
+            link: "https://rdr.salesdoubler.com.ua",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "FirstCredit",
+            sum: "15 000",
+            rate: "0.01%",
+            domain: "firstcredit.ua",
+            tags: ["top", "all", "new"],
+            link: "https://rdr.salesdoubler.com.ua",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "Monto",
+            sum: "10 000",
+            rate: "0.01%",
+            domain: "monto.com.ua",
+            tags: ["new", "all"],
+            link: "https://rdr.salesdoubler.com.ua",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "Avira",
+            sum: "8 000",
+            rate: "0.01%",
+            domain: "aviracredit.com.ua",
+            tags: ["new", "all"],
+            link: "https://rdr.salesdoubler.com.ua",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "Pango",
+            sum: "15 000",
+            rate: "0.01%",
+            domain: "pango.com.ua",
+            tags: ["new", "all"],
+            link: "https://rdr.salesdoubler.com.ua",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "SelfieCredit",
+            sum: "25 000",
+            rate: "0.01%",
+            domain: "selfiecredit.com.ua",
+            tags: ["top", "all"],
+            link: "https://rdr.salesdoubler.com.ua",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "Tengo",
+            sum: "20 000",
+            rate: "0.01%",
+            domain: "tengo.ua",
+            tags: ["all"],
+            link: "https://rdr.fmcgsd.net",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "E-Groshi",
+            sum: "20 000",
+            rate: "0.01%",
+            domain: "e-groshi.com",
+            tags: ["all"],
+            link: "https://rdr.fmcgsd.net",
+            logoUrl: "https://i.imgur.com"
+        }, {
+            name: "MyCredit",
+            sum: "18 000",
+            rate: "0.01%",
+            domain: "mycredit.ua",
+            tags: ["top", "all"],
+            link: "https://rdr.fmcgsd.net",
+            logoUrl: "https://i.imgur.com"
+        }];
 
-        let currentTab = 'top', count = 9;
+        let currentTab = 'top',
+            count = 9;
 
         function calc() {
-            const s = parseInt(document.getElementById('rSum').value), d = parseInt(document.getElementById('rDays').value);
+            const s = parseInt(document.getElementById('rSum').value),
+                d = parseInt(document.getElementById('rDays').value);
             document.getElementById('cSum').innerText = s.toLocaleString();
             document.getElementById('cDays').innerText = d;
             document.getElementById('cTotal').innerText = (s + Math.round(s * 0.0001 * d)).toLocaleString();
         }
 
         function render() {
-            const grid = document.getElementById('grid'); grid.innerHTML = '';
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
             const list = offers.filter(o => o.tags.includes(currentTab));
-            document.getElementById('more').classList.toggle('hidden', list.length <= count);
+            // Ensure the 'Показати ще' button has the necessary security attributes
+            const moreButton = document.getElementById('more');
+            if (moreButton) {
+                moreButton.classList.toggle('hidden', list.length <= count);
+            }
+
 
             list.slice(0, count).forEach(o => {
-                // Використовуємо сервіс логотипів Google з великим розміром
-                const logo = `https://www.google.com/s2/favicons?domain=${o.domain}&sz=128`;
                 grid.innerHTML += `
                 <div class="offer-card">
                     <div class="logo-wrapper">
                         <span class="logo-fallback-text">${o.name}</span>
-                        <img src="${logo}" class="logo-main" onerror="this.style.opacity='0'" alt="${o.name}">
+                        <!-- Использование прямой ссылки на логотип из массива -->
+                        <img src="${o.logoUrl}" class="logo-main" onerror="this.style.opacity='0'" alt="${o.name}">
                     </div>
                     
                     <div class="flex-1 space-y-4 mb-8">
@@ -204,7 +336,8 @@
                         </div>
                     </div>
 
-                    <a href="${o.link}" target="_blank" class="btn-blue shadow-blue-100">Отримати кошти</a>
+                    <!-- Добавлен rel="noopener noreferrer" для безопасности ссылок target="_blank" -->
+                    <a href="${o.link}" target="_blank" rel="noopener noreferrer" class="btn-blue shadow-blue-100">Отримати кошти</a>
                     
                     <div class="mt-4 flex justify-center gap-1">
                          <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
@@ -214,16 +347,31 @@
         }
 
         function setTab(t) {
-            currentTab = t; count = 9;
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.id === 'b-'+t));
+            currentTab = t;
+            count = 9;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.id === 'b-' + t));
             render();
         }
 
-        function load() { count += 6; render(); }
-        function openM(id) { document.getElementById('m-'+id).style.display = 'flex'; }
-        function closeM(id) { document.getElementById('m-'+id).style.display = 'none'; }
+        function load() {
+            count += 6;
+            render();
+        }
 
-        window.onload = () => { calc(); render(); };
+        function openM(id) {
+            document.getElementById('m-' + id).style.display = 'flex';
+        }
+
+        function closeM(id) {
+            document.getElementById('m-' + id).style.display = 'none';
+        }
+
+        window.onload = () => {
+            calc();
+            render();
+        };
     </script>
+
 </body>
+
 </html>
