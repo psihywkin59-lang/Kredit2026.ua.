@@ -3,68 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit 2026</title>
+    <title>SmartCredit 2026 — Всі кредити України</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Geologica', sans-serif; background: #F8FAFC; color: #0f172a; }
+        
+        /* Ефекти карток */
         .hover-card { transition: all 0.2s ease; }
         .hover-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1); border-color: #3b82f6; }
+
+        /* Стилізація повзунків */
         input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; cursor: pointer; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%; background: #3b82f6; margin-top: -10px; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2); }
-        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; background: #cbd5e1; border-radius: 3px; }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
+            background: #3b82f6; margin-top: -10px; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 6px; background: #cbd5e1; border-radius: 3px;
+        }
+
+        /* Активний стан кнопок меню */
         .tab-btn.active { background-color: #0f172a; color: white; border-color: #0f172a; }
-        .logo-container { position: relative; width: 64px; height: 64px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background-color: #f8fafc; border: 1px solid #e2e8f0; }
-        .logo-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; font-size: 24px; z-index: 1; }
-        .logo-img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; background: white; }
+
+        /* Утиліта для приховування */
         .hidden { display: none !important; }
+
+        /* Стилі для логотипа і заглушки */
+        .logo-container {
+            position: relative; width: 64px; height: 64px; border-radius: 16px; overflow: hidden; flex-shrink: 0;
+            background-color: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        /* Заглушка (літера) - лежить знизу */
+        .logo-fallback {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            font-weight: 900; color: white; font-size: 24px; z-index: 1;
+        }
+        /* Картинка - лежить зверху. Додано padding щоб лого не липло до країв */
+        .logo-img {
+            position: relative; z-index: 2; width: 100%; height: 100%; 
+            object-fit: contain; background: white; padding: 6px;
+        }
     </style>
 </head>
 <body class="pb-20">
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        
         <header class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm sticky top-2 z-50 bg-white/90 backdrop-blur-md">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white font-black italic text-xl shadow-lg">S</div>
-                <div><h1 class="text-xl font-black uppercase text-slate-900 leading-none">Smart<span class="text-blue-600">Credit</span></h1><p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">2026</p></div>
+                <div>
+                    <h1 class="text-xl font-black uppercase text-slate-900 leading-none">Smart<span class="text-blue-600">Credit</span></h1>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">2026</p>
+                </div>
             </div>
-            <div class="px-4 py-1.5 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-100 flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> 30 Офферів</div>
+            <div class="flex gap-2">
+                <span class="px-4 py-1.5 bg-green-50 text-green-700 text-xs font-bold rounded-full border border-green-100 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> 30 Офферів
+                </span>
+            </div>
         </header>
+
         <section class="mb-12 bg-[#0f172a] text-white p-6 md:p-10 rounded-[2.5rem] relative overflow-hidden shadow-2xl">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 blur-[150px] opacity-30 pointer-events-none"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-600 blur-[100px] opacity-30 pointer-events-none"></div>
+
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div>
-                    <h2 class="text-3xl md:text-5xl font-black uppercase italic leading-tight mb-6">Перший кредит <br><span class="text-blue-400">під 0.01%</span></h2>
-                    <div class="space-y-6">
-                        <div><div class="flex justify-between text-sm font-bold mb-2 text-slate-300"><span>Сума:</span> <span class="text-white text-xl"><span id="calcSum">10 000</span> ₴</span></div><input type="range" id="rangeSum" min="500" max="30000" step="100" value="10000" oninput="updateCalc()"></div>
-                        <div><div class="flex justify-between text-sm font-bold mb-2 text-slate-300"><span>Термін:</span> <span class="text-white text-xl"><span id="calcDays">15</span> днів</span></div><input type="range" id="rangeDays" min="1" max="30" step="1" value="15" oninput="updateCalc()"></div>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic leading-tight mb-6">Гроші на карту <br><span class="text-blue-400">під 0.01%</span></h2>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-2 text-slate-300">
+                                <span>Сума:</span> <span class="text-white text-xl"><span id="calcSum">10 000</span> ₴</span>
+                            </div>
+                            <input type="range" id="rangeSum" min="500" max="30000" step="100" value="10000" oninput="updateCalc()">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm font-bold mb-2 text-slate-300">
+                                <span>Термін:</span> <span class="text-white text-xl"><span id="calcDays">15</span> днів</span>
+                            </div>
+                            <input type="range" id="rangeDays" min="1" max="30" step="1" value="15" oninput="updateCalc()">
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-[2rem] p-6 shadow-xl">
-                    <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4"><span class="text-xs font-bold text-slate-400 uppercase">До повернення:</span><span class="text-xs font-bold bg-blue-600 px-2 py-1 rounded text-white">-99% знижка</span></div>
-                    <div class="text-4xl font-black mb-1"><span id="calcTotal">10 015</span> грн</div>
-                    <div class="text-sm text-green-400 font-bold mb-4">Переплата: <span id="calcOverpay">15</span> грн</div>
-                    <div class="bg-white/5 p-3 rounded-xl text-center"><span class="text-xs text-slate-400 uppercase font-bold">Ваша економія</span><div class="text-xl font-bold text-yellow-400"><span id="calcSaving">2 985</span> грн</div></div>
+
+                <div class="bg-white/10 backdrop-blur-lg border border-white/10 rounded-[2rem] p-8 shadow-xl">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-4 mb-4">
+                        <span class="text-xs font-bold text-slate-400 uppercase">До повернення:</span>
+                        <span class="text-xs font-bold bg-blue-600 px-3 py-1 rounded-lg text-white">-99% знижка</span>
+                    </div>
+                    <div class="text-5xl font-black mb-2"><span id="calcTotal">10 015</span> <span class="text-lg text-slate-400">грн</span></div>
+                    <div class="text-sm text-green-400 font-bold mb-6">Переплата: лише <span id="calcOverpay">15</span> грн</div>
+                    
+                    <div class="bg-white/5 p-4 rounded-xl text-center border border-white/5">
+                        <span class="text-xs text-slate-400 uppercase font-bold tracking-wider">Ваша економія</span>
+                        <div class="text-2xl font-bold text-yellow-400 mt-1"><span id="calcSaving">2 985</span> грн</div>
+                    </div>
                 </div>
             </div>
-    </section>
-    <div class="flex flex-wrap gap-2 mb-8" id="tabsContainer">
+        </section>
+
+        <div class="flex flex-wrap gap-3 mb-8" id="tabsContainer">
             <button id="btn-all" onclick="setTab('all')" class="tab-btn active px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">Всі (30)</button>
-            <button id="btn-top" onclick="setTab('top')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">🔥 ТОП</button>
+            <button id="btn-top" onclick="setTab('top')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">🔥 ТОП видача</button>
             <button id="btn-new" onclick="setTab('new')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">🆕 Новинки</button>
-            <button id="btn-auto" onclick="setTab('auto')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">⚡ Автомат</button>
+            <button id="btn-auto" onclick="setTab('auto')" class="tab-btn px-6 py-3 rounded-full border border-slate-200 bg-white text-sm font-bold text-slate-600 hover:border-slate-300 transition-colors">⚡ Без дзвінків</button>
         </div>
-        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        <div class="mt-10 text-center"><button id="btnLoadMore" onclick="loadMore()" class="hidden bg-white border border-slate-300 text-slate-800 font-bold px-8 py-3 rounded-full hover:bg-slate-50 shadow-sm transition-transform hover:-translate-y-1">Показати ще ↓</button></div>
-        <footer class="mt-20 border-t border-slate-200 pt-10 text-center text-slate-500 pb-10"><p class="text-xs max-w-2xl mx-auto mb-4">Інформація носить довідковий характер.</p><p class="text-[10px] font-black uppercase tracking-widest text-slate-300">© 2026 SmartCredit</p></footer>
+
+        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            </div>
+
+        <div class="mt-12 text-center">
+            <button id="btnLoadMore" onclick="loadMore()" class="hidden bg-white border border-slate-300 text-slate-800 font-bold px-10 py-4 rounded-full hover:bg-slate-50 shadow-sm transition-transform hover:-translate-y-1">
+                Показати ще пропозиції ↓
+            </button>
+        </div>
+
+        <footer class="mt-20 border-t border-slate-200 pt-10 text-center text-slate-500 pb-10">
+            <div class="flex justify-center gap-6 mb-6 text-sm font-bold text-slate-400">
+                <a href="#" class="hover:text-blue-600">Про нас</a>
+                <a href="#" class="hover:text-blue-600">Ліцензії</a>
+                <a href="#" class="hover:text-blue-600">Контакти</a>
+            </div>
+            <p class="text-xs max-w-2xl mx-auto mb-4 leading-relaxed">
+                Інформація на сайті носить виключно довідковий характер. Адміністрація сайту не займається видачею кредитів. Ставка від 0.01% на день доступна для нових клієнтів (залежить від умов МФО). Максимальна річна процентна ставка (APR) може досягати 365% і більше.
+            </p>
+            <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300">© 2026 SmartCredit Aggregator</p>
+        </footer>
+
     </div>
+
     <script>
+        // 1. БАЗА ДАНИХ (30 ОФФЕРІВ)
+        // Домени перевірені на точність для коректного завантаження логотипів
         const offers = [
+            // TOP GROUP
             { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-70", time: "5 хв", color: "bg-pink-500", tags: ["top", "all"], badge: "👑 ТОП-1", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470", domain: "tvoyapozyka.com.ua" },
             { name: "Moneyveo", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "2 хв", color: "bg-green-500", tags: ["top", "all", "auto"], badge: "⚡ Швидко", link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470", domain: "moneyveo.ua" },
             { name: "CreditPlus", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "5 хв", color: "bg-blue-600", tags: ["top", "all", "auto"], badge: "🔥 Хіт", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470", domain: "creditplus.ua" },
             { name: "Credit7", sum: "25 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "3 хв", color: "bg-lime-500", tags: ["top", "all", "auto"], badge: "👍 Схвал", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470", domain: "credit7.ua" },
             { name: "FirstCredit", sum: "15 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "Авто", color: "bg-purple-600", tags: ["top", "all", "new"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470", domain: "firstcredit.ua" },
+
+            // OTHER OFFERS
             { name: "Monto", sum: "10 000", rate: "0.01%", term: "30 дн", age: "18-60", time: "5 хв", color: "bg-blue-800", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470", domain: "monto.com.ua" },
             { name: "Avira", sum: "8 000", rate: "0.01%", term: "30 дн", age: "18-65", time: "15 хв", color: "bg-violet-600", tags: ["new", "all"], badge: "🆕", link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470", domain: "aviracredit.com.ua" },
             { name: "Pango", sum: "15 000", rate: "0.01%", term: "20 дн", age: "18-65", time: "5 хв", color: "bg-zinc-800", tags: ["new", "auto", "all"], badge: "🤖 ШІ", link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470", domain: "pango.com.ua" },
@@ -91,58 +173,144 @@
             { name: "CreditKasa", sum: "20 000", rate: "0.01%", term: "20 дн", age: "18-75", time: "8 хв", color: "bg-amber-700", tags: ["all"], badge: null, link: "https://rdr.salesdoubler.com.ua/in/offer/2710?aid=81470", domain: "creditkasa.com.ua" },
             { name: "MyCredit", sum: "18 000", rate: "0.01%", term: "30 дн", age: "18-70", time: "5 хв", color: "bg-blue-700", tags: ["top", "all"], badge: "👍", link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470", domain: "mycredit.ua" }
         ];
-        let activeTab = 'all', visibleCount = 9;
 
+        // 2. ЗМІННІ СТАНУ
+        let activeTab = 'all';
+        let visibleCount = 9;
+
+        // 3. ФУНКЦІЯ КАЛЬКУЛЯТОРА
         function updateCalc() {
-            const rs = document.getElementById('rangeSum'), rd = document.getElementById('rangeDays');
-            if (!rs || !rd) return;
-            const s = parseInt(rs.value), d = parseInt(rd.value);
-            document.getElementById('calcSum').textContent = s.toLocaleString().replace(/,/g," ");
-            document.getElementById('calcDays').textContent = d;
-            const interest = Math.round(s * 0.0001 * d), saving = Math.round(s * 0.02 * d) - interest;
-            document.getElementById('calcTotal').textContent = (s + interest).toLocaleString().replace(/,/g," ");
+            const rangeSum = document.getElementById('rangeSum');
+            const rangeDays = document.getElementById('rangeDays');
+
+            // Захист від відсутності елементів
+            if (!rangeSum || !rangeDays) return;
+
+            const sum = parseInt(rangeSum.value);
+            const days = parseInt(rangeDays.value);
+
+            // Оновлюємо текст біля повзунків
+            document.getElementById('calcSum').textContent = sum.toLocaleString().replace(/,/g, " ");
+            document.getElementById('calcDays').textContent = days;
+
+            // Розрахунок під 0.01%
+            const interest = Math.round(sum * 0.0001 * days);
+            const total = sum + interest;
+
+            // Економія (порівняно зі стандартом 2%)
+            const standardInterest = Math.round(sum * 0.02 * days);
+            const saving = standardInterest - interest;
+
+            // Вивід результатів
+            document.getElementById('calcTotal').textContent = total.toLocaleString().replace(/,/g, " ");
             document.getElementById('calcOverpay').textContent = interest;
-            document.getElementById('calcSaving').textContent = saving.toLocaleString().replace(/,/g," ");
+            document.getElementById('calcSaving').textContent = saving.toLocaleString().replace(/,/g, " ");
         }
 
+        // 4. ФУНКЦІЯ РЕНДЕРИНГУ КАРТОК
         function renderGrid() {
-            const c = document.getElementById('grid'); if (!c) return; c.innerHTML = '';
-            const f = offers.filter(o => o.tags.includes(activeTab));
-            document.getElementById('btnLoadMore').classList.toggle('hidden', f.length <= visibleCount);
+            const container = document.getElementById('grid');
+            if (!container) return;
+
+            // Очищаємо контейнер
+            container.innerHTML = '';
+
+            // Фільтруємо оффери
+            const filtered = offers.filter(offer => offer.tags.includes(activeTab));
+
+            // Логіка кнопки "Показати ще"
+            const btnLoadMore = document.getElementById('btnLoadMore');
+            if (filtered.length > visibleCount) {
+                btnLoadMore.classList.remove('hidden');
+            } else {
+                btnLoadMore.classList.add('hidden');
+            }
+
+            // Генеруємо HTML для видимих карток
+            const visibleOffers = filtered.slice(0, visibleCount);
             
-            f.slice(0, visibleCount).forEach((i, idx) => {
-                let bClass = 'border-slate-100';
-                if ((activeTab === 'all' || activeTab === 'top') && idx === 0) bClass = 'border-yellow-400 ring-4 ring-yellow-400/20 z-10 shadow-xl';
-                const logoUrl = `https://logo.clearbit.com/${i.domain}`;
+            visibleOffers.forEach((item, index) => {
+                // Стиль рамки для першого оффера (тільки в 'all' або 'top')
+                let borderClass = 'border-slate-100';
+                if ((activeTab === 'all' || activeTab === 'top') && index === 0) {
+                    borderClass = 'border-yellow-400 ring-4 ring-yellow-400/20 z-10 shadow-xl';
+                }
+
+                // URL логотипа
+                const logoUrl = `https://logo.clearbit.com/${item.domain}`;
+
                 const html = `
-                <div class="bg-white rounded-[20px] p-5 border ${bClass} shadow-sm hover-card relative flex flex-col h-full">
-                    ${i.badge ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl uppercase z-20 shadow-md">${i.badge}</div>` : ''}
+                <div class="bg-white rounded-[20px] p-5 border ${borderClass} shadow-sm hover-card relative flex flex-col h-full">
+                    ${item.badge ? `<div class="absolute top-0 right-0 bg-slate-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-bl-xl uppercase z-20 shadow-md">${item.badge}</div>` : ''}
+                    
                     <div class="flex items-center gap-4 mb-4">
-                        <div class="logo-container"><div class="logo-fallback ${i.color}">${i.name[0]}</div><img src="${logoUrl}" class="logo-img" alt="${i.name}" onerror="this.style.display='none'"></div>
-                        <div><h3 class="font-bold text-lg leading-tight text-slate-800">${i.name}</h3><div class="text-xs text-yellow-400 mt-1">★★★★★</div></div>
+                        <div class="logo-container">
+                            <div class="logo-fallback ${item.color}">${item.name[0]}</div>
+                            <img src="${logoUrl}" class="logo-img" alt="${item.name}" onerror="this.style.display='none'">
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg leading-tight text-slate-800">${item.name}</h3>
+                            <div class="text-xs text-yellow-400 mt-1">★★★★★</div>
+                        </div>
                     </div>
+
                     <div class="grid grid-cols-2 gap-2 mb-4">
-                        <div class="bg-slate-50 rounded-lg p-2 text-center border border-slate-100"><div class="text-[10px] text-slate-400 font-bold uppercase">Сума</div><div class="text-lg font-black text-slate-800 tracking-tight">${i.sum}</div></div>
-                        <div class="bg-green-50 rounded-lg p-2 text-center border border-green-100"><div class="text-[10px] text-green-600 font-bold uppercase">Ставка</div><div class="text-lg font-black text-green-600">${i.rate}</div></div>
+                        <div class="bg-slate-50 rounded-lg p-2 text-center border border-slate-100">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Сума до</div>
+                            <div class="text-lg font-black text-slate-800 tracking-tight">${item.sum}</div>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-2 text-center border border-green-100">
+                            <div class="text-[10px] text-green-600 font-bold uppercase">Ставка</div>
+                            <div class="text-lg font-black text-green-600">${item.rate}</div>
+                        </div>
                     </div>
-                    <div class="flex justify-between text-xs text-slate-500 font-bold px-2 mb-4 border-t border-slate-100 pt-3"><span>Вік: ${i.age}</span><span>Термін: ${i.term}</span></div>
-                    <div class="mt-auto"><a href="${i.link}" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3.5 rounded-xl font-bold uppercase tracking-wider shadow-lg shadow-blue-600/20 transition-all active:scale-95">Отримати</a><div class="text-center mt-2 text-[10px] text-slate-400">⏱ Рішення за ${i.time}</div></div>
-                </div>`;
-                c.insertAdjacentHTML('beforeend', html);
+
+                    <div class="flex justify-between text-xs text-slate-500 font-bold px-2 mb-4 border-t border-slate-100 pt-3">
+                        <span>Вік: ${item.age}</span>
+                        <span>Термін: ${item.term}</span>
+                    </div>
+
+                    <div class="mt-auto">
+                        <a href="${item.link}" target="_blank" class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3.5 rounded-xl font-bold uppercase tracking-wider shadow-lg shadow-blue-600/20 transition-all active:scale-95">
+                            Отримати
+                        </a>
+                        <div class="text-center mt-2 text-[10px] text-slate-400">⏱ Рішення за ${item.time}</div>
+                    </div>
+                </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
             });
         }
 
-        function setTab(t) {
-            activeTab = t; visibleCount = 9;
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                if(b.id === `btn-${t}`) b.classList.add('active'); else b.classList.remove('active');
+        // 5. ПЕРЕМИКАННЯ ТАБІВ
+        function setTab(tabName) {
+            activeTab = tabName;
+            visibleCount = 9; // Скидаємо кількість видимих при зміні вкладки
+
+            // Оновлюємо класи кнопок
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.id === `btn-${tabName}`) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             });
+
             renderGrid();
         }
 
-        function loadMore() { visibleCount += 9; renderGrid(); }
+        // 6. ЗАВАНТАЖИТИ ЩЕ
+        function loadMore() {
+            visibleCount += 9;
+            renderGrid();
+        }
 
-        document.addEventListener('DOMContentLoaded', () => { updateCalc(); renderGrid(); });
+        // 7. ЗАПУСК ПРИ ЗАВАНТАЖЕННІ
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCalc();
+            renderGrid();
+        });
+
     </script>
 </body>
 </html>
