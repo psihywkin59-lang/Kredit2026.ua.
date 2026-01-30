@@ -3,33 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartCredit — Порівняння кредитів України</title>
+    <title>SmartCredit — Всі кредити України</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Inter', -apple-system, sans-serif; background: #f3f4f6; color: #1f2937; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #f8fafc; color: #334155; }
         
+        /* Стиль карток EasyZaim */
         .offer-card { 
             background: #ffffff; 
-            border: 1px solid #e5e7eb; 
-            border-radius: 16px; 
-            padding: 24px; 
-            display: flex; 
-            flex-direction: column;
-            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0; 
+            border-radius: 12px; 
+            padding: 20px; 
+            transition: all 0.3s ease;
+            position: relative;
         }
         .offer-card:hover { 
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            border-color: #3b82f6;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: #cbd5e1;
         }
 
-        /* Контейнер для логотипу як на EasyZaim */
-        .logo-container {
-            width: 90px;
-            height: 60px;
+        .logo-box {
+            width: 80px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fff;
             flex-shrink: 0;
         }
         .logo-img {
@@ -38,181 +36,177 @@
             object-fit: contain;
         }
 
-        .btn-primary {
+        .btn-blue {
             background: #2563eb;
-            color: #fff;
+            color: white;
             font-weight: 700;
-            text-align: center;
             padding: 12px;
-            border-radius: 10px;
+            border-radius: 8px;
+            text-align: center;
+            display: block;
+            width: 100%;
             transition: background 0.2s;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-        .btn-primary:hover { background: #1d4ed8; }
+        .btn-blue:hover { background: #1d4ed8; }
 
-        .tab-active {
-            color: #2563eb;
-            border-bottom: 3px solid #2563eb;
-        }
+        .tab-btn { padding-bottom: 12px; font-weight: 600; color: #94a3b8; transition: all 0.2s; border-bottom: 2px solid transparent; }
+        .tab-btn.active { color: #2563eb; border-bottom: 2px solid #2563eb; }
 
-        /* Стилізація калькулятора */
-        input[type=range] { -webkit-appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; outline: none; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; background: #2563eb; border-radius: 50%; cursor: pointer; border: 4px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-
-        .no-scrollbar::-webkit-scrollbar { display: none; }
+        input[type=range] { -webkit-appearance: none; width: 100%; height: 6px; background: #e2e8f0; border-radius: 5px; outline: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: #2563eb; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="pb-10">
 
-    <header class="bg-white border-b border-gray-200 py-4 sticky top-0 z-50">
+    <header class="bg-white border-b border-slate-200 py-4 mb-8 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">SC</div>
-                <span class="text-xl font-extrabold text-gray-900">Smart<span class="text-blue-600">Credit</span></span>
+                <div class="w-9 h-9 bg-blue-600 rounded flex items-center justify-center text-white font-black italic">S</div>
+                <span class="text-xl font-bold tracking-tight text-slate-900">SmartCredit</span>
             </div>
-            <div class="hidden md:block text-sm text-gray-500 font-medium">Актуальні пропозиції на сьогодні: <span class="text-blue-600">30</span></div>
+            <div class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">30 ОФЕРІВ ОНЛАЙН</div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
+    <main class="max-w-6xl mx-auto px-4">
         
-        <div class="bg-white rounded-3xl p-8 mb-12 shadow-sm border border-gray-100">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-10 mb-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
                     <div>
-                        <div class="flex justify-between mb-4"><span class="text-gray-600 font-semibold">Сума кредиту</span> <span class="text-2xl font-bold text-blue-600"><span id="valSum">10 000</span> ₴</span></div>
-                        <input type="range" id="inpSum" min="500" max="30000" step="100" value="10000" oninput="updateUI()">
+                        <div class="flex justify-between font-bold mb-4"><span>Сума</span> <span class="text-xl text-blue-600"><span id="cSum">10 000</span> ₴</span></div>
+                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
                     </div>
                     <div>
-                        <div class="flex justify-between mb-4"><span class="text-gray-600 font-semibold">Термін</span> <span class="text-2xl font-bold text-blue-600"><span id="valDays">15</span> днів</span></div>
-                        <input type="range" id="inpDays" min="1" max="30" step="1" value="15" oninput="updateUI()">
+                        <div class="flex justify-between font-bold mb-4"><span>Термін</span> <span class="text-xl text-blue-600"><span id="cDays">15</span> днів</span></div>
+                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
                     </div>
                 </div>
-                <div class="bg-blue-600 rounded-2xl p-8 text-white text-center">
-                    <p class="text-blue-100 text-sm font-bold uppercase mb-2">До повернення:</p>
-                    <p class="text-5xl font-black mb-4"><span id="valTotal">10 015</span> ₴</p>
-                    <div class="inline-block bg-blue-500 px-4 py-2 rounded-lg text-sm font-bold">Ставка всього 0.01%</div>
+                <div class="bg-slate-50 rounded-2xl p-8 text-center border border-slate-100">
+                    <div class="text-slate-400 uppercase text-xs font-bold mb-2 tracking-widest">Ви повертаєте</div>
+                    <div class="text-5xl font-black text-slate-900 mb-2"><span id="cTotal">10 015</span> ₴</div>
+                    <div class="text-green-600 font-bold">Ставка 0.01% схвалена!</div>
                 </div>
             </div>
         </div>
 
-        <div class="flex gap-6 border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar">
-            <button onclick="changeTab('top')" id="t-top" class="tab-active pb-4 font-bold text-sm uppercase tracking-wider">Популярні</button>
-            <button onclick="changeTab('all')" id="t-all" class="pb-4 font-bold text-sm text-gray-400 uppercase tracking-wider">Всі</button>
-            <button onclick="changeTab('new')" id="t-new" class="pb-4 font-bold text-sm text-gray-400 uppercase tracking-wider">Нові</button>
-            <button onclick="changeTab('auto')" id="t-auto" class="pb-4 font-bold text-sm text-gray-400 uppercase tracking-wider">Автоматичне схвалення</button>
+        <div class="flex gap-8 border-b border-slate-200 mb-8 overflow-x-auto">
+            <button id="b-top" onclick="setTab('top')" class="tab-btn active uppercase text-xs tracking-wider">Топ видача</button>
+            <button id="b-all" onclick="setTab('all')" class="tab-btn uppercase text-xs tracking-wider">Всі кредити</button>
+            <button id="b-new" onclick="setTab('new')" class="tab-btn uppercase text-xs tracking-wider">Новинки</button>
         </div>
 
-        <div id="offersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        
+        <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
         <div class="mt-12 text-center">
-            <button id="loadBtn" onclick="showMore()" class="hidden bg-white border border-gray-300 px-10 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-sm">Показати більше</button>
+            <button id="more" onclick="load()" class="hidden border border-slate-300 px-10 py-3 rounded-lg font-bold text-slate-600 hover:bg-white transition">Показати ще</button>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-gray-200 mt-20 py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="max-w-3xl mx-auto mb-8">
-                <p class="text-xs text-gray-400 leading-relaxed uppercase font-bold mb-4">Попередження</p>
-                <p class="text-xs text-gray-400 leading-relaxed">Кредитування може призвести до фінансових труднощів. Перед оформленням ознайомтесь з умовами договору. Ми є агрегатором і не несемо відповідальності за дії кредитних організацій.</p>
+    <footer class="mt-20 border-t border-slate-200 pt-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="bg-white border border-slate-200 rounded-xl p-6 mb-8 text-[11px] text-slate-400 leading-relaxed">
+                <p class="mb-4"><strong>ПРО НАС:</strong> SmartCredit 2026 є виключно інформаційним сервісом. Ми не є фінансовою установою, банком або кредитором. Ми допомагаємо порівняти умови різних МФО України для вашої зручності. Всі рішення про видачу кредиту приймаються безпосередньо компаніями, на сайти яких ви переходите.</p>
+                <p><strong>ЗАСТЕРЕЖЕННЯ:</strong> Несвоєчасне виконання зобов'язань за кредитним договором може призвести до нарахування штрафних санкцій та погіршення вашої кредитної історії. Закликаємо ставитися до отримання кредитів відповідально.</p>
             </div>
-            <div class="flex justify-center gap-8 mb-8">
-                <button onclick="toggleModal('contact')" class="text-sm font-bold text-gray-600 hover:text-blue-600 uppercase">Контакти</button>
-                <button onclick="toggleModal('policy')" class="text-sm font-bold text-gray-600 hover:text-blue-600 uppercase">Політика</button>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
+                <div class="flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <button onclick="openM('contact')">Контакти</button>
+                    <button onclick="openM('policy')">Політика</button>
+                </div>
+                <div class="text-[10px] font-bold text-slate-300">© 2026 SMARTCREDIT AGGREGATOR</div>
             </div>
-            <p class="text-xs font-black text-gray-300">© 2026 SMARTCREDIT AGGREGATOR</p>
         </div>
     </footer>
 
-    <div id="m-contact" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-[100] p-4">
-        <div class="bg-white rounded-3xl p-8 w-full max-w-md">
-            <h3 class="text-2xl font-bold mb-6">Зв'язатися з нами</h3>
+    <div id="m-contact" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-2xl p-8 w-full max-w-md shadow-2xl">
+            <h3 class="text-xl font-bold mb-6">Напишіть нам</h3>
             <form action="https://formspree.io/f/psihywkin59@gmail.com" method="POST" class="space-y-4">
-                <input type="text" name="name" placeholder="Ваше ім'я" required class="w-full border border-gray-200 p-3 rounded-xl focus:ring-2 ring-blue-500 outline-none">
-                <input type="email" name="email" placeholder="Email" required class="w-full border border-gray-200 p-3 rounded-xl focus:ring-2 ring-blue-500 outline-none">
-                <textarea name="message" placeholder="Ваше повідомлення" required class="w-full border border-gray-200 p-3 rounded-xl h-32 focus:ring-2 ring-blue-500 outline-none"></textarea>
-                <button class="w-full btn-primary py-4">Надіслати</button>
-                <button type="button" onclick="toggleModal('contact')" class="w-full text-gray-400 font-bold text-sm mt-2">Скасувати</button>
+                <input type="text" name="name" placeholder="Ваше ім'я" required class="w-full border border-slate-200 p-3 rounded-lg outline-none focus:border-blue-500">
+                <input type="email" name="email" placeholder="Ваш Email" required class="w-full border border-slate-200 p-3 rounded-lg outline-none focus:border-blue-500">
+                <textarea name="message" placeholder="Ваше повідомлення" required class="w-full border border-slate-200 p-3 rounded-lg h-32 outline-none focus:border-blue-500"></textarea>
+                <button class="btn-blue">Надіслати повідомлення</button>
+                <button type="button" onclick="closeM('contact')" class="w-full text-slate-400 text-sm font-bold mt-2">Скасувати</button>
             </form>
+        </div>
+    </div>
+
+    <div id="m-policy" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-[100] p-4">
+        <div class="bg-white rounded-2xl p-8 w-full max-w-lg shadow-2xl overflow-y-auto max-h-[80vh]">
+            <h3 class="text-xl font-bold mb-4">Політика конфіденційності</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">Цей сайт не збирає та не зберігає ваші персональні або платіжні дані. Ми використовуємо стандартні файли cookie для аналізу трафіку. Переходячи на сайти партнерів, ви погоджуєтесь з їхніми правилами обробки даних.</p>
+            <button onclick="closeM('policy')" class="btn-blue mt-6">Зрозуміло</button>
         </div>
     </div>
 
     <script>
         const offers = [
-            { name: "Tvoya Pozyka", sum: "15000", rate: "0.01%", domain: "tvoyapozyka.com.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470" },
-            { name: "Moneyveo", sum: "25000", rate: "0.01%", domain: "moneyveo.ua", tags: ["top", "all", "auto"], link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470" },
-            { name: "CreditPlus", sum: "15000", rate: "0.01%", domain: "creditplus.ua", tags: ["top", "all", "auto"], link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
-            { name: "Credit7", sum: "25000", rate: "0.01%", domain: "credit7.ua", tags: ["top", "all", "auto"], link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
-            { name: "FirstCredit", sum: "15000", rate: "0.01%", domain: "firstcredit.ua", tags: ["top", "all", "new"], link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470" },
-            { name: "Monto", sum: "10000", rate: "0.01%", domain: "monto.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470" },
-            { name: "Avira", sum: "8000", rate: "0.01%", domain: "aviracredit.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470" },
-            { name: "Pango", sum: "15000", rate: "0.01%", domain: "pango.com.ua", tags: ["new", "auto", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470" },
-            { name: "SelfieCredit", sum: "25000", rate: "0.01%", domain: "selfiecredit.com.ua", tags: ["new", "top", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" },
-            { name: "AlexCredit", sum: "12000", rate: "0.01%", domain: "alexcredit.com.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470" },
-            { name: "Tengo", sum: "20000", rate: "0.01%", domain: "tengo.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470" },
-            { name: "E-Groshi", sum: "20000", rate: "0.01%", domain: "e-groshi.com", tags: ["all", "auto"], link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470" },
-            { name: "SOS Credit", sum: "15000", rate: "0.01%", domain: "soscredit.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470" },
-            { name: "ClickCredit", sum: "15000", rate: "0.01%", domain: "clickcredit.ua", tags: ["all", "auto"], link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470" },
-            { name: "MyCredit", sum: "18000", rate: "0.01%", domain: "mycredit.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" }
-            // Можна додати інші за аналогією
+            { name: "Tvoya Pozyka", sum: "15 000", rate: "0.01%", domain: "tvoyapozyka.com.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470" },
+            { name: "Moneyveo", sum: "25 000", rate: "0.01%", domain: "moneyveo.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/250?aid=81470" },
+            { name: "CreditPlus", sum: "15 000", rate: "0.01%", domain: "creditplus.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
+            { name: "Credit7", sum: "25 000", rate: "0.01%", domain: "credit7.ua", tags: ["top", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
+            { name: "FirstCredit", sum: "15 000", rate: "0.01%", domain: "firstcredit.ua", tags: ["top", "all", "new"], link: "https://rdr.salesdoubler.com.ua/in/offer/6365?aid=81470" },
+            { name: "Monto", sum: "10 000", rate: "0.01%", domain: "monto.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/8125?aid=81470" },
+            { name: "Avira", sum: "8 000", rate: "0.01%", domain: "aviracredit.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470" },
+            { name: "Pango", sum: "15 000", rate: "0.01%", domain: "pango.com.ua", tags: ["new", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470" },
+            { name: "SelfieCredit", sum: "25 000", rate: "0.01%", domain: "selfiecredit.com.ua", tags: ["top", "all"], link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" },
+            { name: "AlexCredit", sum: "12 000", rate: "0.01%", domain: "alexcredit.com.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470" },
+            { name: "Tengo", sum: "20 000", rate: "0.01%", domain: "tengo.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470" },
+            { name: "E-Groshi", sum: "20 000", rate: "0.01%", domain: "e-groshi.com", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1711?aid=81470" },
+            { name: "SOS Credit", sum: "15 000", rate: "0.01%", domain: "soscredit.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470" },
+            { name: "ClickCredit", sum: "15 000", rate: "0.01%", domain: "clickcredit.ua", tags: ["all"], link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470" },
+            { name: "MyCredit", sum: "18 000", rate: "0.01%", domain: "mycredit.ua", tags: ["top", "all"], link: "https://rdr.fmcgsd.net/in/offer/2681?aid=81470" }
         ];
 
-        let currentTab = 'top', itemsShown = 9;
+        let currentTab = 'top', count = 9;
 
-        function updateUI() {
-            const s = parseInt(document.getElementById('inpSum').value), d = parseInt(document.getElementById('inpDays').value);
-            document.getElementById('valSum').innerText = s.toLocaleString();
-            document.getElementById('valDays').innerText = d;
-            document.getElementById('valTotal').innerText = (s + Math.round(s * 0.0001 * d)).toLocaleString();
+        function calc() {
+            const s = parseInt(document.getElementById('rSum').value), d = parseInt(document.getElementById('rDays').value);
+            document.getElementById('cSum').innerText = s.toLocaleString();
+            document.getElementById('cDays').innerText = d;
+            document.getElementById('cTotal').innerText = (s + Math.round(s * 0.0001 * d)).toLocaleString();
         }
 
         function render() {
-            const grid = document.getElementById('offersGrid'); grid.innerHTML = '';
+            const grid = document.getElementById('grid'); grid.innerHTML = '';
             const list = offers.filter(o => o.tags.includes(currentTab));
-            document.getElementById('loadBtn').classList.toggle('hidden', list.length <= itemsShown);
+            document.getElementById('more').classList.toggle('hidden', list.length <= count);
 
-            list.slice(0, itemsShown).forEach(o => {
-                // Використання Clearbit для отримання великих логотипів
-                const logo = `https://logo.clearbit.com/${o.domain}`;
+            list.slice(0, count).forEach(o => {
+                // Найбільш надійний сервіс логотипів від DuckDuckGo
+                const logo = `https://icons.duckduckgo.com/ip3/${o.domain}.ico`;
                 grid.innerHTML += `
                 <div class="offer-card">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="logo-container">
-                            <img src="${logo}" class="logo-img" onerror="this.src='https://ui-avatars.com/api/?name=${o.name}&background=2563eb&color=fff&size=128'" alt="${o.name}">
+                        <div class="logo-box">
+                            <img src="${logo}" class="logo-img" onerror="this.src='https://ui-avatars.com/api/?name=${o.name}&background=f1f5f9&color=64748b&size=128'" alt="${o.name}">
                         </div>
-                        <div>
-                            <h3 class="font-bold text-lg">${o.name}</h3>
-                            <div class="flex text-yellow-400 text-xs">★★★★★</div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-slate-900">${o.name}</h3>
+                            <div class="text-yellow-400 text-[10px]">★★★★★</div>
                         </div>
                     </div>
-                    <div class="space-y-3 mb-6">
-                        <div class="flex justify-between border-b border-gray-50 pb-2"><span class="text-gray-400 text-sm">Сума до</span> <span class="font-bold">${parseInt(o.sum).toLocaleString()} ₴</span></div>
-                        <div class="flex justify-between border-b border-gray-50 pb-2"><span class="text-gray-400 text-sm">Ставка</span> <span class="font-bold text-green-600">${o.rate}</span></div>
+                    <div class="space-y-3 mb-6 text-sm">
+                        <div class="flex justify-between border-b border-slate-50 pb-2"><span class="text-slate-400">Макс. сума</span> <span class="font-bold text-slate-700">${parseInt(o.sum).toLocaleString()} ₴</span></div>
+                        <div class="flex justify-between border-b border-slate-50 pb-2"><span class="text-slate-400">Ставка</span> <span class="font-bold text-green-600">${o.rate}</span></div>
                     </div>
-                    <a href="${o.link}" target="_blank" class="btn-primary mt-auto">Отримати рішення</a>
+                    <a href="${o.link}" target="_blank" class="btn-blue">Отримати</a>
                 </div>`;
             });
         }
 
-        function changeTab(t) {
-            currentTab = t; itemsShown = 9;
-            document.querySelectorAll('[id^="t-"]').forEach(el => {
-                el.classList.remove('tab-active');
-                el.classList.add('text-gray-400');
-            });
-            document.getElementById('t-'+t).classList.add('tab-active');
+        function setTab(t) {
+            currentTab = t; count = 9;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.id === 'b-'+t));
             render();
         }
 
-        function showMore() { itemsShown += 6; render(); }
-        function toggleModal(id) {
-            const m = document.getElementById('m-'+id);
-            m.classList.toggle('hidden');
-            m.classList.toggle('flex');
-        }
+        function load() { count += 6; render(); }
+        function openM(id) { document.getElementById('m-'+id).style.display = 'flex'; }
+        function closeM(id) { document.getElementById('m-'+id).style.display = 'none'; }
 
-        window.onload = () => { updateUI(); render(); };
+        window.onload = () => { calc(); render(); };
     </script>
 </body>
 </html>
