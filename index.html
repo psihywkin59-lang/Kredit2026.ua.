@@ -4,76 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartCredit — Порівняння кредитів: <span id="current-month-title"></span></title>
-    
     <link rel="icon" href="https://www.google.com/s2/favicons?domain=creditplus.ua&sz=64">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
-        
         body { font-family: 'Inter', sans-serif; background: #bcf0d3; color: #1e293b; scroll-behavior: smooth; }
-        
-        .is-top-card { 
-            border: 4px solid #fbbf24 !important; 
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
-            animation: pulse-gold 2.5s infinite;
-        }
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); }
-            70% { box-shadow: 0 0 0 20px rgba(251, 191, 36, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
-        }
-
-        .offer-card { 
-            background: #ffffff; 
-            border-radius: 28px; 
-            padding: 20px; 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #99c7ae;
-            height: 375px; 
-        }
-        .offer-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
-        }
-
-        .badge {
-            position: absolute; top: 12px; right: 12px; background: #ef4444; color: #ffffff; 
-            padding: 4px 10px; border-radius: 8px; font-size: 9px; font-weight: 900; 
-            text-transform: uppercase; z-index: 10;
-        }
-
-        .logo-wrapper { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; height: 110px; }
+        .is-top-card { border: 4px solid #fbbf24 !important; box-shadow: 0 0 30px rgba(251, 191, 36, 0.5); animation: pulse-gold 2.5s infinite; }
+        @keyframes pulse-gold { 0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); } 70% { box-shadow: 0 0 0 20px rgba(251, 191, 36, 0); } 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); } }
+        .offer-card { background: #ffffff; border-radius: 28px; padding: 20px; transition: all 0.4s; position: relative; display: flex; flex-direction: column; border: 1px solid #99c7ae; height: 375px; }
+        .offer-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2); }
+        .badge { position: absolute; top: 12px; right: 12px; background: #ef4444; color: #ffffff; padding: 4px 10px; border-radius: 8px; font-size: 9px; font-weight: 900; text-transform: uppercase; z-index: 10; }
+        .logo-wrapper { flex-grow: 1; display: flex; align-items: center; justify-content: center; height: 110px; }
         .logo-img { max-width: 90%; max-height: 100px; object-fit: contain; }
-
         .rating-stars { color: #fbbf24; font-size: 14px; margin: 5px 0; text-align: center; }
         .approval-rate { font-size: 11px; font-weight: 700; color: #059669; background: #f0fdf4; padding: 2px 8px; border-radius: 6px; display: inline-block; }
-
-        .btn-green { 
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white; font-weight: 900; padding: 14px; border-radius: 16px; 
-            text-align: center; text-transform: uppercase; font-size: 13px; 
-            letter-spacing: 0.05em; transition: 0.3s; cursor: pointer; border: none; width: 100%;
-        }
-        .btn-green:hover { filter: brightness(1.1); transform: scale(1.03); }
-
-        .lic-text { font-size: 8px; color: #94a3b8; text-align: center; margin-top: 10px; font-weight: 700; }
-
-        .tab-btn { padding: 14px 28px; font-weight: 900; color: #064e3b; border-radius: 18px; transition: 0.3s; font-size: 13px; text-transform: uppercase; }
+        .btn-green { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; font-weight: 900; padding: 14px; border-radius: 16px; text-align: center; text-transform: uppercase; font-size: 13px; cursor: pointer; border: none; width: 100%; }
+        .tab-btn { padding: 14px 28px; font-weight: 900; color: #064e3b; border-radius: 18px; transition: 0.3s; font-size: 13px; }
         .tab-btn.active { background: #059669; color: #ffffff; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3); }
-
         .faq-box { background: #ffffff; border-radius: 35px; overflow: hidden; border: 1px solid #99c7ae; }
-        .faq-item { border-bottom: 1px solid #f1f5f9; }
-        .faq-trigger { width: 100%; text-align: left; padding: 22px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; }
-        .faq-content { padding: 0 22px 22px; color: #475569; font-size: 14px; line-height: 1.7; display: none; }
+        .faq-trigger { width: 100%; text-align: left; padding: 22px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; background: #fff; cursor: pointer; border: none; border-bottom: 1px solid #f1f5f9; }
+        .faq-content { padding: 0 22px 22px; color: #475569; font-size: 14px; display: none; }
         .faq-icon { background: #10b981; color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold; }
-
-        .seo-section { background: rgba(255,255,255,0.7); border-radius: 40px; padding: 40px; border: 1px solid #99c7ae; }
-        .seo-h2 { font-size: 26px; font-weight: 900; color: #064e3b; margin-bottom: 20px; text-transform: uppercase; }
-
         input[type=range] { -webkit-appearance: none; background: transparent; width: 100%; }
         input[type=range]::-webkit-slider-runnable-track { height: 8px; background: #99c7ae; border-radius: 10px; }
         input[type=range]::-webkit-slider-thumb { height: 28px; width: 28px; border-radius: 50%; background: #059669; -webkit-appearance: none; margin-top: -10px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
@@ -84,77 +35,52 @@
     <header class="bg-white/90 backdrop-blur-lg border-b border-emerald-200 py-4 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-black italic shadow-lg">S</div>
-                <span class="text-2xl font-black text-emerald-900 tracking-tighter uppercase">SmartCredit</span>
+                <div class="w-10 h-10 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-black italic">S</div>
+                <span class="text-2xl font-black text-emerald-900 uppercase">SmartCredit</span>
             </div>
-            <div class="hidden md:block">
-                <span class="text-[11px] font-black text-emerald-700 bg-emerald-100/50 px-4 py-2 rounded-full border border-emerald-200 uppercase tracking-widest">👑 Оновлено на <span class="js-month-now"></span></span>
+            <div class="hidden md:block text-[11px] font-black text-emerald-700 bg-emerald-100/50 px-4 py-2 rounded-full border border-emerald-200 uppercase tracking-widest">
+                👑 Актуально: <span class="js-month-now"></span>
             </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 mt-8">
-        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-12 shadow-2xl max-w-4xl mx-auto text-center lg:text-left">
+        <div class="bg-white rounded-[40px] border border-emerald-100 p-8 mb-12 shadow-2xl max-w-4xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="space-y-8">
                     <div>
-                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase text-slate-400"><span>Бажана сума</span> <span><span id="cSum">10 000</span> ₴</span></div>
-                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()" class="w-full">
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase text-slate-400"><span>Сума</span> <span class="text-4xl text-emerald-900"><span id="cSum">10 000</span> ₴</span></div>
+                        <input type="range" id="rSum" min="500" max="30000" step="100" value="10000" oninput="calc()">
                     </div>
                     <div>
-                        <div class="flex justify-between mb-2 text-[10px] font-black uppercase text-slate-400"><span>Термін</span> <span><span id="cDays">15</span> днів</span></div>
-                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()" class="w-full">
+                        <div class="flex justify-between mb-3 text-[10px] font-black uppercase text-slate-400"><span>Термін</span> <span class="text-4xl text-emerald-900"><span id="cDays">15</span> днів</span></div>
+                        <input type="range" id="rDays" min="1" max="30" step="1" value="15" oninput="calc()">
                     </div>
                 </div>
-                <div class="bg-emerald-950 rounded-[30px] p-8 text-white border-b-8 border-emerald-600 shadow-inner">
-                    <div class="text-[10px] font-black mb-1 text-emerald-400 uppercase tracking-widest">До сплати за 0.01%</div>
+                <div class="bg-emerald-950 rounded-[30px] p-8 text-center text-white border-b-8 border-emerald-600">
+                    <div class="text-[10px] font-black mb-1 text-emerald-400 uppercase">До повернення</div>
                     <div class="text-6xl font-black mb-4 tracking-tighter"><span id="cTotal">10 015</span> ₴</div>
-                    <div class="text-xs font-bold text-emerald-300 opacity-80 uppercase">Переплата всього 15 грн</div>
+                    <div class="bg-emerald-500/20 py-2 px-4 rounded-xl inline-block text-emerald-400 font-bold text-[10px]">СТАВКА 0.01% ВКЛЮЧЕНА</div>
                 </div>
             </div>
         </div>
 
-        <div class="flex bg-emerald-950/10 p-1.5 rounded-2xl mb-12 w-fit mx-auto md:mx-0 overflow-x-auto">
-            <button id="b-top" onclick="setTab('top')" class="tab-btn active">🔥 ТОП ВИДАЧА</button>
-            <button id="b-all" onclick="setTab('all')" class="tab-btn">УСІ КРЕДИТИ</button>
+        <div class="flex bg-emerald-900/10 p-1.5 rounded-2xl mb-12 w-fit mx-auto md:mx-0">
+            <button id="b-top" onclick="setTab('top')" class="tab-btn active">🔥 ТОП</button>
+            <button id="b-all" onclick="setTab('all')" class="tab-btn">ВСІ</button>
             <button id="b-new" onclick="setTab('new')" class="tab-btn">✨ НОВИНКИ</button>
         </div>
 
         <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-24"></div>
 
-        <div class="max-w-3xl mx-auto mb-24">
-            <h2 class="text-3xl font-black text-emerald-950 mb-10 text-center uppercase tracking-tighter">Поширені запитання</h2>
-            <div class="faq-box shadow-xl">
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Чи реально отримати кредит під 0.01%?</span> <span class="faq-icon">?</span></button>
-                    <div class="faq-content">Так, це реальна акція для залучення нових клієнтів. Більшість компаній зі списку пропонують таку ставку на перший кредит.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-trigger" onclick="toggleFaq(this)"><span>Як швидко прийдуть гроші?</span> <span class="faq-icon">?</span></button>
-                    <div class="faq-content">Система працює 24/7. Після схвалення (5-10 хв) гроші приходять на вашу картку миттєво.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="seo-section mb-24 space-y-16">
-            <article>
-                <h2 class="seo-h2">Кредит онлайн на картку: як обрати умови у <span class="js-month-now"></span></h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm leading-relaxed text-slate-700">
-                    <p>Шукаєте швидку фінансову допомогу? У <strong><span class="js-month-now"></span></strong> році ринок мікрокредитування в Україні пропонує унікальні можливості. Ми зібрали перевірені МФО, які видають позики без довідки про доходи.</p>
-                    <p>Для гарантованого результату ми радимо надіслати заявки у 3-4 різні МФО одночасно. Це дозволить вам отримати гроші зі 100% імовірністю.</p>
-                </div>
-            </article>
+        <div class="bg-white/70 rounded-[40px] p-10 border border-emerald-100 mb-20 shadow-sm text-sm text-slate-700 leading-relaxed">
+            <h2 class="text-2xl font-black text-emerald-950 mb-6 uppercase tracking-tighter">Як отримати кредит онлайн на картку у <span class="js-month-now"></span></h2>
+            <p class="mb-4">Наш сервіс SmartCredit допомагає знайти найвигідніші пропозиції від мікрофінансових організацій України. У <span class="js-month-now"></span> році лідери ринку пропонують позики під 0.01% для нових клієнтів. Це ідеальний спосіб отримати фінансову підтримку без зайвих переплат.</p>
+            <p>Для гарантованого схвалення ми рекомендуємо подавати заявки одразу у 3-4 МФО. Це підвищує шанси на отримання грошей до 99%, навіть якщо ваша кредитна історія не є ідеальною.</p>
         </div>
     </main>
 
-    <footer class="bg-white border-t border-emerald-100 pt-16 pb-10">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.4em]">© 2026 SmartCredit | Всі права захищено</div>
-        </div>
-    </footer>
-
     <script>
-        // ТУТ ПЕРЕВІРЕНО: ТЕГИ "TOP" ДОДАНІ ДО НАЙКРАЩИХ ОФЕРІВ
         const offers = [
             { name: "CreditPlus", domain: "creditplus.ua", tags: ["top", "all"], badge: "0.01%", lic: "ФК №870", rate: "99%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/77587/original.png?1680595488", link: "https://rdr.fmcgsd.net/in/offer/1844?aid=81470" },
             { name: "Credit7", domain: "credit7.ua", tags: ["top", "all"], badge: "ХІТ", lic: "ФК №1177", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81287/original.png?1757079436", link: "https://rdr.salesdoubler.com.ua/in/offer/2099?aid=81470" },
@@ -171,7 +97,23 @@
             { name: "Top1", domain: "top1.com.ua", tags: ["all", "top"], badge: null, lic: "НБУ №555", rate: "91%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81491/original.svg?1764595070", link: "https://rdr.salesdoubler.com.ua/in/offer/8172?aid=81470" },
             { name: "ClickCredit", domain: "clickcredit.ua", tags: ["all", "top"], badge: null, lic: "ФК №1287", rate: "93%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81513/original.svg?1765556311", link: "https://rdr.fmcgsd.net/in/offer/3314?aid=81470" },
             { name: "Credos", domain: "credos.com.ua", tags: ["all"], badge: null, lic: "ФК №1423", rate: "90%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/80961/original.png?1747030827", link: "https://rdr.pdlsd.kz/in/offer/3228?aid=81470" },
-            { name: "SelfieCredit", domain: "selfiecredit.com.ua", tags: ["all", "top"], badge: "ФОТО", lic: "ФК №2222", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81191/original.png?1752741996", link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" }
+            { name: "SelfieCredit", domain: "selfiecredit.com.ua", tags: ["all", "top"], badge: "ФОТО", lic: "ФК №2222", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81191/original.png?1752741996", link: "https://rdr.salesdoubler.com.ua/in/offer/2816?aid=81470" },
+            { name: "AlexCredit", domain: "alexcredit.com.ua", tags: ["all"], badge: null, lic: "ФК №930", rate: "91%", stars: 3, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/001/509/original/alexcredit-ua-oboz-logo.png.svg?1674221248", link: "https://rdr.fmcgsd.net/in/offer/1509?aid=81470" },
+            { name: "LegkoCredit", domain: "legkocredit.com.ua", tags: ["all"], badge: null, lic: "ФК №777", rate: "92%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81431/original.webp?1763042483", link: "https://rdr.salesdoubler.com.ua/in/offer/8356?aid=81470" },
+            { name: "Tengo", domain: "tengo.ua", tags: ["all"], badge: "0.01%", lic: "ФК №176", rate: "97%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81511/original.png?1765448873", link: "https://rdr.fmcgsd.net/in/offer/2728?aid=81470" },
+            { name: "SOS Credit", domain: "soscredit.ua", tags: ["all"], badge: null, lic: "ІК №144", rate: "94%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/78147/original.png?1689779112", link: "https://rdr.fmcgsd.net/in/offer/1338?aid=81470" },
+            { name: "Cly", domain: "cly.ua", tags: ["all"], badge: null, lic: "ФК №888", rate: "90%", stars: 3, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/002/591/original/cly_logo.png.svg?1674218719", link: "https://rdr.fmcgsd.net/in/offer/2591?aid=81470" },
+            { name: "MisterMoney", domain: "mistermoney.com.ua", tags: ["all"], badge: null, lic: "ФК №999", rate: "91%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/74983/original.svg?1640951365", link: "https://rdr.fmcgsd.net/in/offer/1845?aid=81470" },
+            { name: "Limon", domain: "limoncredit.com.ua", tags: ["all"], badge: null, lic: "ФК №444", rate: "93%", stars: 4, logoUrl: "https://d1h2506vp3skew.cloudfront.net/offer_groups/logos/000/008/080/original/limon_logo.png.svg?1709670653", link: "https://rdr.salesdoubler.com.ua/in/offer/8080?aid=81470" },
+            { name: "Microcash", domain: "microcash.com.ua", tags: ["all"], badge: null, lic: "ФК №1055", rate: "95%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/80796/original.png?1741174374", link: "https://rdr.fmcgsd.net/in/offer/1823?aid=81470" },
+            { name: "Treba", domain: "treba.credit", tags: ["all"], badge: null, lic: "НБУ №678", rate: "94%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81531/original.webp?1767605331", link: "https://rdr.salesdoubler.com.ua/in/offer/8355?aid=81470" },
+            { name: "Lovilave", domain: "lovilave.com.ua", tags: ["all"], badge: null, lic: "ФК №1366", rate: "96%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81477/original.png?1764240696", link: "https://go.salesdoubler.net/in/offer/3348?aid=81470" },
+            { name: "ShvydkoGroshi", domain: "sgroshi.com.ua", tags: ["all"], badge: null, lic: "ІК №78", rate: "90%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81046/original.svg?1749812725", link: "https://rdr.fmcgsd.net/in/offer/2793?aid=81470" },
+            { name: "Amigo", domain: "amigo.com.ua", tags: ["all"], badge: null, lic: "НБУ №900", rate: "92%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81547/original.png?1768487894", link: "https://rdr.salesdoubler.com.ua/in/offer/6363?aid=81470" },
+            { name: "Miloan", domain: "miloan.ua", tags: ["all"], badge: "0%", lic: "ФК №168", rate: "97%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81552/original.svg?1768809769", link: "https://rdr.fmcgsd.net/in/offer/1436?aid=81470" },
+            { name: "Avira", domain: "aviracredit.com.ua", tags: ["all"], badge: "ШВИДКО", lic: "ФК №1111", rate: "93%", stars: 4, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/72949/original.jpg?1615458640", link: "https://rdr.salesdoubler.com.ua/in/offer/2758?aid=81470" },
+            { name: "Pango", domain: "pango.com.ua", tags: ["all"], badge: "0.01%", lic: "НБУ №21/220", rate: "98%", stars: 5, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/81558/original.webp?1769094398", link: "https://rdr.salesdoubler.com.ua/in/offer/6373?aid=81470" },
+            { name: "ТвояПозика", domain: "tvoyapozyka.com.ua", tags: ["all"], badge: "ДО 150К", lic: "ФК №121", rate: "90%", stars: 3, logoUrl: "https://s3.amazonaws.com/salesdoubler/banner_creatives/banners/76740/original.jpg?1668774561", link: "https://rdr.fmcgsd.net/in/offer/2641?aid=81470" }
         ];
 
         let currentTab = 'top';
@@ -191,17 +133,9 @@
             document.getElementById('current-month-title').innerText = text;
         }
 
-        function toggleFaq(btn) {
-            const content = btn.nextElementSibling;
-            const isOpen = content.style.display === 'block';
-            document.querySelectorAll('.faq-content').forEach(c => c.style.display = 'none');
-            content.style.display = isOpen ? 'none' : 'block';
-        }
-
         function render() {
             const grid = document.getElementById('grid'); grid.innerHTML = '';
             let list = offers.filter(o => o.tags.includes(currentTab));
-
             list.forEach(o => {
                 const isTop = (currentTab === 'top') ? 'is-top-card' : '';
                 const b = o.badge ? `<div class="badge">${o.badge}</div>` : '';
